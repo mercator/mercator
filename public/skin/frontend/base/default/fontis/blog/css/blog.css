@@ -1,0 +1,86 @@
+.postWrapper {
+    padding-bottom: 25px;
+}
+.postTitle {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #DDDDDD;
+    margin-bottom: 15px;
+}
+.postTitle h2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+}
+.postTitle h3 {
+    font-size: 10px;
+    margin: 0px;
+    padding-top: 2px;
+    padding-right: 0px;
+    padding-bottom: 2px;
+    padding-left: 0px;
+}
+.postContent {
+    padding-bottom: 15px;
+    font-size: 13px;
+}
+.postDetails {
+    font-size: 12px;
+}
+
+.postBookmarks {
+    padding-bottom: 15px;
+}
+
+.postBookmarks h4 {
+    padding-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.commentWrapper {
+    padding-top: 10px;
+}
+.commentIndent {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.commentContent {
+    padding-bottom: 0px;
+    font-size: 12px;
+}
+.commentDetails  {
+    font-size: 11px;
+    padding: 0px;
+}
+.commentReply {
+    float: left;
+}
+.commentPostDetails,
+.commentUserDetails {
+    float: right
+}
+#postComment .group-select {
+    margin-top: 15px;
+}
+#postComment .input-box .required {
+    color: #EB340A;
+}
+#postComment .button-set .required {
+    text-align: left;
+}
+#postComment #inReplyToBox {
+    padding-bottom: 8px;
+}
+#postComment #inReplyToBox #inReplyToName {
+    font-weight: bold;
+}
+
+.postError {
+    font-size: 16px;
+}
+
+.box.base-mini.blog li.active {
+    font-weight: bold;
+}

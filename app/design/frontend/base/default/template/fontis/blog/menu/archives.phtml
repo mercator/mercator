@@ -1,0 +1,32 @@
+<?php
+/**
+ * Fontis Blog Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * Parts of this software are derived from code originally developed by
+ * Robert Chambers <magento@robertchambers.co.uk>
+ * and released as "Lazzymonk's Blog" 0.5.8 in 2009.
+ *
+ * @category   Fontis
+ * @package    Fontis_Blog
+ * @copyright  Copyright (c) 2013 Fontis Pty. Ltd. (http://www.fontis.com.au)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php if ($archives = $this->getArchives()): ?>
+    <?php $showPostCount = $this->showPostCount(); ?>
+    <h5><?php echo Mage::helper("blog")->__($this->getArchiveLabel() . " Archives"); ?></h5>
+    <ul>
+        <?php foreach ($archives as $archive): ?>
+            <li>
+                <a href="<?php echo $archive->getAddress(); ?>"><?php echo $archive->getDateString(); ?></a><?php if ($showPostCount) { echo ' (' . $archive->getPostcount() . ')'; } ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

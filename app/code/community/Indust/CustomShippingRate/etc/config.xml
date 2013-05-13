@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Admin Custom Shipping Rate
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to jeffk@industrialtechware.com so we can send you a copy immediately.
+ *
+ * @category   Indust
+ * @package    Indust_CustomShippingRate
+ * @author     Jeff Kieke <jeffk@industrialtechware.com>
+ * @copyright  Copyright (c) 2011, Jeff Kieke
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Indust_CustomShippingRate>
+            <version>1.5.0</version>
+            <depends>
+                <Mage_Shipping />
+            </depends>
+        </Indust_CustomShippingRate>
+    </modules>
+    <global>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_create_shipping_method_form>Indust_CustomShippingRate_Block_Sales_Order_Create_Shipping_Method_Form</sales_order_create_shipping_method_form>
+                </rewrite>
+            </adminhtml>
+            <checkout>
+                <rewrite>
+                    <cart_shipping>Indust_CustomShippingRate_Block_Cart_Shipping</cart_shipping>
+                    <multishipping_shipping>Indust_CustomShippingRate_Block_Multishipping_Shipping</multishipping_shipping>
+                    <onepage_shipping_method_available>Indust_CustomShippingRate_Block_Onepage_Shipping_Method_Available</onepage_shipping_method_available>
+                </rewrite>
+            </checkout>
+            <paypal>
+                <rewrite>
+                    <express_review>Indust_CustomShippingRate_Block_Express_Review</express_review>
+                </rewrite>
+            </paypal>
+        </blocks>
+        <helpers>
+            <customshippingrate>
+                <class>Indust_CustomShippingRate_Helper</class>
+            </customshippingrate>
+        </helpers>
+        <models>
+            <customshippingrate>
+                <class>Indust_CustomShippingRate_Model</class>
+            </customshippingrate>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_create>Indust_CustomShippingRate_Model_Sales_Order_Create</sales_order_create>
+                </rewrite>
+            </adminhtml>
+            <sales>
+                <rewrite>
+                    <quote_address_total_shipping>Indust_CustomShippingRate_Model_Quote_Address_Total_Shipping</quote_address_total_shipping>
+                </rewrite>
+            </sales>
+        </models>
+        <resources>
+            <customshippingrate_setup>
+                <setup>
+                    <module>Indust_CustomShippingRate</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customshippingrate_setup>
+        </resources>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Indust_CustomShippingRate>
+                    <files>
+                        <default>Indust_CustomShippingRate.csv</default>
+                    </files>
+                </Indust_CustomShippingRate>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <customshippingrate>
+                    <file>indust_customshippingrate.xml</file>
+                </customshippingrate>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <carriers>
+            <customshippingrate>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>customshippingrate/carrier_customshippingrate</model>
+                <name>CustomShippingRate</name>
+                <title>Custom Shipping Rate</title>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>      
+            </customshippingrate>
+        </carriers>
+    </default>
+</config>

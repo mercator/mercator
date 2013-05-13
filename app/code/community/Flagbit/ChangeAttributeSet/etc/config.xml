@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Flagbit_ChangeAttributeSet>
+			<version>2.0.0</version>
+		</Flagbit_ChangeAttributeSet>
+	</modules>
+	
+	<global>
+        <models>
+            <flagbit_changeattributeset>
+                <class>Flagbit_ChangeAttributeSet_Model</class>
+            </flagbit_changeattributeset>
+		</models>
+	</global>
+    <adminhtml>        
+        <events>
+            <adminhtml_block_html_before>
+                <observers>
+                    <flagbit_changeattributeset>
+                        <type>singleton</type>
+                        <class>flagbit_changeattributeset/observer</class>
+                        <method>addMassactionToProductGrid</method>
+                    </flagbit_changeattributeset>
+                </observers>
+            </adminhtml_block_html_before>
+		</events>        
+    </adminhtml>
+	
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Flagbit_ChangeAttributeSet before="Mage_Adminhtml">Flagbit_ChangeAttributeSet_Adminhtml</Flagbit_ChangeAttributeSet>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>		
+		
+</config>

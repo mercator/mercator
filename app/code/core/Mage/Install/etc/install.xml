@@ -69,7 +69,7 @@
                     <recursive>1</recursive>
                 </var>
                 <media>
-                    <path>/media</path>
+                    <path>/public/media</path>
                     <existence>1</existence>
                     <recursive>1</recursive>
                 </media>

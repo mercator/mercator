@@ -855,7 +855,9 @@ final class Mage
             return;
         }
         $file = self::getStoreConfig('dev/log/exception_file');
-        self::log("\n" . $e->__toString(), Zend_Log::ERR, $file);
+        // FONTIS - show trace with full strings
+        //self::log("\n" . $e->__toString(), Zend_Log::ERR, $file);
+        self::log("\n" . self::getFullStringsTrace($e), Zend_Log::ERR, $file);
     }
 
     /**
@@ -895,13 +897,17 @@ final class Mage
             }
 
             print $e->getMessage() . "\n\n";
-            print $e->getTraceAsString();
+            // FONTIS - show trace with full strings
+            //print $e->getTraceAsString();
+            print self::getFullStringsTrace($e);
             print '</pre>';
         } else {
 
             $reportData = array(
                 !empty($extra) ? $extra . "\n\n" : '' . $e->getMessage(),
-                $e->getTraceAsString()
+                // FONTIS - show trace with full strings
+                //$e->getTraceAsString()
+                self::getFullStringsTrace($e)
             );
 
             // retrieve server data
@@ -921,7 +927,7 @@ final class Mage
             }
             catch (Exception $e) {}
 
-            require_once(self::getBaseDir() . DS . 'errors' . DS . 'report.php');
+            require_once(self::getBaseDir() . DS . 'public' . DS . 'errors' . DS . 'report.php');
         }
 
         die();
@@ -985,5 +991,49 @@ final class Mage
     public static function setIsDownloader($flag = true)
     {
         self::$_isDownloader = $flag;
+    }
+    
+    /**
+     * FONTIS - Takes an exception, returns a stack trace that includes full
+     * string aguments instead of truncating them. Based on:
+     * http://stackoverflow.com/questions/1949345
+     */
+    public static function getFullStringsTrace($exception) {
+        $trace = get_class($exception).": message '{$exception->getMessage()}', code '{$exception->getCode()}' in {$exception->getFile()}:{$exception->getLine()}\n";
+        $depth = 0;
+        foreach ($exception->getTrace() as $frame) {
+            $args = '';
+            if (isset($frame['args'])) {
+                $args = array();
+                foreach ($frame['args'] as $arg) {
+                    if (is_string($arg)) {
+                        $args[] = "'" . $arg . "'";
+                    } elseif (is_array($arg)) {
+                        $args[] = 'Array';
+                    } elseif (is_null($arg)) {
+                        $args[] = 'NULL';
+                    } elseif (is_bool($arg)) {
+                        $args[] = ($arg) ? 'true' : 'false';
+                    } elseif (is_object($arg)) {
+                        $args[] = get_class($arg);
+                    } elseif (is_resource($arg)) {
+                        $args[] = get_resource_type($arg);
+                    } else {
+                        $args[] = $arg;
+                    }
+                }
+                $args = join(', ', $args);
+            }
+            $trace .= sprintf("#%s %s(%s): %s%s(%s)\n",
+                    $depth,
+                    $frame['file'],
+                    $frame['line'],
+                    isset($frame['class']) ? "{$frame['class']}->" : '',
+                    $frame['function'],
+                    $args
+            );
+            $depth++;
+        }
+        return $trace;
     }
 }

@@ -1,0 +1,143 @@
+<?php
+/**
+ * Fontis Blog Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * Parts of this software are derived from code originally developed by
+ * Robert Chambers <magento@robertchambers.co.uk>
+ * and released as "Lazzymonk's Blog" 0.5.8 in 2009.
+ *
+ * @category   Fontis
+ * @package    Fontis_Blog
+ * @copyright  Copyright (c) 2013 Fontis Pty. Ltd. (http://www.fontis.com.au)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php $_blogHelper = Mage::helper("blog"); ?>
+<?php $post = $this->getPost(); ?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml(); ?></div>
+<div class="postWrapper">
+    <div class="postTitle">
+        <h2><a href="<?php echo $post->getAddress(); ?>"><?php echo $post->getTitle(); ?></a></h2>
+		<h3><?php echo $post->getCreatedTime(); ?></h3>
+    </div>
+
+    <div class="postContent"><?php echo $post->getPostContent(); ?></div>
+    <?php echo $this->getBookmarkHtml($post); ?>
+
+    <div class="postDetails">
+        <?php $postCats = $post->getCats(); ?>
+        <?php if (!empty($postCats)): ?>
+            <?php echo $_blogHelper->__("Posted in"); ?>
+            <?php foreach ($postCats as $title => $url): ?>
+				<a href="<?php echo $url; ?>"><?php echo $title; ?></a>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <?php echo $_blogHelper->__("Posted"); ?>
+        <?php endif; ?> By <?php echo $post->getUser(); ?>
+    </div>
+</div>
+
+<!-- Comment Section -->
+<?php if ($this->getCommentsEnabled()): ?>
+    <?php $comments = $this->getComment(); ?>
+    <div class="postTitle"><a name="commentBox"></a>
+        <h2><?php echo $this->getCommentTotalString($comments); ?></h2>
+    </div>
+
+    <?php echo $this->getChild("comments")->setComments($this->commentsThread($comments))->toHtml(); ?>
+
+    <?php if ($post->getComments()): ?>
+        <div class="postError"><?php echo $_blogHelper->__("Comments are closed for this post"); ?></div>
+    <?php else: ?>
+        <?php if ($_blogHelper->isLoginRequired()): ?>
+            <?php if ($this->helper('customer')->isLoggedIn()): ?>
+                <form action="" id="postComment" method="post">
+                    <fieldset class="group-select">
+                        <h4 class="legend"><?php echo $_blogHelper->__("Submit Comment"); ?></h4>
+                        <ul>
+                            <li id="inReplyToBox" class="no-display">
+                                <input name="in_reply_to" id="in_reply_to" type="hidden" value="" />
+                                In response to: <span id="inReplyToName"></span>
+                            </li>
+                            <li>
+                                <div class="input-box">
+                                    <label for="comment"><?php echo $_blogHelper->__("Comment"); ?><span class="required">*</span></label><br />
+                                    <textarea name="comment" id="comment" title="<?php echo $this->__("Comment"); ?>" class="required-entry input-text" style="height: 150px; width: 400px;" cols="50" rows="5"><?php echo $this->getCommentText(); ?></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <?php if ($_blogHelper->useRecaptcha()): ?>
+                        <div><?php echo $this->getChildHtml("recaptcha_box"); ?></div>
+                    <?php endif; ?>
+                    <div class="button-set">
+                        <input name="post_id" type="hidden" value="<?php echo $post->getPostId(); ?>" />
+                        <input name="email" type="hidden" value="<?php echo $this->escapeHtml($_blogHelper->getUserEmail()); ?>"/>
+                        <input name="user" type="hidden" value="<?php echo $this->escapeHtml($_blogHelper->getUserName()); ?>"/>
+                        <p class="required"><?php echo $this->__('* Required Fields'); ?></p>
+                        <button class="form-button" type="submit"><span><?php echo $_blogHelper->__("Submit Commment"); ?></span></button>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    function setupReply(commentID) {
+                        document.getElementById("inReplyToName").innerHTML = document.getElementById("commentUser_" + commentID).innerHTML;
+                        document.getElementById("in_reply_to").value = commentID;
+                        document.getElementById("inReplyToBox").className = "";
+                    }
+                </script>
+            <?php else: ?>
+                <p><?php echo $_blogHelper->__("You must be logged in to post a comment."); ?></p>
+                <p><a href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo $_blogHelper->__('Click here'); ?></a> <?php echo $_blogHelper->__('to log in'); ?></p>
+            <?php endif; ?>
+        <?php else: ?>
+            <form action="" id="postComment" method="post">
+                <fieldset class="group-select">
+                    <h4 class="legend"><?php echo $_blogHelper->__("Submit Comment"); ?></h4>
+                    <ul>
+                        <li id="inReplyToBox" class="no-display">
+                            <input name="in_reply_to" id="in_reply_to" type="hidden" value="" />
+                            In response to: <span id="inReplyToName"></span>
+                        </li>
+                        <li>
+                            <div class="input-box">
+                                <label for="user"><?php echo $_blogHelper->__('Name'); ?> <span class="required">*</span></label><br />
+                                <input name="user" id="user" value="<?php echo $this->getCommentName(); ?>" title="<?php echo $this->__("Name"); ?>" value="<?php echo $this->escapeHtml($_blogHelper->getUserName()); ?>" class="required-entry input-text" type="text" />
+                            </div>
+                            <div class="input-box">
+                                <label for="email"><?php echo $_blogHelper->__('Email'); ?> <span class="required">*</span></label><br />
+                                <input name="email" id="email" value="<?php echo $this->getCommentEmail(); ?>" title="<?php echo $this->__("Email"); ?>" value="<?php echo $this->escapeHtml($_blogHelper->getUserEmail()); ?>" class="required-entry input-text validate-email" type="text" />
+                            </div>
+                            <div class="clear"></div>
+                            <div class="input-box">
+                                <label for="comment"><?php echo $_blogHelper->__('Comment'); ?> <span class="required">*</span></label><br />
+                                <textarea name="comment" id="comment" title="<?php echo $_blogHelper->__("Comment"); ?>" class="required-entry input-text" style="height: 150px; width: 400px;" cols="50" rows="5"><?php echo $this->getCommentText(); ?></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+                <?php if ($_blogHelper->useRecaptcha()): ?>
+                    <div><?php echo $this->getChildHtml("recaptcha_box"); ?></div>
+                <?php endif; ?>
+                <div class="button-set">
+                    <input name="post_id" type="hidden" value="<?php echo $post->getPostId(); ?>" />
+                    <p class="required"><?php echo $this->__('* Required Fields'); ?></p>
+                    <button class="form-button" type="submit"><span><?php echo $_blogHelper->__("Submit Comment"); ?></span></button>
+                </div>
+            </form>
+            <script type="text/javascript">
+                function setupReply(commentID) {
+                    document.getElementById("inReplyToName").innerHTML = document.getElementById("commentUser_" + commentID).innerHTML;
+                    document.getElementById("in_reply_to").value = commentID;
+                    document.getElementById("inReplyToBox").className = "";
+                }
+            </script>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,62 @@
+<?php
+/**
+ * Fontis Blog Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * Parts of this software are derived from code originally developed by
+ * Robert Chambers <magento@robertchambers.co.uk>
+ * and released as "Lazzymonk's Blog" 0.5.8 in 2009.
+ *
+ * @category   Fontis
+ * @package    Fontis_Blog
+ * @copyright  Copyright (c) 2013 Fontis Pty. Ltd. (http://www.fontis.com.au)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php
+$posts = $this->getPosts();
+$_helper = Mage::helper("blog");
+?>
+
+<?php if (count($posts)): ?>
+    <?php foreach ($posts as $post): ?>
+        <div class="postWrapper">
+            <div class="postTitle">
+                <h2><a href="<?php echo $post->getAddress(); ?>"><?php echo $post->getTitle(); ?></a></h2>
+                <h3><?php echo $post->getCreatedTime(); ?></h3>
+            </div>
+            <div class="postContent"><?php echo $post->getPostContent(); ?></div>
+            <?php echo $this->getBookmarkHtml($post); ?>
+            <div class="postDetails">
+                <?php if ($this->getCommentsEnabled()): ?>
+                    <a href="<?php echo $post->getAddress(); ?>#commentBox">
+                    <?php
+                        if (($commentCount = $post->getCommentCount()) == 1) {
+                            echo "1 " . $_helper->__("Comment");
+                        } else {
+                            echo "$commentCount " . $_helper->__("Comments");
+                        }
+                    ?></a> |
+                <?php endif; ?>
+                <?php $postCats = $post->getCats(); ?>
+                <?php if (!empty($postCats)): ?>
+                    <?php echo $_helper->__("Posted in"); ?>
+                    <?php foreach ($postCats as $title=>$url): ?>
+                        <a href="<?php echo $url; ?>"><?php echo $title; ?></a>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <?php echo $_helper->__("Posted"); ?>
+                <?php endif; ?> By <?php echo $post->getUser(); ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <?php echo $_helper->__("No posts in this category."); ?>
+<?php endif ?>
+<?php $this->getPages(); ?>

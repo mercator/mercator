@@ -53,6 +53,16 @@
             </default_setup>
         </resources>
         <session_save>{{session_save}}</session_save>
+        <!-- Uncomment this section to use Redis for the cache backend. -->
+        <!--
+        <cache>
+            <backend>Cm_Cache_Backend_Redis</backend>
+            <backend_options>
+                <server>127.0.0.1</server>
+                <port>6379</port>
+            </backend_options>
+        </cache>
+        -->
     </global>
     <admin>
         <routers>
