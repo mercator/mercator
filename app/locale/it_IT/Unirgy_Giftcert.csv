@@ -1,0 +1,97 @@
+Add New Gift Certificate,Aggiungi un nuovo Buono Acquisto
+Add Unique Message (optional):,Aggiungi un messaggio (opzionale):
+Allow custom message,Abilita messaggio dedicato
+Allow recipient's address,Abilita indirizzo destinatario
+Allow recipient's email,Abilita email destinatario
+Amount is not within the specified range.,L'importo non &egrave; nell'intervallo possibile.
+Are you sure?,Sei sicuro ?
+Auto generate PIN,Genera il PIN in automatico
+Auto generate certificate number,Genera in automatico il numero del certificiato
+Balance,Saldo
+Card Number,Numero Buono Acquisto
+Certificate number pattern,Pattern per il numero del certificato
+Certificate number(s),Numero Certificato
+Change status,Cambia lo stato
+Characters Remaining:,Caratteri Rimanenti:
+Check Balance,Controlla saldo
+Check Your Gift Card Balance,Controlla il saldo del tuo Buono Acquisto
+Comments,Commenti
+Custom message,Messaggio dedicato
+Custom message max length,Massima lunghezza messaggio dedicato
+Default status,Stato di default
+Defaults,Default
+Delete,Cancella
+Delete Gift Certificate,Cancella il Buono Acquisto
+Edit Gift Certificate,Modifica il Nuono Acquisto
+Enter Amount,Inserisci l'importo
+Gift Certificate,Buono Acquisto
+Gift Certificates,Buoni Acquisto
+Gift Certificate Email Sender,Mittente email per il Buono Acquisto
+Gift Certificate Email Template for Purchaser,Email Template for per l'acquirente del Buono Acquisto
+Gift Certificate Email Template for Someone Else,Email Template del Buono Acquisto per tutti gli altri
+Gift Certificate Information,Dati del Buono Acquisto
+Gift Certificates,Buoni Acquisto
+Gift certificate customer interface on catalog product view,Interfaccia dedicata per il Buono Acquisto nella vista catalogo
+Gift certificate was successfully deleted,Il Buono Acquisto &egrave; stato cancellato
+Gift certificate was successfully saved,Il Buono Acquisto &egrave; stato salvato
+Manage Gift Certificates,Gestisci i Buoni Acquisto
+New Gift Certificate,Nuovo Buono Acquisto
+New Gift Certificate to Self,Nuovo Buon Acquisto a te stesso
+New Gift Certificate to Someone Else,Nuovo Buono Acquisto a una persona
+New order status,Stato del nuovo ordine
+No message,Nessun messaggio
+PIN pattern,PIN pattern
+Pattern examples:<br/><strong>[A*8] - 8 alpha chars<br/>[N*4] - 4 numerics<br/>[AN*5] - 5 alphanumeric<br/>CERT-[A*4]-[AN*6] - CERT-HQNB-8A1NO3</strong>,Esempi per i Pattern:<br/><strong>[A*8] - 8 caratteri alfannumerici<br/>[N*4] - 4 caratteri numerici<br/>[AN*5] - 5 caratteri alfanumerici<br/>CERT-[A*4]-[AN*6] - CERT-HQNB-8A1NO3</strong>
+Pin,Pin
+Please enter a valid card number and PIN.,Per favore inserisci il numero del Buono Acquisto e il PIN.
+Please enter gift certificate information,Per favore inserisci le informazioni del Buono Acquisto
+"Please note, that in current release shipping estimates will be calculated by purchaser's shipping address and not recipient's.",""
+Please select gift certificates(s),Per favore seleziona il Buono Acquisto
+Recipient's Email Address (optional):,Indirizzo email del destinatario (optional):
+Recipient's Name:,Nome del destinatario:
+Recipient's Postal Address (optional):,Indirizzo postale del destinatario (opzionale):
+Recipient's email address,Indirizzo email del destinatario
+Recipient's name,Nome del destinatario
+Recipient's postal address,Indirizzo postale del destinatario
+Save Gift Certificate,Salva il Buono Acquisto
+Status,Stato
+The card number or PIN entered are invalid. Please retry,Il numero del Buono Acquisto o il PIN sono errati. Per favore riprova
+There was an error while updating certificate(s) status,Si &egrave; verificato un errore durante l'aggiornamento dello stato del Buono Acquisto
+Title,Titolo
+"To check the balance of a Gift Card, enter the card number and PIN below.","Per controllare il saldo del Buono Acquisto inserisci il codice e il PIN qui sotto."
+Total of %d record(s) were successfully deleted,Un totale di %d record(s) sono stati cancellati
+Total of %d record(s) were successfully updated,Un totale di %d record(s) sono stati aggiornati
+Transaction History,Storico transazioni
+Your Gift Card Balance,Il saldo del tuo Buono Acquisto
+Can not create multiple Gift Certificates with the same code.,Non &grave; possibile creare pi&grave; Buoni Acquisto con lo stesso codice.
+Duplicate Gift Certificate Code was found.,E' stato trovato un Buono Acquisto con codice duplicato.
+"To check the balance of a Gift Card, enter the card number below.","Per controllare il saldo del Buono Acquisto, inserisci il numero qui sotto."
+Please enter a valid card number.,Per favore inserisci il numero del Buono Acquisto.
+The card number entered is invalid. Please retry,Il numero del Buono Acquisto non &egrave; valido. Per favore riprova
+"If empty, only one certificate will be created","Se vuoto, viene creato un solo Buono Acquisto"
+Order,Ordine
+Create,Crea
+Update,Aggiorna
+Email,Email
+Amount values configuration,Amount values configuration
+Default Expiration Timespan (in days),Durata del Buono Acquisto (in giorni)
+Send this gift certificate(s),Invia questo Buono Acquisto
+To myself,A me stesso
+Directly to someone else,Direttamente al destinatario
+I want to order printed gift certificate(s),Voglio ordinare un Buono Acquisto stampato
+Select Amount,Scegli l'importo
+Amount,Importo
+Yes,Si
+Used only for frontend orders.,Utilizzato solo per gli ordini del frontend.
+Send printed copy to myself,Invia la copia stampata a me
+"Please enter recipient's email or postal address","Per favore inserisci l'indirizzo email del destinatario o il suo indirizzo postale"
+Will be included only when default expiration timespan is set.,Viene incluso solo se &egrave; configurata la data di scadenza.
+Expires On,Scade il
+Gift certificate(s): %s,Buoni Acquisto: %s
+Send new GC confirmation,Invia la conferma di un nuovo BA
+Never,Mai
+On order completion,Al completamento dell'ordine
+On payment completion,Al completamento del pagamento
+"Pattern examples:<br/><strong>50 - 1500</strong> : a range between $50 and $1500<br/><strong>25; 50; 100</strong> : a dropdown with values of $25, $50, $100<br/><strong>50</strong> : a static value of $50<br/><strong>-</strong> : enter "dash" to allow any amount value<br/>For multi-currency setups enter configuration for each currency on new line, like this:<br/><strong>EUR: 25; 50; 100<br/>CAD, USD: 50; 100; 200<br/>*: 100; 200; 500</strong><br/>Whitespaces are optional and will be ignored.","Esempio di valori validi:<br/><strong>50 - 1500</strong> : tra &euro; 50 e &euro; 1500<br/><strong>25; 50; 100</strong> : un menu a tendina con i valori di 25, 50, 100<br/><strong>50</strong> : un valore fisso di &euro; 50<br/><strong>-</strong> : inserisci "-" per permettere qualsiasi importo<br/>For multi-currency setups enter configuration for each currency on new line, like this:<br/><strong>EUR: 25; 50; 100<br/>CAD, USD: 50; 100; 200<br/>*: 100; 200; 500</strong><br/>Whitespaces are optional and will be ignored."
+"In current release you can not send emails for certificates that were generated in admin (%d selected)","In current release you can not send emails for certificates that were generated in admin (%d selected)"
+GC Amount Configuration (leave empty for default configuration),Configurazione del Buono Acquisto (lasciare bianco per la configurazione di default)

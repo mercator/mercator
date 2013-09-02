@@ -1,0 +1,43 @@
+<!--@subject Your gift certificate(s) from {{var store_name}} @-->
+
+<style type="text/css">
+    body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+</style>
+
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ header starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt=""  style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+        </table>
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top">
+                    <p><strong>Ol&aacute; {{var recipient_name}},</strong></p>
+                    <p>Segue-se a informa&ccedil;&atilde;o referente ao(s) Vale(s) Oferta que comprou na {{var store_name}}<br/>
+                    Pode facilmente usar os Vale Oferta para comprar qualquer produto na nossa loja em <a href="{{store url=""}}">{{store url=""}}</a></p>
+                    <p>Basta inserir o c&oacute;digo do Vale Oferta fornecido na caixa &quot;Cup&otilde;es de Desconto&quot; ao finalizar a sua encomenda e o valor do Vale Oferta ser&aacute; imediatamente aplicado sobre o valor total da encomenda. Caso o valor do Vale Oferta seja inferior ao da encomenda, ter&aacute; que pagar o valor em falta seleccionado uma op&ccedil;&atilde;o de pagamento &agrave; sua escolha. Caso o valor do Vale Oferta seja superior ao da encomenda, ficar&aacute; ainda com saldo positivo para efectuar novas compras, bastando inserir o mesmo c&oacute;digo.</p>
+                  <p>Ao fazer o checkout insira o seguinte c&oacute;digo na caixa &quot;Cup&otilde;es de Desconto&quot; !<br/>
+                    {{var certificate_numbers}}</p>
+
+                  <p>O(s) Vale(s) Oferta tem uma valor de {{var amount}}.</p>
+
+                  {{depend expire_on}}
+                    <p>O(s) Vale(s) Oferta expira(m) em{{var expire_on}}</p>
+                  {{/depend}}
+
+                    <p>Obrigado pela sua prefer&ecirc;ncia!</p>
+
+                    <p><a href="{{store url=""}}">{{var store_name}}</a></p>
+               </td>
+           </tr>
+       </table>
+   </td>
+</tr>
+</table>
+</div>

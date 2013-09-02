@@ -1,0 +1,80 @@
+<?php
+/**
+ * Unirgy_Giftcert extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @copyright  Copyright (c) 2008 Unirgy LLC
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @author     Boris (Moshe) Gurevich <moshe@unirgy.com>
+ */
+?>
+<?php
+$_order = $this->getOrder();
+if (!$_order) {
+    return;
+}
+$_source = $this->getSource();
+$_gcs = $_source->getGiftcertCode() ? $_source->getGiftcertCode() : null;
+?>
+<tr>
+    <td <?php echo $this->getLabelProperties()?>>
+        <?php echo $_gcs ? $this->__('Gift Certificates (%s)', $_gcs) : $this->__('Gift Certificates') ?>:
+    </td>
+    <td <?php echo $this->getValueProperties()?>>
+        <?php echo $this->helper('ugiftcert')->formatPrice(-$_source->getGiftcertAmount()) ?>
+    </td>
+</tr>
+<?php
+return; //for future implementation
+
+$_order  = $this->getOrder();
+$_source = $this->getSource();
+$_fullInfo = $_source->getFullTaxInfo();
+global $gcIter; $gcIter++;
+
+$_full = false; #Mage::getStoreConfig('ugiftcert/custom/cart_full_info');
+$_value = $_order->getGiftcertAmount();
+$_gcs = explode(', ', $_order->getGiftcertCode());
+if ($_full && $_value!=0):
+    $_baseBalances = explode(',', $this->getTotal()->getGiftcertBalances());
+    $_balances = explode(',', $this->getTotal()->getGiftcertBalances());
+    ?>
+    <?php foreach ($_gcs as $_i=>$_gc): ?>
+        <tr class="ugiftcert-details tax-details<?php if ($_i==0): echo ' tax-details-first'; endif; ?>" style="display:none;">
+            <td <?php echo $this->getLabelProperties()?>>
+                <?php echo $_gc ?> <a class="ugiftcert-remove" href="<?php echo $this->getUrl('ugiftcert/checkout/remove', array('gc'=>$_gc)) ?>" title="<?php echo $this->__('Remove')?>"><img src="<?php echo $this->getSkinUrl('images/list_remove_btn.gif') ?>" /></a>
+            </td>
+            <td <?php echo $this->getValueProperties()?>>
+            <?php if (isset($_balances[$_i])): ?>
+                <?php echo $this->helper('ugiftcert')->formatPrice(-$_balances[$_i]); ?>
+            <?php else: ?>
+                &nbsp;
+            <?php endif; ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+<?php endif ?>
+
+<tr<?php if ($_full && $_value!=0): ?> class="tax-total" onclick="expandDetails(this, '.ugiftcert-details')"<?php endif; ?>>
+    <td <?php echo $this->getLabelProperties()?>>
+        <?php if ($_full): ?>
+            <div class="tax-collapse"><?php echo $this->__('Gift Certificates'); ?></div>
+        <?php else: ?>
+            <?php echo $this->__('Gift Certificates (%s)', $_order->getGiftcertCode()); ?>:
+        <?php endif;?>
+    </td>
+    <td <?php echo $this->getValueProperties()?>><?php echo $this->helper('ugiftcert')->formatPrice(-$_value) ?></td>
+</tr>

@@ -26,6 +26,7 @@ All the standard features of Magento Community Edition, plus the following exten
 * [Flagbit Change Attribute Set](https://github.com/Flagbit/Magento-ChangeAttributeSet) (GPL)
 * [Admin Custom Shipping Rates](http://www.magentocommerce.com/magento-connect/admin-custom-shipping-rate.html) (OSL-3.0) 
 * [Fontis Blog](https://github.com/fontis/fontis_blog) (OSL-3.0)
+* [Unirgy Gift Certificates](http://www.unirgy.com/products/ugiftcert/) (OSL-3.0)
 
 Where necessary, extensions are modified to allow them to be integrated into Mercator.
 
@@ -34,6 +35,7 @@ In addition, the following changes have been made to the core:
 * Use of a public/ directory for the webroot, as per the approach outlined in [this blog post](http://www.fontis.com.au/blog/magento/move-magento-private-files-outside-docroot).
 * Added Australian states into the core region list.
 * Improved error report stack traces to show full strings.
+* Removed MAgento Connect Manager from admin panel (it's still available on the command line).
 
 
 Why another fork?
@@ -45,15 +47,15 @@ The goals of the project are substantially different from the other prominent fo
 Why "mercator"?
 ---------------
 
-The name comes from [the latin word](http://en.wiktionary.org/wiki/mercator) for a merchant or trader and seemed appropriate for a software solution that allows the buying and selling or goods online.
+The name comes from [the latin word](http://en.wiktionary.org/wiki/mercator) for a merchant or trader and seemed appropriate for a software solution that allows the buying and selling of goods online.
 
-It's _not_ named after the famous cartographer [Gerardus Mercator](http://en.wikipedia.org/wiki/Gerardus_Mercator) who gave us the Mercator projection world map, or the [Slovenian supermarket chain](http://en.wikipedia.org/wiki/Mercator_%28retail%29) (though they're both pretty cool too).
+It's *not* named after the famous cartographer [Gerardus Mercator](http://en.wikipedia.org/wiki/Gerardus_Mercator) who gave us the Mercator projection world map, or the [Slovenian supermarket chain](http://en.wikipedia.org/wiki/Mercator_%28retail%29) (though they're both pretty cool too).
 
 
 Audience
 --------
 
-Mercator is intended for web developers familiar with Magento, and it is _not_ a primary goal of this project to make a system that is easy to install or modify for those who are not already comfortable working with Magento.
+Mercator is intended for web developers familiar with Magento, and it is *not* a primary goal of this project to make a system that is easy to install or modify for those who are not already comfortable working with Magento.
 
 
 Reporting Issues

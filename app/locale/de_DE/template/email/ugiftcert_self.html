@@ -1,0 +1,39 @@
+<!--@subject Gutschein(e) von {{var store_name}} @-->
+
+<style type="text/css">
+    body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+</style>
+
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ header starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt=""  style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+        </table>
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top">
+                    <p><strong>Hallo {{var recipient_name}},</strong></p>
+                    <p>die folgende Information bezieht sich auf den oder die Gutscheine die Sie von {{var store_name}} gekauft haben.<br/>
+                    Sie k&ouml;nnen Gutscheine sehr leicht für Ihre Eink&auml;ufe in unserem Online-Shop <a href="{{store url=""}}">{{store url=""}}</a> verwenden.</p>
+
+                    <p>Wenn Sie zur Kasse gehen, bitte einfach folgende Gutschein-Nummer(n) verwenden!<br/>
+                    {{var certificate_numbers}}</p>
+
+                    <p>Der oder die Gutscheine haben einen Wert von {{var amount}}.</p>
+
+                    <p>Vielen Dank!</p>
+
+                    <p><a href="{{store url=""}}">{{var store_name}}</a></p>
+               </td>
+           </tr>
+       </table>
+   </td>
+</tr>
+</table>
+</div>

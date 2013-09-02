@@ -1,0 +1,45 @@
+<?php
+/**
+ * Unirgy_Giftcert extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @copyright  Copyright (c) 2008 Unirgy LLC
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @author     Boris (Moshe) Gurevich <moshe@unirgy.com>
+ */
+?>
+<?php $_product = $this->getProduct(); ?>
+
+<style type="text/css">
+/* example styling, feel free to move it to your styles.css */
+.giftcard-preview-container { border:solid 1px #DDD; width:265px; }
+.giftcard-preview-message-box { height:150px; padding-top:20px}
+.giftcard-preview-message-box .giftcard-message { margin:0 auto; width:200px; height:100px; font-size:10px; line-height:15px; text-align:left; }
+.giftcard-preview-img-box { height:140px; background:#ccc; padding-top:30px; }
+.giftcard-preview-img-box .giftcard-img-container { margin:0 auto; width:150px; height:100px; overflow:hidden; }
+.giftcard-preview-img-box .giftcard-img { width:150px; }
+</style>
+
+<div class="giftcard-preview-container">
+	<div class="giftcard-preview-message-box">
+		<div class="giftcard-message" id="gift-card-message-preview"></div>
+    </div>
+    <div class="giftcard-preview-img-box">
+        <div class="giftcard-img-container">
+            <img class="giftcard-img" src="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>" alt=""/>
+        </div>
+	</div>
+</div>

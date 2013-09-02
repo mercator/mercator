@@ -1,0 +1,256 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Unirgy_Giftcert extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @copyright  Copyright (c) 2008 Unirgy LLC
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @author     Boris (Moshe) Gurevich <moshe@unirgy.com>
+ */
+-->
+<layout>
+
+<!-- product view page updates -->
+
+    <PRODUCT_TYPE_ugiftcert>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="product.info">
+            <block type="ugiftcert/product_type" name="product.info.ugiftcert" as="product_type_data" template="unirgy/giftcert/product/type.phtml"/>
+        </reference>
+    </PRODUCT_TYPE_ugiftcert>
+
+<!-- show correct price with custom currency on product lists -->
+
+    <catalog_category_default>
+        <reference name="product_list">
+            <action method="addPriceBlockType"><type>ugiftcert</type><block>ugiftcert/product_price</block><template>catalog/product/price.phtml</template></action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_view>
+        <reference name="product_list">
+            <action method="addPriceBlockType"><type>ugiftcert</type><block>ugiftcert/product_price</block><template>catalog/product/price.phtml</template></action>
+        </reference>
+    </catalog_category_view>
+
+    <catalog_category_layered>
+        <reference name="product_list">
+            <action method="addPriceBlockType"><type>ugiftcert</type><block>ugiftcert/product_price</block><template>catalog/product/price.phtml</template></action>
+        </reference>
+    </catalog_category_layered>
+
+    <catalog_product_compare_index>
+        <reference name="catalog.compare.list">
+            <action method="addPriceBlockType"><type>ugiftcert</type><block>ugiftcert/product_price</block><template>catalog/product/price.phtml</template></action>
+        </reference>
+    </catalog_product_compare_index>
+
+    <catalogsearch_result_index>
+        <reference name="search_result_list">
+            <action method="addPriceBlockType"><type>ugiftcert</type><block>ugiftcert/product_price</block><template>catalog/product/price.phtml</template></action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="search_result_list">
+            <action method="addPriceBlockType"><type>ugiftcert</type><block>ugiftcert/product_price</block><template>catalog/product/price.phtml</template></action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <tag_product_list>
+        <reference name="search_result_list">
+            <action method="addPriceBlockType"><type>ugiftcert</type><block>ugiftcert/product_price</block><template>catalog/product/price.phtml</template></action>
+        </reference>
+    </tag_product_list>
+
+<!-- customer balance page -->
+
+    <ugiftcert_customer_balance>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="ugiftcert/balance" name="card_balance" template="unirgy/giftcert/balance.phtml"/>
+        </reference>
+    </ugiftcert_customer_balance>
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="ugiftcert"><name>ugiftcerts</name><path>ugiftcert/customer/balance/</path><label>Check Your Gift Card Balance</label></action>
+        </reference>
+    </customer_account>
+
+<!-- shopping cart and checkout item lines -->
+
+    <checkout_cart_index>
+        <reference name="checkout.cart">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/cart_item</block><template>checkout/cart/item/default.phtml</template></action>
+        </reference>
+    </checkout_cart_index>
+
+    <checkout_onepage_review>
+        <reference name="root">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/cart_item</block><template>checkout/onepage/review/item.phtml</template></action>
+        </reference>
+    </checkout_onepage_review>
+
+    <checkout_multishipping_addresses>
+        <reference name="checkout_addresses">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/cart_item</block><template>checkout/multishipping/item/default.phtml</template></action>
+        </reference>
+    </checkout_multishipping_addresses>
+
+    <checkout_multishipping_shipping>
+        <reference name="checkout_shipping">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/cart_item</block><template>checkout/multishipping/item/default.phtml</template></action>
+        </reference>
+        <reference name="checkout_billing_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/cart_item</block><template>checkout/multishipping/item/default.phtml</template></action>
+        </reference>
+    </checkout_multishipping_shipping>
+
+    <checkout_multishipping_overview>
+        <reference name="checkout_overview">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/cart_item</block><template>checkout/multishipping/item/default.phtml</template></action>
+        </reference>
+    </checkout_multishipping_overview>
+
+<!-- account order history item lines -->
+
+    <sales_order_view>
+        <reference name="order_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>sales/order/items/renderer/default.phtml</template></action>
+
+            <block type="core/template" template="unirgy/giftcert/order/total.phtml" name="ugiftcert_total" as="ugiftcert_total"/>
+        </reference>
+        <reference name="order_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml" />
+        </reference>
+    </sales_order_view>
+
+    <sales_order_invoice>
+        <reference name="invoice_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>sales/order/invoice/items/renderer/default.phtml</template></action>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml" />
+        </reference>
+    </sales_order_invoice>
+
+    <sales_order_shipment>
+        <reference name="shipment_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>sales/order/shipment/items/renderer/default.phtml</template></action>
+        </reference>
+    </sales_order_shipment>
+
+    <sales_order_creditmemo>
+        <reference name="creditmemo_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>sales/order/creditmemo/items/renderer/default.phtml</template></action>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml" />
+        </reference>
+    </sales_order_creditmemo>
+
+<!-- print pages item lines -->
+
+    <sales_order_print>
+        <reference name="sales.order.print">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>sales/order/items/renderer/default.phtml</template></action>
+            <block type="core/template" template="unirgy/giftcert/order/total.phtml" name="ugiftcert_total" as="ugiftcert_total"/>
+        </reference>
+        <reference name="order_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml">
+                <action method="setIsPlaneMode"><value>1</value></action>
+            </block>
+        </reference>
+    </sales_order_print>
+
+    <sales_order_printinvoice>
+        <reference name="sales.order.print.invoice">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>sales/order/invoice/items/renderer/default.phtml</template></action>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml">
+                <action method="setIsPlaneMode"><value>1</value></action>
+            </block>
+        </reference>
+    </sales_order_printinvoice>
+
+    <sales_order_printshipment>
+        <reference name="sales.order.print.shipment">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>sales/order/shipment/items/renderer/default.phtml</template></action>
+        </reference>
+    </sales_order_printshipment>
+
+    <sales_order_printcreditmemo>
+        <reference name="sales.order.print.creditmemo">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>sales/order/creditmemo/items/renderer/default.phtml</template></action>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml">
+                <action method="setIsPlaneMode"><value>1</value></action>
+            </block>
+        </reference>
+    </sales_order_printcreditmemo>
+
+<!-- emails item lines -->
+
+    <sales_email_order_items>
+        <reference name="items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>email/order/items/order/default.phtml</template></action>
+            <block type="core/template" template="unirgy/giftcert/order/total.phtml" name="ugiftcert_total" as="ugiftcert_total"/>
+        </reference>
+        <reference name="order_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml">
+                <action method="setIsPlaneMode"><value>1</value></action>
+            </block>
+        </reference>
+    </sales_email_order_items>
+
+    <sales_email_order_invoice_items>
+        <reference name="items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>email/order/items/invoice/default.phtml</template></action>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml">
+                <action method="setIsPlaneMode"><value>1</value></action>
+            </block>
+        </reference>
+    </sales_email_order_invoice_items>
+
+
+    <sales_email_order_shipment_items>
+        <reference name="items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>email/order/items/shipment/default.phtml</template></action>
+        </reference>
+    </sales_email_order_shipment_items>
+
+    <sales_email_order_creditmemo_items>
+        <reference name="items">
+            <action method="addItemRender"><type>ugiftcert</type><block>ugiftcert/order_item</block><template>email/order/items/creditmemo/default.phtml</template></action>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="ugiftcert/sales_total" name="ugiftcert14_total" template="unirgy/giftcert/sales/total.phtml">
+                <action method="setIsPlaneMode"><value>1</value></action>
+            </block>
+        </reference>
+    </sales_email_order_creditmemo_items>
+
+</layout>

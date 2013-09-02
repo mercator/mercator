@@ -1,0 +1,69 @@
+<?php
+/**
+ * Unirgy_Giftcert extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @copyright  Copyright (c) 2008 Unirgy LLC
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @author     Boris (Moshe) Gurevich <moshe@unirgy.com>
+ */
+?>
+<?php $_usePin = Mage::getStoreConfig('ugiftcert/default/use_pin'); ?>
+<div class="category-description" style="margin-right:75px; margin-bottom:20px; "><h4><?php echo $this->__('Check Your Gift Card Balance')?></h4>
+    <p><?php echo $this->__($_usePin ? 'To check the balance of a Gift Card, enter the card number and PIN below.' : 'To check the balance of a Gift Card, enter the card number below.')?></p></div>
+<div class="enter-gift-card-number">
+    <div class="top-facade"></div>
+    <div class="content">
+        <form action="<?php echo $this->getUrl('ugiftcert/customer/balance')?>" method="post">
+            <fieldset>
+            <ul class="form-list">
+                <li>
+                    <div class="input-box" style="width:195px;">
+                        <label for="cert_number"><?php echo $this->__('Card Number')?></label>
+                        <div class="input-field"><input type="text" class="input-text" style="width:165px;" id="cert_number" name="cert_number"/></div>
+                    </div>
+<?php if (Mage::getStoreConfig('ugiftcert/default/use_pin')): ?>
+                    <br/>
+                    <div class="input-box" style="width:75px;">
+                        <label for="pin"><?php echo $this->__('Pin')?></label>
+                        <div class="input-field"><input type="text" class="input-text" style="width:65px;" id="pin" name="pin"/></div>
+                    </div>
+<?php endif; ?>
+                </li>
+            </ul><br/>
+            <p><input type="submit" class="form-button" value="<?php echo $this->__('Check Balance')?>"/></p>
+            </fieldset>
+        </form>
+    </div>
+    <div class="bottom-facade"></div>
+</div>
+
+<?php if ($this->getRequest()->isPost()): ?>
+<div class="retrieve-gift-card-balance">
+    <?php if (is_null($this->getCert())): ?>
+        <p><?php echo $this->__($_usePin ? 'Please enter a valid card number and PIN.' : 'Please enter a valid card number.')?></p>
+    <?php elseif ($this->getCert()===false): ?>
+        <p><?php echo $this->__($_usePin ? 'The card number or PIN entered are invalid. Please retry' : 'The card number entered is invalid. Please retry')?></p>
+    <?php elseif ($this->getCert()): ?>
+        <h4><?php echo $this->__('Your Gift Card Balance')?></h4>
+        <p><strong><?php echo $this->__('Card Number')?></strong><br/><?php echo $this->getCertNumberMasked() ?></p>
+        <p><strong><?php echo $this->__('Balance')?></strong><br/><big class="balance"><?php echo $this->getBalance() ?></big></p>
+        <?php if ($exp = $this->getCert()->getExpireAt()): ?>
+        <p><strong><?php echo $this->__('Expires On')?></strong><br/><?php echo $this->helper('ugiftcert')->formatDate($exp, 'long') ?></p>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>
+<?php endif; ?>

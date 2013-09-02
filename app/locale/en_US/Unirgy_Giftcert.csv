@@ -1,0 +1,96 @@
+Add New Gift Certificate,Add New Gift Certificate
+Add Unique Message (optional):,Add Unique Message (optional):
+Allow custom message,Allow custom message
+Allow recipient's address,Allow recipient's address
+Allow recipient's email,Allow recipient's email
+Amount is not within the specified range.,Amount is not within the specified range.
+Are you sure?,Are you sure?
+Auto generate PIN,Auto generate PIN
+Auto generate certificate number,Auto generate certificate number
+Balance,Balance
+Card Number,Card Number
+Certificate number pattern,Certificate number pattern
+Certificate number(s),Certificate number(s)
+Change status,Change status
+Characters Remaining:,Characters Remaining:
+Check Balance,Check Balance
+Check Your Gift Card Balance,Check Your Gift Card Balance
+Comments,Comments
+Custom message,Custom message
+Custom message max length,Custom message max length
+Default status,Default status
+Defaults,Defaults
+Delete,Delete
+Delete Gift Certificate,Delete Gift Certificate
+Edit Gift Certificate,Edit Gift Certificate
+Enter Amount,Enter Amount
+Gift Certificate,Gift Certificate
+Gift Certificates,Gift Certificates
+Gift Certificate Email Sender,Gift Certificate Email Sender
+Gift Certificate Email Template for Purchaser,Gift Certificate Email Template for Purchaser
+Gift Certificate Email Template for Someone Else,Gift Certificate Email Template for Someone Else
+Gift Certificate Information,Gift Certificate Information
+Gift Certificates,Gift Certificates
+Gift certificate customer interface on catalog product view,Gift certificate customer interface on catalog product view
+Gift certificate was successfully deleted,Gift certificate was successfully deleted
+Gift certificate was successfully saved,Gift certificate was successfully saved
+Manage Gift Certificates,Manage Gift Certificates
+New Gift Certificate,New Gift Certificate
+New Gift Certificate to Self,New Gift Certificate to Self
+New Gift Certificate to Someone Else,New Gift Certificate to Someone Else
+New order status,New order status
+No message,No message
+PIN pattern,PIN pattern
+Pattern examples:<br/><strong>[A*8] - 8 alpha chars<br/>[N*4] - 4 numerics<br/>[AN*5] - 5 alphanumeric<br/>CERT-[A*4]-[AN*6] - CERT-HQNB-8A1NO3</strong>,Pattern examples:<br/><strong>[A*8] - 8 alpha chars<br/>[N*4] - 4 numerics<br/>[AN*5] - 5 alphanumeric<br/>CERT-[A*4]-[AN*6] - CERT-HQNB-8A1NO3</strong>
+Pin,Pin
+Please enter a valid card number and PIN.,Please enter a valid card number and PIN.
+Please enter gift certificate information,Please enter gift certificate information
+"Please note, that in current release shipping estimates will be calculated by purchaser's shipping address and not recipient's.","Please note, that in current release shipping estimates will be calculated by purchaser's shipping address and not recipient's."
+Please select gift certificates(s),Please select gift certificates(s)
+Recipient's Email Address (optional):,Recipient's Email Address (optional):
+Recipient's Name:,Recipient's Name:
+Recipient's Postal Address (optional):,Recipient's Postal Address (optional):
+Recipient's email address,Recipient's email address
+Recipient's name,Recipient's name
+Recipient's postal address,Recipient's postal address
+Save Gift Certificate,Save Gift Certificate
+Status,Status
+The card number or PIN entered are invalid. Please retry,The card number or PIN entered are invalid. Please retry
+There was an error while updating certificate(s) status,There was an error while updating certificate(s) status
+Title,Title
+"To check the balance of a Gift Card, enter the card number and PIN below.","To check the balance of a Gift Card, enter the card number and PIN below."
+Total of %d record(s) were successfully deleted,Total of %d record(s) were successfully deleted
+Total of %d record(s) were successfully updated,Total of %d record(s) were successfully updated
+Transaction History,Transaction History
+Your Gift Card Balance,Your Gift Card Balance
+Can not create multiple Gift Certificates with the same code.,Can not create multiple Gift Certificates with the same code.
+Duplicate Gift Certificate Code was found.,Duplicate Gift Certificate Code was found.
+"To check the balance of a Gift Card, enter the card number below.","To check the balance of a Gift Card, enter the card number below."
+Please enter a valid card number.,Please enter a valid card number.
+The card number entered is invalid. Please retry,The card number entered is invalid. Please retry
+"If empty, only one certificate will be created","If empty, only one certificate will be created"
+Order,Order
+Create,Create
+Update,Update
+Email,Email
+Amount values configuration,Amount values configuration
+Default Expiration Timespan (in days),Default Expiration Timespan (in days)
+Send this gift certificate(s),Send this gift certificate(s)
+To myself,To myself
+Directly to someone else,Directly to someone else
+I want to order printed gift certificate(s),I want to order printed gift certificate(s)
+Select Amount,Select Amount
+Amount,Amount
+Yes,Yes
+Used only for frontend orders.,Used only for frontend orders.
+Send printed copy to myself,Send printed copy to myself
+"Please enter recipient's email or postal address","Please enter recipient's email or postal address"
+Will be included only when default expiration timespan is set.,Will be included only when default expiration timespan is set.
+Expires On,Expires On
+Gift certificate(s): %s,Gift certificate(s): %s
+Send new GC confirmation,Send new GC confirmation
+Never,Never
+On order completion,On order completion
+On payment completion,On payment completion
+"Pattern examples:<br/><strong>50 - 1500</strong> : a range between $50 and $1500<br/><strong>25; 50; 100</strong> : a dropdown with values of $25, $50, $100<br/><strong>50</strong> : a static value of $50<br/><strong>-</strong> : enter "dash" to allow any amount value<br/>For multi-currency setups enter configuration for each currency on new line, like this:<br/><strong>EUR: 25; 50; 100<br/>CAD, USD: 50; 100; 200<br/>*: 100; 200; 500</strong><br/>Whitespaces are optional and will be ignored.","Pattern examples:<br/><strong>50 - 1500</strong> : a range between $50 and $1500<br/><strong>25; 50; 100</strong> : a dropdown with values of $25, $50, $100<br/><strong>50</strong> : a static value of $50<br/><strong>-</strong> : enter "dash" to allow any amount value<br/>For multi-currency setups enter configuration for each currency on new line, like this:<br/><strong>EUR: 25; 50; 100<br/>CAD, USD: 50; 100; 200<br/>*: 100; 200; 500</strong><br/>Whitespaces are optional and will be ignored."
+"In current release you can not send emails for certificates that were generated in admin (%d selected)","In current release you can not send emails for certificates that were generated in admin (%d selected)"

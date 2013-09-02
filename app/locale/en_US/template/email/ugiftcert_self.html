@@ -1,0 +1,43 @@
+<!--@subject Your gift certificate(s) from {{var store_name}} @-->
+
+<style type="text/css">
+    body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+</style>
+
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ header starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt=""  style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+        </table>
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top">
+                    <p><strong>Hello {{var recipient_name}},</strong></p>
+                    <p>The following is the information regarding the gift certificate(s) you purchased from {{var store_name}}<br/>
+                    You can easily use the gift certificates to make purchases at <a href="{{store url=""}}">{{store url=""}}</a></p>
+
+                    <p>When you're checking out, be sure to use the following gift certificate number(s)!<br/>
+                    {{var certificate_numbers}}</p>
+
+                    <p>Each gift certificate has a balance of {{var amount}}.</p>
+
+                    {{depend expire_on}}
+                    <p>The gift certificate(s) will expire on {{var expire_on}}</p>
+                    {{/depend}}
+
+                    <p>Thank you!</p>
+
+                    <p><a href="{{store url=""}}">{{var store_name}}</a></p>
+               </td>
+           </tr>
+       </table>
+   </td>
+</tr>
+</table>
+</div>

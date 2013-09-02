@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Unirgy_Giftcert extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @copyright  Copyright (c) 2008 Unirgy LLC
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @author     Boris (Moshe) Gurevich <moshe@unirgy.com>
+ */
+-->
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="order_items">
+            <!--<action method="addItemRender"><type>ugiftcert</type><block>adminhtml/sales_order_view_items_renderer_default</block><template>sales/order/view/items/renderer/default.phtml</template></action>-->
+            <action method="addColumnRender"><column>name</column><block>ugiftcert/adminhtml_sales_item_name</block><template>ugiftcert/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_view>
+<!--
+    <adminhtml_sales_order_invoice_new>
+        <reference name="order_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>bundle/adminhtml_sales_order_items_renderer</block><template>sales/order/invoice/create/items/renderer/default.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_invoice_new>
+
+    <adminhtml_sales_order_invoice_updateqty>
+        <reference name="order_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>bundle/adminhtml_sales_order_items_renderer</block><template>sales/order/invoice/create/items/renderer/default.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_invoice_updateqty>
+
+    <adminhtml_sales_order_invoice_view>
+        <reference name="invoice_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>bundle/adminhtml_sales_order_items_renderer</block><template>sales/order/invoice/create/items/renderer/default.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_invoice_view>
+
+    <adminhtml_sales_order_shipment_new>
+        <reference name="order_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>bundle/adminhtml_sales_order_items_renderer</block><template>sales/order/shipment/create/items/renderer/default.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_shipment_new>
+
+    <adminhtml_sales_order_shipment_view>
+        <reference name="shipment_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>bundle/adminhtml_sales_order_items_renderer</block><template>sales/order/shipment/view/items/renderer/default.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_shipment_view>
+
+    <adminhtml_sales_order_creditmemo_new>
+        <reference name="order_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>bundle/adminhtml_sales_order_items_renderer</block><template>sales/order/creditmemo/create/items/renderer/default.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="order_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>bundle/adminhtml_sales_order_items_renderer</block><template>sales/order/creditmemo/create/items/renderer/default.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
+
+    <adminhtml_sales_order_creditmemo_view>
+        <reference name="creditmemo_items">
+            <action method="addItemRender"><type>ugiftcert</type><block>bundle/adminhtml_sales_order_items_renderer</block><template>sales/order/creditmemo/view/items/renderer/default.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_creditmemo_view>
+-->
+</layout>
