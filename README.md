@@ -35,7 +35,7 @@ In addition, the following changes have been made to the core:
 * Use of a public/ directory for the webroot, as per the approach outlined in [this blog post](http://www.fontis.com.au/blog/magento/move-magento-private-files-outside-docroot).
 * Added Australian states into the core region list.
 * Improved error report stack traces to show full strings.
-* Removed MAgento Connect Manager from admin panel (it's still available on the command line).
+* Removed Magento Connect Manager from admin panel (it's still available on the command line).
 
 
 Why another fork?
