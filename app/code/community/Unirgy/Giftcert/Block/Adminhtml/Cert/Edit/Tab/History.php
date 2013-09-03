@@ -108,7 +108,7 @@ class Unirgy_Giftcert_Block_Adminhtml_Cert_Edit_Tab_History extends Mage_Adminht
         return parent::_prepareColumns();
     }
 
-    protected function getRowUrl($row)
+    public function getRowUrl($row)
     {
         return false;
         return $this->getUrl('*/tag/edit', array(
