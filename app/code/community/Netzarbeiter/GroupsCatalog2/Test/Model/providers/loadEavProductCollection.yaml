@@ -1,0 +1,86 @@
+#
+# Netzarbeiter
+#
+# NOTICE OF LICENSE
+#
+# This source file is subject to the Open Software License (OSL 3.0)
+# that is bundled with this package in the file LICENSE.txt.
+# It is also available through the world-wide-web at this URL:
+# http://opensource.org/licenses/osl-3.0.php
+#
+# DISCLAIMER
+#
+# Do not edit or add to this file if you wish to upgrade this Module to
+# newer versions in the future.
+#
+# @category   Netzarbeiter
+# @package    Netzarbeiter_GroupsCatalog2
+# @copyright  Copyright (c) 2013 Vinai Kopp http://netzarbeiter.com
+# @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+#
+
+- # Store codes and customer group id
+  - usa
+  - 0
+-
+  - usa
+  - 1
+-
+  - usa
+  - 2
+-
+  - usa
+  - 3
+
+-
+  - usa2
+  - 0
+-
+  - usa2
+  - 1
+-
+  - usa2
+  - 2
+-
+  - usa2
+  - 3
+
+-
+  - canada
+  - 0
+-
+  - canada
+  - 1
+-
+  - canada
+  - 2
+-
+  - canada
+  - 3
+
+-
+  - germany
+  - 0
+-
+  - germany
+  - 1
+-
+  - germany
+  - 2
+-
+  - germany
+  - 3
+
+-
+  - germany2
+  - 0
+-
+  - germany2
+  - 1
+-
+  - germany2
+  - 2
+-
+  - germany2
+  - 3
+

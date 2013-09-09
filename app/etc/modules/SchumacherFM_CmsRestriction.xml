@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    SchumacherFM_CmsRestriction
+ * @package     SchumacherFM_CmsRestriction
+ * @author      Cyrill at Schumacher dot fm
+ */
+-->
+<config>
+    <modules>
+        <SchumacherFM_CmsRestriction>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Customer />
+            </depends>
+        </SchumacherFM_CmsRestriction>
+    </modules>
+</config>

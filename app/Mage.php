@@ -1026,10 +1026,10 @@ final class Mage
             }
             $trace .= sprintf("#%s %s(%s): %s%s(%s)\n",
                     $depth,
-                    $frame['file'],
-                    $frame['line'],
+                    isset($frame['file']) ? $frame['file'] : '???',
+                    isset($frame['line']) ? $frame['line'] : '???',
                     isset($frame['class']) ? "{$frame['class']}->" : '',
-                    $frame['function'],
+                    isset($frame['function']) ? $frame['function'] : '???',
                     $args
             );
             $depth++;

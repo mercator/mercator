@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <schumacherfm_cmsrestriction translate="title" module="schumacherfm_cmsrestriction">
+                                        <title>CMS Restrictions</title>
+                                    </schumacherfm_cmsrestriction>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
+</config>

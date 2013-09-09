@@ -20,13 +20,18 @@ Features
 All the standard features of Magento Community Edition, plus the following extensions:
 
 * [Colin Mollenhour's Redis cache backend](https://github.com/colinmollenhour/Cm_Cache_Backend_Redis) (BSD-3-Clause)
-* [Enhanced Admin Product Grid](https://github.com/jayelkaake/enhancedgrid) (OSL-3.0)
 * [Pulsestorm Launcher](https://github.com/astorm/PulsestormLauncher) (MIT)
 * [AOE Scheduler](https://github.com/fbrnc/Aoe_Scheduler) (OSL-3.0)
 * [Flagbit Change Attribute Set](https://github.com/Flagbit/Magento-ChangeAttributeSet) (GPL)
 * [Admin Custom Shipping Rates](http://www.magentocommerce.com/magento-connect/admin-custom-shipping-rate.html) (OSL-3.0) 
 * [Fontis Blog](https://github.com/fontis/fontis_blog) (OSL-3.0)
 * [Unirgy Gift Certificates](http://www.unirgy.com/products/ugiftcert/) (OSL-3.0)
+* [Yoast MetaRobots](http://www.magentocommerce.com/magento-connect/yoast-metarobots.html) (OSL-3.0)
+* [Offi Customer Attributes Manager](http://www.magentocommerce.com/magento-connect/customer-attributes-manager-5092.html) (OSL-3.0)
+* [SchumacherFM CMS Restriction](https://github.com/SchumacherFM/Magento-CmsRestriction) (OSL-3.0)
+* [Netzarbeiter Customer Activation](https://github.com/Vinai/customer-activation) (OSL 3.0)
+* [Netzarbeiter Groups Catalog 2](https://github.com/Vinai/groupscatalog2) (OSL 3.0)
+* [BL Enhanced Admin Grids](https://github.com/mage-eag/mage-enhanced-admin-grids) (OSL 3.0)
 
 Where necessary, extensions are modified to allow them to be integrated into Mercator.
 

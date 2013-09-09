@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <SchumacherFM_CmsRestriction>
+            <version>0.0.1</version>
+        </SchumacherFM_CmsRestriction>
+    </modules>
+
+    <global>
+        <blocks>
+            <schumacherfm_cmsrestriction>
+                <class>SchumacherFM_CmsRestriction_Block</class>
+            </schumacherfm_cmsrestriction>
+        </blocks>
+
+        <helpers>
+            <schumacherfm_cmsrestriction>
+                <class>SchumacherFM_CmsRestriction_Helper</class>
+            </schumacherfm_cmsrestriction>
+        </helpers>
+
+        <models>
+            <schumacherfm_cmsrestriction>
+                <class>SchumacherFM_CmsRestriction_Model</class>
+            </schumacherfm_cmsrestriction>
+        </models>
+
+        <resources>
+            <schumacherfm_cmsrestriction_setup>
+                <setup>
+                    <module>SchumacherFM_CmsRestriction</module>
+                </setup>
+            </schumacherfm_cmsrestriction_setup>
+        </resources>
+
+        <events>
+            <controller_action_predispatch_cms_page_view>
+                <observers>
+                    <schumacherfm_cmsrestriction_restrictcmspage>
+                        <class>schumacherfm_cmsrestriction/observer</class>
+                        <method>restrictCmsPage</method>
+                    </schumacherfm_cmsrestriction_restrictcmspage>
+                </observers>
+            </controller_action_predispatch_cms_page_view>
+
+            <controller_action_postdispatch_customer_account_loginPost>
+                <observers>
+                    <schumacherfm_cmsrestriction_restrictcmspage>
+                        <class>schumacherfm_cmsrestriction/observer</class>
+                        <method>restrictCmsPageAfterLogin</method>
+                    </schumacherfm_cmsrestriction_restrictcmspage>
+                </observers>
+            </controller_action_postdispatch_customer_account_loginPost>
+
+        </events>
+
+    </global>
+
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <schumacherfm_cmsrestriction>
+                    <file>schumacherfm_cmsrestriction.xml</file>
+                </schumacherfm_cmsrestriction>
+            </updates>
+        </layout>
+
+        <events>
+            <cms_page_prepare_save>
+                <observers>
+                    <schumacherfm_cmsrestriction_update>
+                        <class>SchumacherFM_CmsRestriction_Model_Observer</class>
+                        <method>updateCmsRestriction</method>
+                    </schumacherfm_cmsrestriction_update>
+                </observers>
+            </cms_page_prepare_save>
+
+        </events>
+    </adminhtml>
+
+    <default>
+        <cms>
+            <schumacherfm_cmsrestriction>
+                <url_access_denied>accessdenied</url_access_denied>
+            </schumacherfm_cmsrestriction>
+        </cms>
+    </default>
+
+</config>

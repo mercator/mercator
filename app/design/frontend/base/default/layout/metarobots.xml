@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Yoast
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * @category   Yoast
+ * @package    Yoast_MetaRobots
+ * @copyright  Copyright (c) 2009-2010 Yoast (http://yoast.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<layout version="0.1.0">
+
+<!--
+Search pages
+-->	
+		<catalogsearch_result_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/search"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</catalogsearch_result_index>
+
+		<catalogsearch_advanced_result>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/search"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</catalogsearch_advanced_result>
+		
+		<catalogsearch_advanced_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/search"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</catalogsearch_advanced_index>
+<!--
+Customer Account
+-->	
+		<customer_account_login>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/customer"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</customer_account_login>
+
+		<customer_account_forgotpassword>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/customer"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</customer_account_forgotpassword>
+
+		<customer_account>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/customer"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</customer_account>
+
+<!--
+Checkout
+-->
+		<checkout_cart_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/checkout"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</checkout_cart_index>
+
+		<checkout_onepage_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/checkout"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</checkout_onepage_index>
+
+		<checkout_onepage_success>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/checkout"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</checkout_onepage_success>
+
+		<checkout_onepage_failure>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/checkout"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</checkout_onepage_failure>
+<!--
+Contacts
+-->
+		<contacts_index_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/contacts"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</contacts_index_index>
+
+<!--
+Wishlist
+-->
+		<wishlist_index_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/wishlist"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</wishlist_index_index>
+
+		<wishlist_index_share>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/wishlist"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</wishlist_index_share>
+
+		<wishlist_shared_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/wishlist"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</wishlist_shared_index>
+
+<!--
+Compare products page
+-->
+
+		<catalog_product_compare_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/compare"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</catalog_product_compare_index>
+
+<!--
+Send to friend page
+-->
+		<catalog_product_send>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/friend"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>		
+		</catalog_product_send>
+
+		<sendfriend_product_send>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/friend"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</sendfriend_product_send>
+
+<!--
+Review product page
+-->
+		<reviews>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/reviews"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</reviews>
+
+		<review_product_list>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/reviews"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</review_product_list>
+
+		<review_product_view>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/reviews"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</review_product_view>
+
+<!--
+Tag pages
+-->
+
+		<tag_list_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/tags"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</tag_list_index>
+
+		<tag_product_list>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/tags"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</tag_product_list>
+
+<!--
+Rss pages
+-->
+		<rss_index_index>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_index_index>
+
+		<rss_index_nofeed>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_index_nofeed>
+
+		<rss_catalog_new>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_catalog_new>
+
+		<rss_catalog_special>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_catalog_special>
+
+		<rss_catalog_salesrule>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_catalog_salesrule>
+
+		<rss_catalog_tag>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_catalog_tag>
+
+		<rss_catalog_notifystock>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_catalog_notifystock>
+
+		<rss_catalog_review>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_catalog_review>
+
+		<rss_catalog_category>
+			<reference name="head">
+				<action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+			</reference>
+		</rss_catalog_category>
+
+</layout>
