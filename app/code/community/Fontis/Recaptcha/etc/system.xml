@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Fontis Recaptcha Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   Fontis
+ * @package    Fontis_Recaptcha
+ * @author     Denis Margetic
+ * @author     Chris Norton
+ * @copyright  Copyright (c) 2011 Fontis Pty. Ltd. (http://www.fontis.com.au)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <tabs>
+        <fontis_extensions translate="label" module="fontis_recaptcha">
+            <label>Fontis Extensions</label>
+            <sort_order>1000000</sort_order> 
+        </fontis_extensions>
+    </tabs>
+    <sections>        
+        <fontis_recaptcha>
+            <label>Recaptcha</label>
+            <tab>fontis_extensions</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>999999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <setup translate="label">
+                    <label>Recaptcha Setup</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <public_key translate="label">
+                            <label>Public Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </public_key>
+                        <private_key translate="label">
+                            <label>Private Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </private_key>
+                        <theme translate="label">
+                            <label>Recaptcha Theme</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>fontis_recaptcha/source_recaptchatheme</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </theme>
+                        <language translate="label">
+                            <label>Language</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>fontis_recaptcha/source_recaptchalanguage</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </language>
+                        <textbox translate="label">
+                            <label>Info Message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </textbox>
+                    </fields>
+                </setup>
+                <recaptcha translate="label">
+                    <label>Recaptcha Controls</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <when_loggedin translate="label">
+                            <label>Hide for Logged-in Customers</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </when_loggedin>
+                        <sendfriend translate="label">
+                            <label>Email to a Friend Form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sendfriend>
+                        <contacts translate="label">
+                            <label>Contact Us Form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </contacts>
+                        <customer translate="label">
+                            <label>Account Creation Form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer>
+                        <review translate="label">
+                            <label>Product Review Form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </review>
+                    </fields>
+                </recaptcha>
+                <translation translat="translation">
+                  <label>Translation (Leave a field empty to use its default values)</label>
+                  <frontend_type>text</frontend_type>
+                  <sort_order>12</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <fields>
+                    <enable_translation translate="label">
+                        <label>Enable Custom Translation</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>8</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </enable_translation>
+                    <text_captcha translate="label">
+                        <label>Text Captcha Instructions</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>8</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </text_captcha>
+                    <audio_captcha translate="label">
+                        <label>Audio Captcha Instructions</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>9</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </audio_captcha>
+                    <play_again translate="label">
+                      <label>Play Again</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                    </play_again>
+                    <cant_hear_this translate="label">
+                      <label>Can't hear this</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>11</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                    </cant_hear_this>
+                    <visual_challenge translate="label">
+                      <label>Visual Challenge Tooltip</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>12</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                    </visual_challenge>
+                    <audio_challenge translate="label">
+                      <label>Audio Challenge Tooltip</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>13</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                    </audio_challenge>
+                    <refresh_btn translate="label">
+                      <label>Refresh Button Tooltip</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>14</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                    </refresh_btn>
+                    <help_btn translate="label">
+                      <label>Help Button Tooltip</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>15</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>                      
+                    </help_btn >
+                    <incorrect_try_again translate="label">
+                      <label>Incorrect, Try again.</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>16</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>                      
+                    </incorrect_try_again>
+                  </fields>
+                </translation>
+            </groups>
+        </fontis_recaptcha>
+    </sections>
+</config>

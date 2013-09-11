@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Fontis Recaptcha Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   Fontis
+ * @package    Fontis_Recaptcha
+ * @author     Denis Margetic
+ * @author     Chris Norton
+ * @copyright  Copyright (c) 2011 Fontis Pty. Ltd. (http://www.fontis.com.au)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Fontis_Recaptcha>
+            <version>2.5.0</version>
+        </Fontis_Recaptcha>
+    </modules>
+    <global>
+        <rewrite>
+            <fontis_recaptcha>
+                <from><![CDATA[#^/customer/account/createpost/#]]></from>
+                <to>/recaptcha/account/createpost/</to>
+            </fontis_recaptcha>
+        </rewrite>
+        <rewrite>
+            <fontis_recaptcha2>
+                <from><![CDATA[#^/sendfriend/product/sendmail/#]]></from>
+                <to>/recaptcha/product/sendmail/</to>
+            </fontis_recaptcha2>
+        </rewrite>
+        <rewrite>
+            <fontis_recaptcha3>
+                <from><![CDATA[#^/review/product/post/#]]></from>
+                <to>/recaptcha/review/post/</to>
+            </fontis_recaptcha3>
+        </rewrite>
+        <rewrite>
+           <fontis_recaptcha4>
+                <from><![CDATA[#^/contacts/contacts/post/#]]></from>
+                <to>/recaptcha/contacts/post/</to>
+            </fontis_recaptcha4>
+        </rewrite>
+        <rewrite>
+           <fontis_recaptcha5>
+                <from><![CDATA[#^/contacts#]]></from>
+                <to>/recaptcha/contacts/</to>
+            </fontis_recaptcha5>
+        </rewrite>
+
+        <models>
+            <fontis_recaptcha>
+                <class>Fontis_Recaptcha_Model</class>
+            </fontis_recaptcha>
+        </models>
+        <blocks>
+            <review>
+                <rewrite>
+                    <form>Fontis_Recaptcha_Block_Review_Form</form>
+                </rewrite>
+            </review>
+        </blocks>
+        <helpers>
+            <fontis_recaptcha>
+                <class>Fontis_Recaptcha_Helper</class>
+            </fontis_recaptcha>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <fontis_recaptcha>
+                <use>standard</use>
+                <args>
+                    <module>Fontis_Recaptcha</module>
+                    <frontName>recaptcha</frontName>
+                </args>
+            </fontis_recaptcha>
+        </routers>
+        <layout>
+            <updates>
+                <fontis_recaptcha module="Fontis_Recaptcha">
+                    <file>fontis/recaptcha.xml</file>
+                </fontis_recaptcha>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <fontis_recaptcha>
+            <setup>
+                <public_key></public_key>
+                <private_key></private_key>
+                <recaptcha_theme>magento</recaptcha_theme>
+                <language>en</language>
+                <textbox><b>Recaptcha helps stop spam.</b></textbox>
+            </setup>
+            <recaptcha>
+                <when_loggedin>1</when_loggedin>
+                <sendfriend>1</sendfriend>
+                <contacts>1</contacts>
+                <customer>1</customer>
+                <review>1</review>
+            </recaptcha>
+            <translation>
+                <enable_translation>disable</enable_translation>
+                <text_captcha>Type the two words:</text_captcha>
+                <audio_captcha>Type words you hear:</audio_captcha>
+                <play_again>Play Again?</play_again>
+                <cant_hear_this>Can't hear the audio? Click here</cant_hear_this>
+                <visual_challenge>Get a visual challenge</visual_challenge>
+                <audio_challenge>Get an audio challenge</audio_challenge>
+                <refresh_btn>Get a new challenge</refresh_btn>
+                <help_btn>Help</help_btn>
+            </translation>
+        </fontis_recaptcha>
+    </default>
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <fontis_recaptcha>
+                                            <title>Recaptcha</title>
+                                        </fontis_recaptcha>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>
