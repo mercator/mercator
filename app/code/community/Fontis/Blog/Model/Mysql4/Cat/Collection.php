@@ -26,72 +26,72 @@ class Fontis_Blog_Model_Mysql4_Cat_Collection extends Mage_Core_Model_Mysql4_Col
         $this->_init('blog/cat');
     }
 
-	public function toOptionArray()
+    public function toOptionArray()
     {
         return $this->_toOptionArray('identifier', 'title');
     }
 
     protected function _afterLoad()
     {
-		$items = $this->getColumnValues('identifier');
-		if (count($items)) {
-			$select = $this->getConnection()->select()
-				->from($this->getTable('cat'));
-			if ($result = $this->getConnection()->fetchPairs($select)) {
-				foreach ($this as $item) {
-					if (!isset($result[$item->getData('identifier')])) {
-						continue;
-					}
-				}
-			}
-		}
+        $items = $this->getColumnValues('identifier');
+        if (count($items)) {
+            $select = $this->getConnection()->select()
+                ->from($this->getTable('cat'));
+            if ($result = $this->getConnection()->fetchPairs($select)) {
+                foreach ($this as $item) {
+                    if (!isset($result[$item->getData('identifier')])) {
+                        continue;
+                    }
+                }
+            }
+        }
 
         parent::_afterLoad();
     }
-	
-	public function addCatFilter($catId)
+
+    public function addCatFilter($catId)
     {
         if (!Mage::app()->isSingleStoreMode()) {
-			$this->getSelect()->join(
-				array('cat_table' => $this->getTable('post_cat')),
-				'main_table.post_id = cat_table.post_id',
-				array()
-			)
-			->where('cat_table.cat_id = ?', $catId);
-	
-			return $this;
-		}
-		return $this;
-    }
-	
-	public function addStoreFilter($store)
-    {
-		if (!Mage::app()->isSingleStoreMode()) {
-			if ($store instanceof Mage_Core_Model_Store) {
-				$store = array($store->getId());
-			}
-	
-			$this->getSelect()->join(
-				array('store_table' => $this->getTable('cat_store')),
-				'main_table.cat_id = store_table.cat_id',
-				array()
-			)
-			->where('store_table.store_id in (?)', array(0, $store));
-	
-			return $this;
-		}
-		return $this;
-	}
-	
-	public function addPostFilter($postId)
-    {
-		$this->getSelect()->join(
-			array('cat_table' => $this->getTable('post_cat')),
-			'main_table.cat_id = cat_table.cat_id',
-			array()
-		)
-		->where('cat_table.post_id = ?', $postId);
+            $this->getSelect()->join(
+                array('cat_table' => $this->getTable('post_cat')),
+                'main_table.post_id = cat_table.post_id',
+                array()
+            )
+            ->where('cat_table.cat_id = ?', $catId);
 
-		return $this;
+            return $this;
+        }
+        return $this;
+    }
+
+    public function addStoreFilter($store)
+    {
+        if (!Mage::app()->isSingleStoreMode()) {
+            if ($store instanceof Mage_Core_Model_Store) {
+                $store = array($store->getId());
+            }
+
+            $this->getSelect()->join(
+                array('store_table' => $this->getTable('cat_store')),
+                'main_table.cat_id = store_table.cat_id',
+                array()
+            )
+            ->where('store_table.store_id in (?)', array(0, $store));
+
+            return $this;
+        }
+        return $this;
+    }
+
+    public function addPostFilter($postId)
+    {
+        $this->getSelect()->join(
+            array('cat_table' => $this->getTable('post_cat')),
+            'main_table.cat_id = cat_table.cat_id',
+            array()
+        )
+        ->where('cat_table.post_id = ?', $postId);
+
+        return $this;
     }
 }

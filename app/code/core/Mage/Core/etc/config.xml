@@ -352,6 +352,18 @@
                 <cookies>1</cookies>
                 <javascript>1</javascript>
             </browser_capabilities>
+            <noindex>
+                <customer>1</customer>
+                <checkout>1</checkout>
+                <contacts>1</contacts>
+                <wishlist>1</wishlist>
+                <compare>1</compare>
+                <friend>1</friend>
+                <reviews>1</reviews>
+                <tags>1</tags>
+                <rss>1</rss>
+                <search>1</search>
+            </noindex>
         </web>
         <admin>
             <startup>

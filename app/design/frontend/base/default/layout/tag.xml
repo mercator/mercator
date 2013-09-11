@@ -86,6 +86,9 @@ All tags page
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
         </reference>
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/tags"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
         <reference name="content">
             <block type="tag/all" name="tags_all" template="tag/cloud.phtml"/>
         </reference>
@@ -94,6 +97,9 @@ All tags page
     <tag_product_list translate="label">
         <label>Tagged Products List</label>
         <!-- Mage_Tag -->
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/tags"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
         <reference name="content">
             <block type="tag/product_result" name="tag_products" template="catalogsearch/result.phtml">
                 <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml">

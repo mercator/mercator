@@ -33,6 +33,7 @@
         </reference>
         <reference name="head">
             <action method="addJs"><script>varien/product.js</script></action>
+            <action method="setRobots" ifconfig="web/noindex/friend"><meta>NOINDEX,FOLLOW</meta></action>
         </reference>
         <reference name="content">
             <block type="sendfriend/send" name="sendfriend.send" template="sendfriend/send.phtml" />

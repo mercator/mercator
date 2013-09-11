@@ -32,8 +32,11 @@ class Fontis_Blog_Helper_Data extends Mage_Core_Helper_Abstract
     const BLOG_TITLE                = "fontis_blog/blog/title";
     const BLOG_ARCHIVES_ENABLED     = "fontis_blog/archives/enabled";
 
+    const GLOBAL_CACHE_TAG          = "fontis_blog";
+
     protected $_route = null;
     protected $_bmImagesRoute = null;
+    protected $_fpcProcessor = false;
 
     public function isEnabled()
     {
@@ -75,6 +78,9 @@ class Fontis_Blog_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig(self::BLOG_COMMENTS_LOGIN);
     }
 
+    /**
+     * @return string
+     */
     public function getBlogTitle()
     {
         return Mage::getStoreConfig(self::BLOG_TITLE);
@@ -97,16 +103,25 @@ class Fontis_Blog_Helper_Data extends Mage_Core_Helper_Abstract
         return $customer->getEmail();
     }
 
+    /**
+     * @return string
+     */
     public function getPostUrl($post)
     {
         return Mage::getUrl($this->getBlogRoute()) . $post->getIdentifier();
     }
 
+    /**
+     * @return string
+     */
     public function getCatUrl($cat)
     {
         return Mage::getUrl($this->getBlogRoute()) . "cat/" . $cat->getIdentifier();
     }
 
+    /**
+     * @return string
+     */
     public function getBlogRoute()
     {
         if ($this->_route === null) {
@@ -136,5 +151,67 @@ class Fontis_Blog_Helper_Data extends Mage_Core_Helper_Abstract
             }
         }
         return false;
+    }
+
+    /**
+     * @return object|null
+     */
+    public function getFpcProcessor()
+    {
+        if ($this->_fpcProcessor === false) {
+            $fpcProcessor = Mage::getConfig()->getNode("global/cache/fpc_processor");
+            if ($fpcProcessor) {
+                $this->_fpcProcessor = Mage::getSingleton($fpcProcessor);
+            } else {
+                $this->_fpcProcessor = null;
+            }
+        }
+        return $this->_fpcProcessor;
+    }
+
+    public function addTagToFpc($tag)
+    {
+        if ($fpc = $this->getFpcProcessor()) {
+            $fpc->addRequestTag($tag);
+        }
+    }
+
+    /**
+     * @param array|string $tag
+     */
+    public function clearFpcTags($tags)
+    {
+        if (!is_array($tags)) {
+            $tags = array($tags);
+        }
+        Mage::app()->cleanCache($tags);
+    }
+
+    /**
+     * If a new post is created, or an existing post is enabled or unhidden, clear any FPC entries
+     * for pages that this new post should show up on.
+     *
+     * @param Fontis_Blog_Model_Post $post
+     */
+    public function enablePost(Fontis_Blog_Model_Post $post)
+    {
+        $tags = array(
+            Fontis_Blog_Block_Blog::CACHE_TAG,
+            Fontis_Blog_Block_Rss::CACHE_TAG,
+            Fontis_Blog_Block_Archive::CACHE_TAG,
+        );
+        foreach ($post->getCats() as $cat) {
+            $tags[] = Fontis_Blog_Block_Cat::CACHE_TAG . "_" . $cat;
+        }
+        $this->clearFpcTags($tags);
+    }
+
+    /**
+     * When a post is deleted, hidden or disabled, it needs to be removed from the frontend immediately.
+     * All FPC entries with blog content should be cleared to ensure this happens.
+     */
+    public function disablePost()
+    {
+        $this->clearFpcTags(self::GLOBAL_CACHE_TAG);
     }
 }

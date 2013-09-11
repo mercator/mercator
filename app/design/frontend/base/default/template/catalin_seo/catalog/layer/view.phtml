@@ -1,0 +1,35 @@
+<?php if ($this->canShowBlock()): ?>
+    <?php if (!$this->getRequest()->isAjax()): ?>
+    <div id="layered-navigation">
+    <?php endif; ?>
+        <div class="block block-layered-nav">
+            <div class="block-title">
+                <strong><span><?php echo $this->__('Shop By') ?></span></strong>
+            </div>
+            <?php echo $this->getStateHtml() ?>
+            <div class="block-content">
+                <?php if ($this->getLayer()->getState()->getFilters()): ?>
+                    <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+                <?php endif; ?>
+                <?php if ($this->canShowOptions()): ?>
+                    <p class="block-subtitle"><?php echo $this->__('Shopping Options') ?></p>
+                    <dl id="narrow-by-list">
+                        <?php $_filters = $this->getFilters() ?>
+                        <?php foreach ($_filters as $_filter): ?>
+                            <?php if ($_filter->getItemsCount()): ?>
+                                <dt><?php echo $this->__($_filter->getName()) ?></dt>
+                                <dd><?php echo $_filter->getHtml() ?></dd>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </dl>
+                    <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+                <?php endif; ?>
+                <?php if ($this->getLayer()->getState()->getFilters()): ?>
+                    <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php if (!$this->getRequest()->isAjax()): ?>
+    </div>
+    <?php endif; ?>
+<?php endif; ?>

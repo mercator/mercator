@@ -42,18 +42,6 @@ class Fontis_Blog_Block_Manage_Blog_Edit extends Mage_Adminhtml_Block_Widget_For
             -100
         );
 
-        /*
-         * I'm fairly confident this isn't needed for the WYSIWYG editor to function.
-        $this->_formScripts[] = "
-            function toggleEditor() {
-                if (tinyMCE.getInstanceById('post_content') == null) {
-                    tinyMCE.execCommand('mceAddControl', false, 'post_content');
-                } else {
-                    tinyMCE.execCommand('mceRemoveControl', false, 'post_content');
-                }
-            }
-        ";*/
-
         $this->_formScripts[] = "
             function saveAndContinueEdit(){
                 editForm.submit($('edit_form').action+'back/edit/');

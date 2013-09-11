@@ -27,14 +27,14 @@ class Fontis_Blog_Block_Manage_Blog_Edit_Tab_Form extends Mage_Adminhtml_Block_W
         $form = new Varien_Data_Form();
         $this->setForm($form);
         $fieldset = $form->addFieldset("blog_form", array("legend" => $blogHelper->__("Post Information")));
-		
+
         $fieldset->addField("title", "text", array(
             "label"     => $blogHelper->__("Title"),
             "class"     => "required-entry",
             "required"  => true,
             "name"      => "title",
         ));
-		
+
         $fieldset->addField("identifier", "text", array(
             "label"                 => $blogHelper->__("Identifier"),
             "class"                 => "required-entry",
@@ -43,12 +43,12 @@ class Fontis_Blog_Block_Manage_Blog_Edit_Tab_Form extends Mage_Adminhtml_Block_W
             "class"                 => "validate-identifier",
             "after_element_html"    => '<span class="hint">&nbsp;eg: domain.com/blog/identifier</span>',
         ));
-	  
-	  	/**
+
+        /**
          * Check is single store mode
          */
         if (!Mage::app()->isSingleStoreMode()) {
-            $fieldset->addField('store_id', 'multiselect', array(
+            $fieldset->addField("store_id", "multiselect", array(
                 "name"      => "stores[]",
                 "label"     => Mage::helper("cms")->__("Store View"),
                 "title"     => Mage::helper("cms")->__("Store View"),
@@ -56,7 +56,7 @@ class Fontis_Blog_Block_Manage_Blog_Edit_Tab_Form extends Mage_Adminhtml_Block_W
                 "values"    => Mage::getSingleton("adminhtml/system_store")->getStoreValuesForForm(false, true),
             ));
         }
-		
+
         $categories = array();
         $collection = Mage::getModel("blog/cat")->getCollection()->setOrder("sort_order", "asc");
         foreach ($collection as $cat) {
@@ -65,15 +65,15 @@ class Fontis_Blog_Block_Manage_Blog_Edit_Tab_Form extends Mage_Adminhtml_Block_W
                 "value" => $cat->getCatId()
             ));
         }
-		
-        $fieldset->addField("cat_id", "multiselect", array(
+
+        $fieldset->addField("cats", "multiselect", array(
             "name"      => "cats[]",
             "label"     => $blogHelper->__("Category"),
             "title"     => $blogHelper->__("Category"),
             "required"  => true,
             "values"    => $categories,
         ));
-		
+
         $fieldset->addField("status", "select", array(
             "label"     => $blogHelper->__("Status"),
             "name"      => "status",
@@ -116,8 +116,8 @@ class Fontis_Blog_Block_Manage_Blog_Edit_Tab_Form extends Mage_Adminhtml_Block_W
         $isGlobalWysiwygEnabled = $wysiwyg->isEnabled();
         $wysiwygConfig = array(
             "add_variables" => false,
-            "add_widgets"   => false,
-            "add_images"    => false,
+            "add_widgets"   => true,
+            "add_images"    => true,
         );
 
         $summaryWysiwygState = Mage::getStoreConfig("fontis_blog/blog/wysiwyg_summary");
@@ -151,6 +151,7 @@ class Fontis_Blog_Block_Manage_Blog_Edit_Tab_Form extends Mage_Adminhtml_Block_W
         } elseif (Mage::registry("blog_data")) {
             $form->setValues(Mage::registry("blog_data")->getData());
         }
+
         return parent::_prepareForm();
     }
 

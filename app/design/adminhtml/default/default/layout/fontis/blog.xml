@@ -27,12 +27,15 @@
             <block type="blog/manage_blog" name="blog" template="fontis/blog/posts.phtml" />
         </reference>
     </adminhtml_blog_blog_index>
-	<adminhtml_blog_comment_index>
+    <adminhtml_blog_blog_edit>
+        <update handle="editor"/>
+    </adminhtml_blog_blog_edit>
+    <adminhtml_blog_comment_index>
         <reference name="content">
             <block type="blog/manage_comment" name="comment" />
         </reference>
     </adminhtml_blog_comment_index>
-	<adminhtml_blog_cat_index>
+    <adminhtml_blog_cat_index>
         <reference name="content">
             <block type="blog/manage_cat" name="cat" template="fontis/blog/cats.phtml" />
         </reference>

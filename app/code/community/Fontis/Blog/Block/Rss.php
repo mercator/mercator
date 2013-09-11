@@ -21,6 +21,14 @@
 
 class Fontis_Blog_Block_Rss extends Mage_Rss_Block_Abstract
 {
+    const CACHE_TAG = "fontis_blog_rss";
+
+    protected function _prepareLayout()
+    {
+        Mage::helper("blog")->addRequestTag(array(self::CACHE_TAG, Fontis_Blog_Helper_Data::GLOBAL_CACHE_TAG));
+        return parent::_prepareLayout();
+    }
+
     protected function _construct()
     {
         //setting cache to save the rss for 10 minutes
@@ -52,7 +60,7 @@ class Fontis_Blog_Block_Rss extends Mage_Rss_Block_Abstract
 
         $rssObj->_addHeader($data);
 
-        $collection = Mage::getModel("blog/blog")->getCollection()
+        $collection = Mage::getModel("blog/post")->getCollection()
             ->addStoreFilter(Mage::app()->getStore()->getId())
             ->setOrder("created_time ", "desc");
 

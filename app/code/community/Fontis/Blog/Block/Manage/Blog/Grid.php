@@ -24,21 +24,21 @@ class Fontis_Blog_Block_Manage_Blog_Grid extends Mage_Adminhtml_Block_Widget_Gri
     public function __construct()
     {
         parent::__construct();
-        $this->setId('blogGrid');
-        $this->setDefaultSort('created_time');
-        $this->setDefaultDir('DESC');
+        $this->setId("blogGrid");
+        $this->setDefaultSort("created_time");
+        $this->setDefaultDir("DESC");
         $this->setSaveParametersInSession(true);
     }
 
     protected function _getStore()
     {
-        $storeId = (int) $this->getRequest()->getParam('store', 0);
+        $storeId = (int) $this->getRequest()->getParam("store", 0);
         return Mage::app()->getStore($storeId);
     }
 
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('blog/blog')->getCollection();
+        $collection = Mage::getModel("blog/post")->getCollection();
         $store = $this->_getStore();
         if ($store->getId()) {
             $collection->addStoreFilter($store);
@@ -76,7 +76,6 @@ class Fontis_Blog_Block_Manage_Blog_Grid extends Mage_Adminhtml_Block_Widget_Gri
             "index"     => "user",
         ));
 
-
         $this->addColumn("created_time", array(
             "header"    => $blogHelper->__("Created"),
             "align"     => "left",
@@ -95,8 +94,8 @@ class Fontis_Blog_Block_Manage_Blog_Grid extends Mage_Adminhtml_Block_Widget_Gri
             "index"     => "update_time",
         ));
 
-        $this->addColumn('status', array(
-            "header"    => $blogHelper->__('Status'),
+        $this->addColumn("status", array(
+            "header"    => $blogHelper->__("Status"),
             "align"     => "left",
             "width"     => "80px",
             "index"     => "status",

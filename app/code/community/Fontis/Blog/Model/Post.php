@@ -21,16 +21,8 @@
 
 class Fontis_Blog_Model_Post extends Mage_Core_Model_Abstract
 {
-    const NOROUTE_PAGE_ID = 'no-route';
-
     protected function _construct()
     {
-        $this->_init('blog/post');
-    }
-
-    public function noRoutePage()
-    {
-        $this->setData($this->load(self::NOROUTE_PAGE_ID, $this->getIdFieldName()));
-        return $this;
+        $this->_init("blog/post");
     }
 }

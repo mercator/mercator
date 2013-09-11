@@ -21,33 +21,33 @@
 
 class Fontis_Blog_Model_Mysql4_Cat extends Mage_Core_Model_Mysql4_Abstract
 {
-	public function _construct()
+    public function _construct()
     {    
         $this->_init('blog/cat', 'cat_id');
     }
-	
-	public function load(Mage_Core_Model_Abstract $object, $value, $field=null)
+
+    public function load(Mage_Core_Model_Abstract $object, $value, $field=null)
     {
         if (strcmp($value, (int) $value) !== 0) {
             $field = 'identifier';
         }
         return parent::load($object, $value, $field);
     }
-	
-	protected function _beforeSave(Mage_Core_Model_Abstract $object)
+
+    protected function _beforeSave(Mage_Core_Model_Abstract $object)
     {
         if (!$this->getIsUniqueIdentifier($object)) {
-            Mage::throwException(Mage::helper('blog')->__('Post Identifier already exists.'));
+            Mage::throwException(Mage::helper('blog')->__('Category Identifier already exists.'));
         }
 
         if ($this->isNumericIdentifier($object)) {
-            Mage::throwException(Mage::helper('blog')->__('Post Identifier cannot consist only of numbers.'));
+            Mage::throwException(Mage::helper('blog')->__('Category Identifier cannot consist only of numbers.'));
         }
 
         return $this;
     }
-	
-	public function getIsUniqueIdentifier(Mage_Core_Model_Abstract $object)
+
+    public function getIsUniqueIdentifier(Mage_Core_Model_Abstract $object)
     {
         $select = $this->_getWriteAdapter()->select()
             ->from($this->getMainTable())
@@ -62,35 +62,34 @@ class Fontis_Blog_Model_Mysql4_Cat extends Mage_Core_Model_Mysql4_Abstract
 
         return true;
     }
-	
-	protected function isNumericIdentifier (Mage_Core_Model_Abstract $object)
+
+    protected function isNumericIdentifier (Mage_Core_Model_Abstract $object)
     {
         return preg_match('/^[0-9]+$/', $object->getData('identifier'));
     }
-    	
-	protected function _afterSave(Mage_Core_Model_Abstract $object)
+
+    protected function _afterSave(Mage_Core_Model_Abstract $object)
     {
         $condition = $this->_getWriteAdapter()->quoteInto('cat_id = ?', $object->getId());
         $this->_getWriteAdapter()->delete($this->getTable('cat_store'), $condition);
-		
-		if ($object->getData('stores')) {
+
+        if ($object->getData('stores')) {
             foreach ((array) $object->getData('stores') as $store) {
                 $storeArray = array();
                 $storeArray['cat_id'] = $object->getId();
                 $storeArray['store_id'] = $store;
                 $this->_getWriteAdapter()->insert($this->getTable('cat_store'), $storeArray);
             }
-		} else {
+        } else {
             $storeArray = array();
             $storeArray['cat_id'] = $object->getId();
             $storeArray['store_id'] = Mage::app()->getStore(true)->getId();
             $this->_getWriteAdapter()->insert($this->getTable('cat_store'), $storeArray);
-		}
+        }
         return parent::_afterSave($object);
     }
-	
-	
-	protected function _afterLoad(Mage_Core_Model_Abstract $object)
+
+    protected function _afterLoad(Mage_Core_Model_Abstract $object)
     {
         $select = $this->_getReadAdapter()->select()
             ->from($this->getTable('cat_store'))
@@ -106,8 +105,8 @@ class Fontis_Blog_Model_Mysql4_Cat extends Mage_Core_Model_Mysql4_Abstract
 
         return parent::_afterLoad($object);
     }
-	
-	protected function _getLoadSelect($field, $value, $object)
+
+    protected function _getLoadSelect($field, $value, $object)
     {
         $select = parent::_getLoadSelect($field, $value, $object);
 

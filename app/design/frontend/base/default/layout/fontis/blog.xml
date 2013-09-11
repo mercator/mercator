@@ -22,20 +22,20 @@
 -->
 
 <layout version="0.1.0">
-	<default>
+    <default>
         <reference name="head">
-            <block type="blog/blog" name="add.blog.rss">
+            <block type="blog/links" name="add.blog.rss">
                 <action method="addRssFeed" ifconfig="fontis_blog/rss/enabled"></action>
             </block>
             <action method="addItem"><type>skin_css</type><name>fontis/blog/css/blog.css</name></action>
         </reference>
         <reference name="top.links">
-            <block type="blog/blog" name="add.blog.link">
+            <block type="blog/links" name="add.blog.link">
                 <action method="addTopLink" ifconfig="fontis_blog/menu/top"></action>
             </block>
         </reference>
         <reference name="footer_links">
-            <block type="blog/blog" name="add.blog.footer">
+            <block type="blog/links" name="add.blog.footer">
                 <action method="addFooterLink" ifconfig="fontis_blog/menu/footer"></action>
             </block>
         </reference>
@@ -75,7 +75,7 @@
         <update handle="blog_page" />
     </blog_index_index>
 
-	<blog_post_view>
+    <blog_post_view>
         <reference name="content">
             <block type="blog/post" name="post" template="fontis/blog/post.phtml">
                 <block type="blog/post" name="comments" template="fontis/blog/post/comments.phtml" />
@@ -85,7 +85,7 @@
         <update handle="blog_page" />
     </blog_post_view>
 
-	<blog_cat_view>
+    <blog_cat_view>
         <reference name="content">
             <block type="blog/cat" name="cat" template="fontis/blog/cat.phtml" />
         </reference>
@@ -105,8 +105,8 @@
         </reference>
         <update handle="blog_page" />
     </blog_archive_view>
-	
-	<blog_rss_index>
+
+    <blog_rss_index>
         <block type="blog/rss" output="toHtml" name="rss.blog.new" />
     </blog_rss_index>
 </layout>

@@ -1,3 +1,6 @@
-app/etc/local.xml
+/app/etc/local.xml
+/public/errors/local.xml
+/downloader/*.cfg
 .DS_Store
 .idea/
+

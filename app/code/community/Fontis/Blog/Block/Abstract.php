@@ -22,13 +22,25 @@
 abstract class Fontis_Blog_Block_Abstract extends Mage_Core_Block_Template
 {
     protected $_blogHelper = null;
+    protected $_cmsProcessor = null;
 
+    /**
+     * @return Fontis_Blog_Helper_Data
+     */
     protected function getBlogHelper()
     {
         if (!$this->_blogHelper) {
             $this->_blogHelper = Mage::helper("blog");
         }
         return $this->_blogHelper;
+    }
+
+    protected function getCmsProcessor()
+    {
+        if (!$this->_cmsProcessor) {
+            $this->_cmsProcessor = Mage::helper("cms")->getPageTemplateProcessor();
+        }
+        return $this->_cmsProcessor;
     }
 
     protected function processPost($post, $showTime = false)
@@ -53,6 +65,7 @@ abstract class Fontis_Blog_Block_Abstract extends Mage_Core_Block_Template
             }
             $post->setPostContent($content);
         }
+        $post->setPostContent($this->getCmsProcessor()->filter($post->getPostContent()));
 
         // Get comment count
         $comments = Mage::getModel("blog/comment")->getCollection()

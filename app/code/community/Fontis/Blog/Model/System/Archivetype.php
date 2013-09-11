@@ -37,6 +37,9 @@ class Fontis_Blog_Model_System_Archivetype
         self::DAILY     => "F jS, Y"
     );
 
+    /**
+     * @return array
+     */
     public function toOptionArray()
     {
         $helper = Mage::helper("blog");
@@ -47,6 +50,10 @@ class Fontis_Blog_Model_System_Archivetype
         );
     }
 
+    /**
+     * @param int $type
+     * @return string|null
+     */
     public static function getTypeLabel($type)
     {
         if (isset(self::$_options[$type])) {
@@ -56,6 +63,10 @@ class Fontis_Blog_Model_System_Archivetype
         }
     }
 
+    /**
+     * @param int $type
+     * @return string|null
+     */
     public static function getTypeFormat($type)
     {
         if (isset(self::$_formats[$type])) {

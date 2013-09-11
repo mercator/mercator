@@ -104,6 +104,11 @@ $tables = array(
                 'length'    => '64K',
                 'comment'   => 'Page Meta Description'
             ),
+            'meta_robots' => array(
+                'type'      => Varien_Db_Ddl_Table::TYPE_TEXT,
+                'length'    => 100,
+                'comment'   => 'Page Meta Robots tag'
+            ),
             'identifier' => array(
                 'type'      => Varien_Db_Ddl_Table::TYPE_TEXT,
                 'length'    => 100,

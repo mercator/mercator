@@ -53,11 +53,11 @@ class Fontis_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
                 ->setActionName("index");
             return true;
         }
-        
+
         if (strpos($identifier, '/')) {
             $page = substr($identifier, strpos($identifier, '/') + 1);
         }
-        
+
         if (substr($identifier, 0, strlen('cat/')) == 'cat/') {
             $identifier = substr_replace($identifier, '', 0, strlen('cat/'));
 
@@ -65,7 +65,7 @@ class Fontis_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
                 $page = substr($identifier, strpos($identifier, '/page/') + 6);
                 $identifier = substr_replace($identifier, '', strpos($identifier, '/page/'), strlen($page) + 6);
             }
-            
+
             $rss = false;
             if (strpos($identifier, '/rss')) {
                 $rss = true;
@@ -77,7 +77,7 @@ class Fontis_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
             if (!$cat->load($identifier)->getCatId()) {
                 return false;
             }
-            
+
             if ($rss) {
                 $request->setModuleName('blog')
                     ->setControllerName('rss')
@@ -88,7 +88,7 @@ class Fontis_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
                     ->setControllerName('cat')
                     ->setActionName('view')
                     ->setParam('identifier', $identifier);
-                if (isset($page)) {
+                if (isset($page) && is_numeric($page)) {
                     $request->setParam('page', $page);
                 }
             }
@@ -99,7 +99,7 @@ class Fontis_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
             $request->setModuleName('blog')
                 ->setControllerName('index')
                 ->setActionName('index');
-            if (isset($page)) {
+            if (isset($page) && is_numeric($page)) {
                 $request->setParam('page', $page);
             }
             return true;
@@ -138,7 +138,7 @@ class Fontis_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
                 ->setControllerName('post')
                 ->setActionName('view')
                 ->setParam('identifier', $identifier);
-            if (isset($page)) {
+            if (isset($page) && is_numeric($page)) {
                 $request->setParam('page', $page);
             }
             return true;

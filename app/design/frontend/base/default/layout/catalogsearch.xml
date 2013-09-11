@@ -51,6 +51,9 @@
         <reference name="root">
             <action method="setTemplate"><template>page/3columns.phtml</template></action>
         </reference>
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/search"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
         <reference name="left">
             <block type="catalogsearch/layer" name="catalogsearch.leftnav" after="currency" template="catalog/layer/view.phtml"/>
         </reference>
@@ -85,6 +88,7 @@
             <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params/><!--<if/><condition>can_load_calendar_js</condition>--></action>
             <action method="addItem"><type>js</type><name>calendar/calendar.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
             <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
+            <action method="setRobots" ifconfig="web/noindex/search"><meta>NOINDEX,FOLLOW</meta></action>
         </reference>
         <reference name="content">
             <block type="catalogsearch/advanced_form" name="catalogsearch_advanced_form" template="catalogsearch/advanced/form.phtml"/>
@@ -102,6 +106,9 @@ Advanced search results
         <!-- Mage_Catalogsearch -->
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/search"><meta>NOINDEX,FOLLOW</meta></action>
         </reference>
         <reference name="content">
             <block type="catalogsearch/advanced_result" name="catalogsearch_advanced_result" template="catalogsearch/advanced/result.phtml">

@@ -24,7 +24,7 @@
 <config>
     <modules>
         <Fontis_Blog>
-            <version>1.0.0</version>
+            <version>1.1.1</version>
         </Fontis_Blog>
     </modules>
     <admin>
@@ -64,6 +64,11 @@
                 </Fontis_Blog>
             </modules>
         </translate>
+        <cache>
+            <pages>
+                <fontis_blog>blog</fontis_blog>
+            </pages>
+        </cache>
     </frontend>
 
     <adminhtml>
@@ -298,5 +303,11 @@
                 <usesummary>0</usesummary>
             </rss>
         </fontis_blog>
+        <sitemap>
+            <blog>
+                <priority_post>0.75</priority_post>
+                <priority_cat>0.5</priority_cat>
+            </blog>
+        </sitemap>
     </default>
 </config>

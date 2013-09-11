@@ -156,6 +156,7 @@ Compare products page
         <reference name="head">
             <action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
             <action method="addJs"><script>varien/product.js</script></action>
+            <action method="setRobots" ifconfig="web/noindex/compare"><meta>NOINDEX,FOLLOW</meta></action>
         </reference>
         <reference name="content">
             <block type="catalog/product_compare_list" name="catalog.compare.list" template="catalog/product/compare/list.phtml"/>
@@ -320,6 +321,7 @@ Product send to friend
         </reference>
         <reference name="head">
             <action method="addJs"><script>varien/product.js</script></action>
+            <action method="setRobots" ifconfig="web/noindex/friend"><meta>NOINDEX,FOLLOW</meta></action>
         </reference>
         <reference name="content">
             <block type="catalog/product_send" name="product.send" template="catalog/product/send.phtml">

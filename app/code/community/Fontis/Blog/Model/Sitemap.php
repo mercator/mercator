@@ -93,7 +93,7 @@ class Fontis_Blog_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
          */
         $changefreq = (string) Mage::getStoreConfig("sitemap/blog/changefreq_post");
         $priority   = (string) Mage::getStoreConfig("sitemap/blog/priority_post");
-        $collection = Mage::getModel("blog/blog")->getCollection($storeId);
+        $collection = Mage::getModel("blog/post")->getCollection($storeId);
         Mage::getSingleton("blog/status")->addEnabledFilterToCollection($collection);
         $route = Mage::helper("blog")->getBlogRoute();
         foreach ($collection as $item) {

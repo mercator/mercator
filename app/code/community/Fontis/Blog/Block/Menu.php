@@ -21,8 +21,19 @@
 
 class Fontis_Blog_Block_Menu extends Fontis_Blog_Block_Abstract
 {
+    const CACHE_TAG = "fontis_blog_menu";
+
     protected $_activeCatLink = false;
 
+    protected function _prepareLayout()
+    {
+        $this->getBlogHelper()->addTagToFpc(array(self::CACHE_TAG, Fontis_Blog_Helper_Data::GLOBAL_CACHE_TAG));
+        return parent::_prepareLayout();
+    }
+
+    /**
+     * @return string
+     */
     public function getArchiveLabel()
     {
         return Fontis_Blog_Model_System_Archivetype::getTypeLabel(Mage::getStoreConfig("fontis_blog/archives/type"));
@@ -31,7 +42,7 @@ class Fontis_Blog_Block_Menu extends Fontis_Blog_Block_Abstract
     public function getArchives()
     {
         if ($this->getBlogHelper()->isArchivesEnabled()) {
-            $collection = Mage::getModel("blog/blog")->getCollection()
+            $collection = Mage::getModel("blog/post")->getCollection()
                 ->addStoreFilter(Mage::app()->getStore()->getId())
                 ->setOrder("created_time", Mage::getStoreConfig("fontis_blog/archives/order"));
             Mage::getSingleton('blog/status')->addEnabledFilterToCollection($collection);
@@ -98,18 +109,18 @@ class Fontis_Blog_Block_Menu extends Fontis_Blog_Block_Abstract
     public function getRecent()
     {
         if ($recentCount = Mage::getStoreConfig("fontis_blog/menu/recent")) {
-            $collection = Mage::getModel("blog/blog")->getCollection()
+            $posts = Mage::getModel("blog/post")->getCollection()
                 ->addStoreFilter(Mage::app()->getStore()->getId())
                 ->setOrder("created_time", "desc");
-            Mage::getSingleton("blog/status")->addEnabledFilterToCollection($collection);
-            $collection->setPageSize($recentCount)
+            Mage::getSingleton("blog/status")->addEnabledFilterToCollection($posts);
+            $posts->setPageSize($recentCount)
                 ->setCurPage(1);
 
             $route = $this->getBlogHelper()->getBlogRoute();
-            foreach ($collection as $item) {
-                $item->setAddress($this->getUrl($route) . $item->getIdentifier());
+            foreach ($posts as $post) {
+                $post->setAddress($this->getUrl($route) . $post->getIdentifier());
             }
-            return $collection;
+            return $posts;
         } else {
             return false;
         }
@@ -117,18 +128,22 @@ class Fontis_Blog_Block_Menu extends Fontis_Blog_Block_Abstract
 
     public function getCategories()
     {
-        $collection = Mage::getModel("blog/cat")->getCollection()
+        $categories = Mage::getModel("blog/cat")->getCollection()
             ->addStoreFilter(Mage::app()->getStore()->getId())
             ->setOrder("sort_order", "asc");
 
         $route = $this->getBlogHelper()->getBlogRoute();
 
-        foreach ($collection as $item) {
-            $item->setAddress($this->getUrl($route . "/cat") . $item->getIdentifier());
+        foreach ($categories as $category) {
+            $category->setAddress($this->getUrl($route . "/cat") . $category->getIdentifier());
         }
-        return $collection;
+        return $categories;
     }
 
+    /**
+     * @param Fontis_Blog_Model_Cat $cat
+     * @return bool
+     */
     public function isCatActive($cat)
     {
         if ($this->_activeCatLink === false) {

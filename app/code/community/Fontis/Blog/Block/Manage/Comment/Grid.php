@@ -82,7 +82,7 @@ class Fontis_Blog_Block_Manage_Comment_Grid extends Mage_Adminhtml_Block_Widget_
             'width'     => '80px',
             'index'     => 'status',
             'type'      => 'options',
-            'options'   => array(
+            'options'   => array( // I haven't yet decided the appropriate place for comment status constants
                 1 => 'Unapproved',
                 2 => 'Approved',
             ),

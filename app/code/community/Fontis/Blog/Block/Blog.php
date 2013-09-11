@@ -21,9 +21,17 @@
 
 class Fontis_Blog_Block_Blog extends Fontis_Blog_Block_Abstract
 {
+    const CACHE_TAG = "fontis_blog_index";
+
+    protected function _prepareLayout()
+    {
+        $this->getBlogHelper()->addTagToFpc(array(self::CACHE_TAG, Fontis_Blog_Helper_Data::GLOBAL_CACHE_TAG));
+        return parent::_prepareLayout();
+    }
+
     public function getPosts()
     {
-        $collection = Mage::getModel("blog/blog")->getCollection()
+        $collection = Mage::getModel("blog/post")->getCollection()
             ->addStoreFilter(Mage::app()->getStore()->getId())
             ->setOrder("created_time", "desc");
         Mage::getSingleton("blog/status")->addEnabledFilterToCollection($collection);
@@ -31,31 +39,37 @@ class Fontis_Blog_Block_Blog extends Fontis_Blog_Block_Abstract
         $page = $this->getRequest()->getParam("page");
         $collection->setPageSize((int) Mage::getStoreConfig("fontis_blog/blog/perpage"));
         $collection->setCurPage($page);
-        
+
         foreach ($collection as $item) {
             $this->processPost($item, true);
         }
         return $collection;
     }
-    
+
     public function getPages()
     {
         if ($perPage = (int) Mage::getStoreConfig("fontis_blog/blog/perpage")) {
-            $collection = Mage::getModel("blog/blog")->getCollection()
+            $collection = Mage::getModel("blog/post")->getCollection()
+                ->addStoreFilter(Mage::app()->getStore()->getId())
                 ->setOrder("created_time ", "desc");
-            
             Mage::getSingleton("blog/status")->addEnabledFilterToCollection($collection);
-            
+
+            $collection->getSelect()
+                ->reset(Zend_Db_Select::COLUMNS)
+                ->columns(array(new Zend_Db_Expr("count(main_table.post_id) as postcount")));
+            $collection->load();
+
             $currentPage = (int) $this->getRequest()->getParam("page");
-    
+
             if (!$currentPage) {
                 $currentPage = 1;
             }
 
             $route = $this->getBlogHelper()->getBlogRoute();
-            $pages = ceil(count($collection) / $perPage);
+            $pages = ceil($collection->getFirstItem()->getPostcount() / $perPage);
             $links = "";
-            
+            unset($collection);
+
             if ($currentPage > 1) {
                 $links .= '<div class="left"><a href="' . $this->getUrl($route . "/page") . ($currentPage - 1) . '">Newer Posts</a></div>';
             }
@@ -63,27 +77,6 @@ class Fontis_Blog_Block_Blog extends Fontis_Blog_Block_Abstract
                 $links .= '<div class="right"><a href="' . $this->getUrl($route . "/page") . ($currentPage + 1) . '">Older Posts</a></div>';
             }
             echo $links;
-        }
-    }
-
-    public function addTopLink()
-    {
-        $title = Mage::getStoreConfig("fontis_blog/blog/title");
-        $this->getParentBlock()->addLink($title, $this->getBlogHelper()->getBlogRoute(), $title, true, array(), 15, null, 'class="top-link-blog"');
-    }
-
-    public function addFooterLink()
-    {
-        $title = Mage::getStoreConfig("fontis_blog/blog/title");
-        $this->getParentBlock()->addLink($title, $this->getBlogHelper()->getBlogRoute(), $title, true);
-    }
-
-    public function addRssFeed()
-    {
-        if (Mage::getStoreConfig("fontis_blog/rss/enabled")) {
-            if ($head = $this->getLayout()->getBlock("head")) {
-                $head->addItem("rss", Mage::getUrl($this->getBlogHelper()->getBlogRoute()) . "rss");
-            }
         }
     }
 }

@@ -481,9 +481,12 @@ class Mage_Core_Model_Email_Template_Filter extends Varien_Filter_Template
             $variable = Mage::getModel('core/variable')
                 ->setStoreId($this->getStoreId())
                 ->loadByCode($params['code']);
-            $mode = $this->getPlainTemplateMode()?Mage_Core_Model_Variable::TYPE_TEXT:Mage_Core_Model_Variable::TYPE_HTML;
+            $mode = $this->getPlainTemplateMode() ? Mage_Core_Model_Variable::TYPE_TEXT : Mage_Core_Model_Variable::TYPE_HTML;
+
+            // Allows for recursive filtering of custom variable content
             if ($value = $variable->getValue($mode)) {
-                $customVarValue = $value;
+                $processedValue = $this->filter($value);
+                $customVarValue = $processedValue;
             }
         }
         return $customVarValue;

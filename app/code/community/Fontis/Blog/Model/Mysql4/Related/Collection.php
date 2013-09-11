@@ -26,12 +26,12 @@ class Fontis_Blog_Model_Mysql4_Related_Collection extends Mage_Core_Model_Mysql4
         $this->_init("blog/related");
     }
 
-	public function toOptionArray()
+    public function toOptionArray()
     {
         return $this->_toOptionArray("post_id", "product_id");
     }
-	
-	public function addPostFilter($postId)
+
+    public function addPostFilter($postId)
     {
         $this->getSelect()->where("post_id = ?", $postId);
         return $this;

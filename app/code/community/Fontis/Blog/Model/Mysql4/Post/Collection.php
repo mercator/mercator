@@ -25,14 +25,61 @@ class Fontis_Blog_Model_Mysql4_Post_Collection extends Mage_Core_Model_Mysql4_Co
 
     protected function _construct()
     {
-        $this->_init('blog/blog');
+        $this->_init("blog/post");
+    }
+
+    public function addEnableFilter($status)
+    {
+        $this->getSelect()->where("status = ?", $status);
+        return $this;
+    }
+
+    public function addCatFilter($catId)
+    {
+        $this->getSelect()->join(
+            array("cat_table" => $this->getTable("post_cat")),
+            "main_table.post_id = cat_table.post_id",
+            array()
+        )
+            ->where("cat_table.cat_id = ?", $catId);
+
+        return $this;
+    }
+
+    protected function _afterLoad()
+    {
+        /*$items = $this->getColumnValues('post_id');
+        if (count($items)) {
+            $select = $this->getConnection()->select()
+                    ->from($this->getTable('store'))
+                    ->where($this->getTable('store').'.post_id IN (?)', $items);
+            if ($result = $this->getConnection()->fetchPairs($select)) {
+                foreach ($this as $item) {
+                    if (!isset($result[$item->getData('post_id')])) {
+                        continue;
+                    }
+                    if ($result[$item->getData('post_id')] == 0) {
+                        $storeCode = key(Mage::app()->getStores(false, true));
+                    } else {
+                        $storeCode = Mage::app()->getStore($result[$item->getData('post_id')])->getCode();
+                    }
+                    $item->setData('store_code', $storeCode);
+                }
+            }
+        }*/
+
+        if (count($this) > 0) {
+            Mage::dispatchEvent("fontis_blog_post_collection_load_after", array("collection" => $this));
+        }
+
+        return parent::_afterLoad();
     }
 
     public function toOptionArray()
     {
-        return $this->_toOptionArray('identifier', 'title');
+        return $this->_toOptionArray("identifier", "title");
     }
-	
+
     public function addStoreFilter($store)
     {
         if (!Mage::app()->isSingleStoreMode()) {
@@ -41,11 +88,11 @@ class Fontis_Blog_Model_Mysql4_Post_Collection extends Mage_Core_Model_Mysql4_Co
             }
 
             $this->getSelect()->join(
-                array('store_table' => $this->getTable('store')),
-                'main_table.post_id = store_table.post_id',
+                array("store_table" => $this->getTable("store")),
+                "main_table.post_id = store_table.post_id",
                 array()
             )
-            ->where('store_table.store_id in (?)', array(0, $store));
+            ->where("store_table.store_id in (?)", array(0, $store));
 
             return $this;
         }

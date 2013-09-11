@@ -33,7 +33,7 @@ class Fontis_Blog_Model_Mysql4_Post extends Mage_Core_Model_Mysql4_Abstract
         }
         return parent::load($object, $value, $field);
     }
-	
+
     protected function _beforeSave(Mage_Core_Model_Abstract $object)
     {
         if (!$this->getIsUniqueIdentifier($object)) {
@@ -46,7 +46,7 @@ class Fontis_Blog_Model_Mysql4_Post extends Mage_Core_Model_Mysql4_Abstract
 
         return $this;
     }
-	
+
     public function getIsUniqueIdentifier(Mage_Core_Model_Abstract $object)
     {
         $select = $this->_getWriteAdapter()->select()
@@ -62,71 +62,74 @@ class Fontis_Blog_Model_Mysql4_Post extends Mage_Core_Model_Mysql4_Abstract
 
         return true;
     }
-	
-    protected function isNumericIdentifier (Mage_Core_Model_Abstract $object)
+
+    protected function isNumericIdentifier(Mage_Core_Model_Abstract $object)
     {
         return preg_match('/^[0-9]+$/', $object->getData('identifier'));
     }
-	
+
     protected function _afterSave(Mage_Core_Model_Abstract $object)
     {
-        $condition = $this->_getWriteAdapter()->quoteInto('post_id = ?', $object->getId());
-        $this->_getWriteAdapter()->delete($this->getTable('store'), $condition);
-        if ($object->getData('stores')) {
-            foreach ((array) $object->getData('stores') as $store) {
+        $writeAdapter = $this->_getWriteAdapter();
+        $condition = $writeAdapter->quoteInto("post_id = ?", $object->getId());
+        $writeAdapter->delete($this->getTable("store"), $condition);
+
+        if ($object->getData("stores")) {
+            foreach ((array) $object->getData("stores") as $store) {
                 $storeArray = array();
-                $storeArray['post_id'] = $object->getId();
-                $storeArray['store_id'] = $store;
-                $this->_getWriteAdapter()->insert($this->getTable('store'), $storeArray);
+                $storeArray["post_id"] = $object->getId();
+                $storeArray["store_id"] = $store;
+                $writeAdapter->insert($this->getTable("store"), $storeArray);
             }
         } else {
             $storeArray = array();
-            $storeArray['post_id'] = $object->getId();
-            $storeArray['store_id'] = Mage::app()->getStore(true)->getId();
-            $this->_getWriteAdapter()->insert($this->getTable('store'), $storeArray);
+            $storeArray["post_id"] = $object->getId();
+            $storeArray["store_id"] = Mage::app()->getStore(true)->getId();
+            $writeAdapter->insert($this->getTable("store"), $storeArray);
         }
 
-        $condition = $this->_getWriteAdapter()->quoteInto('post_id = ?', $object->getId());
-        $this->_getWriteAdapter()->delete($this->getTable('post_cat'), $condition);
-		
-        foreach ((array) $object->getData('cats') as $catId) {
+        $condition = $writeAdapter->quoteInto("post_id = ?", $object->getId());
+        $writeAdapter->delete($this->getTable("post_cat"), $condition);
+
+        foreach ((array) $object->getData("cats") as $catId) {
             $storeArray = array();
-            $storeArray['post_id'] = $object->getId();
-            $storeArray['cat_id'] = $catId;
-            $this->_getWriteAdapter()->insert($this->getTable('post_cat'), $storeArray);
+            $storeArray["post_id"] = $object->getId();
+            $storeArray["cat_id"] = $catId;
+            $writeAdapter->insert($this->getTable("post_cat"), $storeArray);
         }
 
         return parent::_afterSave($object);
     }
-	
+
     /**
      *
      * @param Mage_Core_Model_Abstract $object
      */
     protected function _afterLoad(Mage_Core_Model_Abstract $object)
     {
-        $select = $this->_getReadAdapter()->select()
-            ->from($this->getTable('store'))
-            ->where('post_id = ?', $object->getId());
+        $readAdapter = $this->_getReadAdapter();
+        $select = $readAdapter->select()
+            ->from($this->getTable("store"))
+            ->where("post_id = ?", $object->getId());
 
-        if ($data = $this->_getReadAdapter()->fetchAll($select)) {
+        if ($data = $readAdapter->fetchAll($select)) {
             $storesArray = array();
             foreach ($data as $row) {
-                $storesArray[] = $row['store_id'];
+                $storesArray[] = $row["store_id"];
             }
-            $object->setData('store_id', $storesArray);
+            $object->setData("store_id", $storesArray);
         }
-		
-        $select = $this->_getReadAdapter()->select()
-            ->from($this->getTable('post_cat'))
-            ->where('post_id = ?', $object->getId());
 
-        if ($data = $this->_getReadAdapter()->fetchAll($select)) {
+        $select = $readAdapter->select()
+            ->from($this->getTable("post_cat"))
+            ->where("post_id = ?", $object->getId());
+
+        if ($data = $readAdapter->fetchAll($select)) {
             $catsArray = array();
             foreach ($data as $row) {
-                $catsArray[] = $row['cat_id'];
+                $catsArray[] = $row["cat_id"];
             }
-            $object->setData('cat_id', $catsArray);
+            $object->setData("cats", $catsArray);
         }
 
         return parent::_afterLoad($object);
@@ -144,9 +147,9 @@ class Fontis_Blog_Model_Mysql4_Post extends Mage_Core_Model_Mysql4_Abstract
         $select = parent::_getLoadSelect($field, $value, $object);
 
         if ($object->getStoreId()) {
-            $select->join(array('cps' => $this->getTable('store')), $this->getMainTable().'.post_id = `cps`.post_id')
-                ->where('`cps`.store_id in (0, ?) ', $object->getStoreId())
-                ->order('store_id DESC')
+            $select->join(array("cps" => $this->getTable("store")), $this->getMainTable() . ".post_id = `cps`.post_id")
+                ->where("`cps`.store_id in (0, ?) ", $object->getStoreId())
+                ->order("store_id DESC")
                 ->limit(1);
         }
         return $select;

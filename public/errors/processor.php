@@ -136,8 +136,11 @@ class Error_Processor
 
     public function __construct()
     {
-        $this->_errorDir  = dirname(__FILE__) . '/';
-        $this->_reportDir = dirname($this->_errorDir) . '/var/report/';
+        $this->_errorDir  = realpath(dirname(__FILE__)) . '/';
+        $this->_reportDir = dirname(dirname($this->_errorDir)) . '/var/report/';
+        // A call to dirname() always gives you back the full path to whatever is on the end of the
+        // supplied path, be it a file name or folder name. Making two calls to dirname() essentially
+        // moves you up two directories.
 
         if (!empty($_SERVER['SCRIPT_NAME'])) {
             if (in_array(basename($_SERVER['SCRIPT_NAME'],'.php'), array('404','503','report'))) {
@@ -278,7 +281,7 @@ class Error_Processor
         if (!empty($_SERVER['DOCUMENT_ROOT'])) {
             $documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'],'/');
         }
-        return dirname($documentRoot . $this->_scriptName) . '/';
+        return realpath(dirname($documentRoot . $this->_scriptName)) . '/';
     }
 
     /**

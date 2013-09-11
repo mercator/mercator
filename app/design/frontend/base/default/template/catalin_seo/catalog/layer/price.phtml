@@ -1,0 +1,63 @@
+<div id="price-range" class="filter-track price-slider">
+    <span id="price-min" class="filter-handle price-slider-from" title="Scroll to set your minimum value"></span>
+    <span id="price-max" class="filter-handle price-slider-to" title="Scroll to set your maximum value"></span>
+</div>
+<ul>
+    <li>
+        <span id="price-min-display"><?php echo $this->getCurrentMinPriceFilter(); ?></span>
+        <span style="float: right;" id="price-max-display"><?php echo $this->getCurrentMaxPriceFilter(); ?></span>
+    </li>
+</ul>
+<?php if ($this->isSubmitTypeButton()): ?>
+<div class="a-right">
+    <button id="button-price-slider" class="button" onclick="handlePriceEvent(this.value)" value=""><span><span><?php echo $this->__('Update') ?></span></span></button>
+</div>
+<?php endif; ?>
+
+<script type="text/javascript">
+    priceSliderUrlTemplate = '<?php echo $this->getUrlPattern(); ?>';
+    
+    <?php if (!$this->getRequest()->isAjax()): ?>
+    function handlePriceEvent(val) {
+        if (val) {
+            var url = priceSliderUrlTemplate.replace('__PRICE_VALUE__', val);
+            <?php if ($this->helper('catalin_seo')->isAjaxEnabled()): ?>
+            handleEvent(url);
+            <?php else: ?>
+            window.location.href = url;    
+            <?php endif; ?>
+        }
+    }
+    <?php endif; ?>
+    
+    maxPriceInt = <?php echo $this->getMaxPriceFloat(); ?>;
+    minPriceInt = <?php echo $this->getMinPriceFloat(); ?>;
+    <?php if (!$this->isSubmitTypeButton()): ?>
+    timerSlider = null;
+    priceSliderDelay = <?php echo $this->helper('catalin_seo')->getPriceSliderDelay() * 1000 ?>;
+    <?php endif; ?>
+    // horizontal slider control with preset values
+    new Control.Slider([$('price-min'), $('price-max')], 'price-range', {
+        range: $R(minPriceInt, maxPriceInt),
+        sliderValue: [<?php echo $this->getCurrentMinPriceFilter(); ?>, <?php echo $this->getCurrentMaxPriceFilter(); ?>],
+        values: $R(minPriceInt, maxPriceInt),
+
+        restricted: true,
+        onChange: function(val){
+            if (val[0] != <?php echo $this->getCurrentMinPriceFilter(); ?> || val[1] != <?php echo $this->getCurrentMaxPriceFilter(); ?>) {
+                <?php if ($this->isSubmitTypeButton()): ?>
+                    $('button-price-slider').value = val.join('-');
+                <?php else: ?>
+                    if (timerSlider) {
+                        clearTimeout(timerSlider);
+                    }
+                    timerSlider = setTimeout(handlePriceEvent, priceSliderDelay, val.join('-'));
+                <?php endif; ?>
+            }
+        },
+        onSlide: function(val){ 
+            $('price-max-display').innerHTML = val[1];
+            $('price-min-display').innerHTML = val[0];
+        }
+    });
+</script>

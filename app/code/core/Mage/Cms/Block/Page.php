@@ -82,6 +82,7 @@ class Mage_Cms_Block_Page extends Mage_Core_Block_Abstract
             $head->setTitle($page->getTitle());
             $head->setKeywords($page->getMetaKeywords());
             $head->setDescription($page->getMetaDescription());
+            $head->setRobots($page->getMetaRobots());
         }
 
         return parent::_prepareLayout();

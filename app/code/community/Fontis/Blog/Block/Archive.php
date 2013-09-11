@@ -21,10 +21,18 @@
 
 class Fontis_Blog_Block_Archive extends Fontis_Blog_Block_Abstract
 {
+    const CACHE_TAG = "fontis_blog_archives";
+
+    protected function _prepareLayout()
+    {
+        $this->getBlogHelper()->addTagToFpc(array(self::CACHE_TAG, Fontis_Blog_Helper_Data::GLOBAL_CACHE_TAG));
+        return parent::_prepareLayout();
+    }
+
     public function getPosts()
     {
-        $collection = Mage::getModel('blog/blog')->getCollection()
-            ->setOrder('created_time', 'desc');
+        $collection = Mage::getModel("blog/post")->getCollection()
+            ->setOrder("created_time", "desc");
 
         $request = $this->getRequest();
         $archiveType = $request->getParam("type");
@@ -44,7 +52,7 @@ class Fontis_Blog_Block_Archive extends Fontis_Blog_Block_Abstract
         }
         $collection->addStoreFilter(Mage::app()->getStore()->getId());
 
-        Mage::getSingleton('blog/status')->addEnabledFilterToCollection($collection);
+        Mage::getSingleton("blog/status")->addEnabledFilterToCollection($collection);
 
         foreach ($collection as $item) {
             $this->processPost($item, true);

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <JR_CleverCms>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Adminhtml/>
+                <Mage_Catalog/>
+                <Mage_Cms/>
+            </depends>
+        </JR_CleverCms>
+    </modules>
+</config>

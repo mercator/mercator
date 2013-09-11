@@ -30,10 +30,14 @@ class Mage_Adminhtml_Model_System_Config_Source_Design_Robots
     public function toOptionArray()
     {
         return array(
-            array('value'=>'INDEX,FOLLOW', 'label'=>'INDEX, FOLLOW'),
-            array('value'=>'NOINDEX,FOLLOW', 'label'=>'NOINDEX, FOLLOW'),
-            array('value'=>'INDEX,NOFOLLOW', 'label'=>'INDEX, NOFOLLOW'),
-            array('value'=>'NOINDEX,NOFOLLOW', 'label'=>'NOINDEX, NOFOLLOW'),
+            array('value'=>'INDEX,FOLLOW',                  'label'=>'INDEX, FOLLOW'),
+            array('value'=>'NOINDEX,FOLLOW',                'label'=>'NOINDEX, FOLLOW'),
+            array('value'=>'INDEX,NOFOLLOW',                'label'=>'INDEX, NOFOLLOW'),
+            array('value'=>'NOINDEX,NOFOLLOW',              'label'=>'NOINDEX, NOFOLLOW'),
+            array('value'=>'INDEX, FOLLOW, NOARCHIVE',      'label'=>'INDEX, FOLLOW, NOARCHIVE'),
+            array('value'=>'INDEX, FOLLOW, NOARCHIVE',      'label'=>'NOINDEX, FOLLOW, NOARCHIVE'),
+            array('value'=>'INDEX, NOFOLLOW, NOARCHIVE',    'label'=>'INDEX, NOFOLLOW, NOARCHIVE'),
+            array('value'=>'NOINDEX, NOFOLLOW, NOARCHIVE',  'label'=>'NOINDEX, NOFOLLOW, NOARCHIVE'),
         );
     }
 }

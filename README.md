@@ -19,19 +19,22 @@ Features
 
 All the standard features of Magento Community Edition, plus the following extensions:
 
-* [Colin Mollenhour's Redis cache backend](https://github.com/colinmollenhour/Cm_Cache_Backend_Redis) (BSD-3-Clause)
-* [Pulsestorm Launcher](https://github.com/astorm/PulsestormLauncher) (MIT)
+* [Admin Custom Shipping Rates](http://www.magentocommerce.com/magento-connect/admin-custom-shipping-rate.html) (OSL-3.0)
 * [AOE Scheduler](https://github.com/fbrnc/Aoe_Scheduler) (OSL-3.0)
+* [BL Enhanced Admin Grids](https://github.com/mage-eag/mage-enhanced-admin-grids) (OSL 3.0)
+* [Catalin SEO Ajax Layered Nav](http://www.magentocommerce.com/magento-connect/layered-navigation-seo-6101.html) (OSL-3.0)
+* [Colin Mollenhour's Redis cache backend](https://github.com/colinmollenhour/Cm_Cache_Backend_Redis) (BSD-3-Clause)
 * [Flagbit Change Attribute Set](https://github.com/Flagbit/Magento-ChangeAttributeSet) (GPL)
-* [Admin Custom Shipping Rates](http://www.magentocommerce.com/magento-connect/admin-custom-shipping-rate.html) (OSL-3.0) 
 * [Fontis Blog](https://github.com/fontis/fontis_blog) (OSL-3.0)
-* [Unirgy Gift Certificates](http://www.unirgy.com/products/ugiftcert/) (OSL-3.0)
-* [Yoast MetaRobots](http://www.magentocommerce.com/magento-connect/yoast-metarobots.html) (OSL-3.0)
-* [Offi Customer Attributes Manager](http://www.magentocommerce.com/magento-connect/customer-attributes-manager-5092.html) (OSL-3.0)
-* [SchumacherFM CMS Restriction](https://github.com/SchumacherFM/Magento-CmsRestriction) (OSL-3.0)
+* [Fontis reCAPTCHA](https://github.com/fontis/fontis_recaptcha) (OSL-3.0)
+* [Indust Admin Custom Shipping Rates](http://www.magentocommerce.com/magento-connect/admin-custom-shipping-rate.html) (OSL-3.0)
+* H&O's fork of [JR CleverCMS](https://github.com/ho-nl/magento-clever-cms) (GPL)
+* [Netresearch Product Visibility](https://github.com/netresearch/Magento-Productvisibility) (OSL-3.0)
 * [Netzarbeiter Customer Activation](https://github.com/Vinai/customer-activation) (OSL 3.0)
 * [Netzarbeiter Groups Catalog 2](https://github.com/Vinai/groupscatalog2) (OSL 3.0)
-* [BL Enhanced Admin Grids](https://github.com/mage-eag/mage-enhanced-admin-grids) (OSL 3.0)
+* [Offi Customer Attributes Manager](http://www.magentocommerce.com/magento-connect/customer-attributes-manager-5092.html) (OSL-3.0)
+* [Pulsestorm Launcher](https://github.com/astorm/PulsestormLauncher) (MIT)
+* [Unirgy Gift Certificates](http://www.unirgy.com/products/ugiftcert/) (OSL-3.0)
 
 Where necessary, extensions are modified to allow them to be integrated into Mercator.
 
@@ -41,6 +44,7 @@ In addition, the following changes have been made to the core:
 * Added Australian states into the core region list.
 * Improved error report stack traces to show full strings.
 * Removed Magento Connect Manager from admin panel (it's still available on the command line).
+* Integrated the [Yoast MetaRobots](http://www.magentocommerce.com/magento-connect/yoast-metarobots.html) (OSL-3.0) extension.
 
 
 Why another fork?
@@ -61,6 +65,16 @@ Audience
 --------
 
 Mercator is intended for web developers familiar with Magento, and it is *not* a primary goal of this project to make a system that is easy to install or modify for those who are not already comfortable working with Magento.
+
+
+Installation
+------------
+
+Mercator is installed much like standard versions of Magento. The main change to be aware of is that public files (i.e. index.php, media, skin) have been moved to a 'public' subdirectory under the Magento root. This protects private files (under app, lib, etc) from being accidentally exposed. The public subdirectory should be used as the document root in your web server configuration. Basic example Apache 2 and Nginx configuration files have been provided (mercator.apache and mercator.nginx).
+
+When installing other extensions, bear in mind that public files now go in the 'public' subdirectory. Standard Magento extension packages will place their publicly accessible files in their standard locations under the Magento root, rather than using Mercator's modfified layout. You may need to move any media or skin files (or other public files) from under the Magento root to the corresponding location in the public subdirectory. Mercator has been modified to use the new paths internally, so code changes should not usually be necessary if the extension has been written correctly.
+
+Further information about how to configure popular web servers to run Mercator can be found in the [installation instructions](https://github.com/fontis/mercator/wiki/Installing-Mercator).
 
 
 Reporting Issues

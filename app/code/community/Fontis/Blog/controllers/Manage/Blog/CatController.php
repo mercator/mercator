@@ -26,21 +26,22 @@ class Fontis_Blog_Manage_Blog_CatController extends Mage_Adminhtml_Controller_Ac
         $this->loadLayout()
             ->_setActiveMenu('blog/cat')
             ->_addBreadcrumb(Mage::helper('adminhtml')->__('Category Manager'), Mage::helper('adminhtml')->__('Category Manager'));
-        
+
         return $this;
     }   
- 
+
     public function indexAction()
     {
         $this->_initAction()->renderLayout();
     }
- 
+
     public function deleteAction()
     {
-        if ($this->getRequest()->getParam('id') > 0) {
+        if (($id = $this->getRequest()->getParam("id")) > 0) {
             try {
-                $model = Mage::getModel('blog/cat');
-                $model->setId($this->getRequest()->getParam('id'))->delete();
+                Mage::getModel('blog/cat')->load($id)->delete();
+
+                Mage::helper("blog")->clearFpcTags(self::GLOBAL_CACHE_TAG);
 
                 Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('blog')->__('Category was successfully deleted.'));
                 $this->_redirect('*/*/');
@@ -60,9 +61,10 @@ class Fontis_Blog_Manage_Blog_CatController extends Mage_Adminhtml_Controller_Ac
         } else {
             try {
                 foreach ($blogIds as $blogId) {
-                    $blog = Mage::getModel('blog/cat')->load($blogId);
-                    $blog->delete();
+                    Mage::getModel('blog/cat')->load($blogId)->delete();
                 }
+                Mage::helper("blog")->clearFpcTags(self::GLOBAL_CACHE_TAG);
+
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('adminhtml')->__('Total of %d categories were successfully deleted', count($blogIds))
                 );
@@ -72,7 +74,7 @@ class Fontis_Blog_Manage_Blog_CatController extends Mage_Adminhtml_Controller_Ac
         }
         $this->_redirect('*/*/');
     }
-    
+
     public function editAction()
     {
         $id = $this->getRequest()->getParam("id");
@@ -85,7 +87,7 @@ class Fontis_Blog_Manage_Blog_CatController extends Mage_Adminhtml_Controller_Ac
             $this->_redirect("*/*/");
         }
     }
-    
+
     public function newAction() 
     {
         $id     = $this->getRequest()->getParam("id");
@@ -118,22 +120,38 @@ class Fontis_Blog_Manage_Blog_CatController extends Mage_Adminhtml_Controller_Ac
     
     public function saveAction()
     {
-        if ($data = $this->getRequest()->getPost()) {
+        $request = $this->getRequest();
+        if ($data = $request->getPost()) {
             if (!$data["sort_order"]) {
                 // If no sort order was specified, automatically make it one more than the current last
                 $conn = Mage::getSingleton("core/resource")->getConnection("core_read");
-                $maxSortOrder = $conn->select()
-                    ->from(Mage::getResourceModel("blog/cat")->getMainTable(), array(new Zend_Db_Expr('max(sort_order)')));
+                $maxSortOrder = $conn->select()->from(Mage::getResourceModel("blog/cat")->getMainTable(), array(new Zend_Db_Expr("max(sort_order)")));
                 $data["sort_order"] = (int) $conn->fetchOne($maxSortOrder) + 1;
             }
 
-            $model = Mage::getModel('blog/cat');
-            $model->setData($data)->setId($this->getRequest()->getParam('id'));
+            $model = Mage::getModel("blog/cat");
+            if ($id = $request->getParam("id")) {
+                $model->load($id);
+                $newCat = false;
+            } else {
+                $newCat = true;
+            }
+            $model->setData($data)->setId($id);
 
             try {
                 $model->save();
                 Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('blog')->__('Category was successfully saved'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
+
+                if ($newCat) {
+                    // At the moment, the only place a new category would need to show up is in the sidebar.
+                    Mage::helper("blog")->clearFpcTags(Fontis_Blog_Block_Menu::CACHE_TAG);
+                } else {
+                    // If the name or identifier of a category has changed, we need to redo all blog pages to ensure the change is reflected.
+                    if ($model->getData("title") != $model->getOrigData("title") || $model->getData("identifier") != $model->getOrigData("identifier")) {
+                        Mage::helper("blog")->clearFpcTags(self::GLOBAL_CACHE_TAG);
+                    }
+                }
 
                 if ($this->getRequest()->getParam('back')) {
                     $this->_redirect('*/*/edit', array('id' => $model->getId()));

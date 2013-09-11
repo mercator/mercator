@@ -23,7 +23,7 @@ class Fontis_Blog_Manage_Blog_BlogController extends Mage_Adminhtml_Controller_A
 {
     protected function _initAction()
     {
-        $this->loadLayout()->_setActiveMenu('blog/posts');
+        $this->loadLayout()->_setActiveMenu("blog/posts");
         return $this;
     }
 
@@ -34,23 +34,20 @@ class Fontis_Blog_Manage_Blog_BlogController extends Mage_Adminhtml_Controller_A
 
     public function editAction()
     {
-        $id     = $this->getRequest()->getParam('id');
-        $model  = Mage::getModel('blog/blog')->load($id);
+        $id = $this->getRequest()->getParam("id");
+        $model = Mage::getModel("blog/post")->load($id);
 
         if ($model->getId() || $id == 0) {
             $this->_renderBlogEditPage($model);
         } else {
-            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('blog')->__('Post does not exist.'));
-            $this->_redirect('*/*/');
+            Mage::getSingleton("adminhtml/session")->addError(Mage::helper("blog")->__("Post does not exist."));
+            $this->_redirect("*/*/");
         }
     }
- 
+
     public function newAction()
     {
-        $id     = $this->getRequest()->getParam('id');
-        $model  = Mage::getModel('blog/blog')->load($id);
-
-        $this->_renderBlogEditPage($model);
+        $this->_renderBlogEditPage(Mage::getModel("blog/post"));
     }
 
     protected function _renderBlogEditPage($model)
@@ -65,29 +62,40 @@ class Fontis_Blog_Manage_Blog_BlogController extends Mage_Adminhtml_Controller_A
         $this->loadLayout();
         $this->_setActiveMenu("blog/cat");
 
-        $this->getLayout()->getBlock("head")->setCanLoadExtJs(true);
-        $this->_addContent($this->getLayout()->createBlock('blog/manage_blog_edit'))
-            ->_addLeft($this->getLayout()->createBlock('blog/manage_blog_edit_tabs'));
+        $layout = $this->getLayout();
+        $layout->getBlock("head")->setCanLoadExtJs(true);
+        $this->_addContent($layout->createBlock("blog/manage_blog_edit"))
+            ->_addLeft($layout->createBlock("blog/manage_blog_edit_tabs"));
 
         $this->renderLayout();
     }
- 
+
+    /**
+     * Called whenever a new or existing post is saved.
+     */
     public function saveAction()
     {
-        if ($data = $this->getRequest()->getPost()) {
-            $model = Mage::getModel('blog/post');
-            $model->setData($data)->setId($this->getRequest()->getParam('id'));
-            
+        $request = $this->getRequest();
+        if ($data = $request->getPost()) {
+            $model = Mage::getModel("blog/post");
+            if ($id = $request->getParam("id")) {
+                $model->load($id);
+                $newPost = false;
+            } else {
+                $newPost = true;
+            }
+            $model->setData($data)->setId($id);
+
             try {
                 $nowTime = now();
-                if ($this->getRequest()->getParam('created_time') == NULL) {
+                if ($request->getParam("created_time") == NULL) {
                     $model->setCreatedTime($nowTime)->setUpdateTime($nowTime);
                 } else {
                     $model->setUpdateTime($nowTime);
-                }    
+                }
 
                 $userString = Mage::getSingleton('admin/session')->getUser()->getFirstname() . " " . Mage::getSingleton('admin/session')->getUser()->getLastname();
-                if ($this->getRequest()->getParam('user') == NULL) {
+                if ($request->getParam("user") == NULL) {
                     $model->setUser($userString)->setUpdateUser($userString);
                 } else {
                     $model->setUpdateUser($userString);
@@ -97,7 +105,20 @@ class Fontis_Blog_Manage_Blog_BlogController extends Mage_Adminhtml_Controller_A
                 Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('blog')->__('Post was saved successfully.'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
 
-                if ($this->getRequest()->getParam('back')) {
+                // If this is a new post, we need to ensure it shows up immediately on the frontend.
+                $newStatus = $model->getStatus();
+                if ($newPost && $newStatus == Fontis_Blog_Model_Status::STATUS_ENABLED) {
+                    Mage::helper("blog")->enablePost($model);
+                } else if (!$newPost) {
+                    $oldStatus = $model->getOrigData("status");
+                    if ($oldStatus == Fontis_Blog_Model_Status::STATUS_ENABLED && ($newStatus == Fontis_Blog_Model_Status::STATUS_DISABLED || $newStatus == Fontis_Blog_Model_Status::STATUS_HIDDEN)) {
+                        Mage::helper("blog")->disablePost();
+                    } else if (($oldStatus == Fontis_Blog_Model_Status::STATUS_DISABLED || $oldStatus == Fontis_Blog_Model_Status::STATUS_HIDDEN) && $newStatus == Fontis_Blog_Model_Status::STATUS_ENABLED) {
+                        Mage::helper("blog")->enablePost($model);
+                    }
+                }
+
+                if ($request->getParam('back')) {
                     $this->_redirect('*/*/edit', array('id' => $model->getId()));
                     return;
                 }
@@ -113,66 +134,76 @@ class Fontis_Blog_Manage_Blog_BlogController extends Mage_Adminhtml_Controller_A
         Mage::getSingleton('adminhtml/session')->addError(Mage::helper('blog')->__('Unable to find post to save.'));
         $this->_redirect('*/*/');
     }
- 
+
     public function deleteAction()
     {
-        if ($this->getRequest()->getParam('id') > 0) {
+        $postId = $this->getRequest()->getParam("id");
+        if ($postId > 0) {
             try {
-                $model = Mage::getModel('blog/blog');
-                 
-                $model->setId($this->getRequest()->getParam('id'))->delete();
-                
-                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Post was successfully deleted.'));
-                $this->_redirect('*/*/');
+                Mage::getModel("blog/post")->load($postId)->delete();
+                Mage::helper("blog")->disablePost();
+
+                Mage::getSingleton("adminhtml/session")->addSuccess(Mage::helper("adminhtml")->__("Post was successfully deleted."));
+                $this->_redirect("*/*/");
             } catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                Mage::getSingleton("adminhtml/session")->addError($e->getMessage());
+                $this->_redirect("*/*/edit", array("id" => $postId));
             }
         }
-        $this->_redirect('*/*/');
+        $this->_redirect("*/*/");
     }
 
     public function massDeleteAction() {
-        $blogIds = $this->getRequest()->getParam('blog');
-        if (!is_array($blogIds)) {
-            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select post(s).'));
+        $postIds = $this->getRequest()->getParam("blog");
+        if (!is_array($postIds)) {
+            Mage::getSingleton("adminhtml/session")->addError(Mage::helper("adminhtml")->__("Please select post(s)."));
         } else {
             try {
-                foreach ($blogIds as $blogId) {
-                    $blog = Mage::getModel('blog/blog')->load($blogId);
-                    $blog->delete();
+                foreach ($postIds as $postId) {
+                    Mage::getModel("blog/post")->load($postId)->delete();
                 }
-                Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('adminhtml')->__('Total of %d post(s) were successfully deleted', count($blogIds))
+                Mage::helper("blog")->disablePost();
+
+                Mage::getSingleton("adminhtml/session")->addSuccess(
+                    Mage::helper("adminhtml")->__("Total of %d post(s) were successfully deleted", count($postIds))
                 );
             } catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                Mage::getSingleton("adminhtml/session")->addError($e->getMessage());
             }
         }
-        $this->_redirect('*/*/index');
+        $this->_redirect("*/*/index");
     }
-    
+
     public function massStatusAction()
     {
-        $blogIds = $this->getRequest()->getParam('blog');
-        if(!is_array($blogIds)) {
-            Mage::getSingleton('adminhtml/session')->addError($this->__('Please select post(s).'));
+        $request = $this->getRequest();
+        $postIds = $request->getParam("blog");
+        if (!is_array($postIds)) {
+            Mage::getSingleton("adminhtml/session")->addError($this->__("Please select post(s)."));
         } else {
             try {
-                foreach ($blogIds as $blogId) {
-                    $blog = Mage::getSingleton('blog/blog')
-                        ->load($blogId)
-                        ->setStatus($this->getRequest()->getParam('status'))
+                $helper = Mage::helper("blog");
+                $newStatus = $request->getParam("status");
+                foreach ($postIds as $postId) {
+                    $post = Mage::getModel("blog/post")->load($postId);
+                    $oldStatus = $post->getStatus();
+                    $post->setStatus($newStatus)
                         ->setIsMassupdate(true)
                         ->save();
+
+                    if ($oldStatus == Fontis_Blog_Model_Status::STATUS_ENABLED && ($newStatus == Fontis_Blog_Model_Status::STATUS_DISABLED || $newStatus == Fontis_Blog_Model_Status::STATUS_HIDDEN)) {
+                        $helper->disablePost();
+                    } else if (($oldStatus == Fontis_Blog_Model_Status::STATUS_DISABLED || $oldStatus == Fontis_Blog_Model_Status::STATUS_HIDDEN) && $newStatus == Fontis_Blog_Model_Status::STATUS_ENABLED) {
+                        $helper->enablePost($post);
+                    }
                 }
                 $this->_getSession()->addSuccess(
-                    $this->__('Total of %d record(s) were successfully updated.', count($blogIds))
+                    $this->__("Total of %d record(s) were successfully updated.", count($postIds))
                 );
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             }
         }
-        $this->_redirect('*/*/index');
+        $this->_redirect("*/*/index");
     }
 }

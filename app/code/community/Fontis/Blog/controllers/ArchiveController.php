@@ -74,7 +74,7 @@ class Fontis_Blog_ArchiveController extends Mage_Core_Controller_Front_Action
         }
 
         if (!checkdate($month, $day, $year)) {
-            $this->_forward('NoRoute');
+            $this->_forward("NoRoute");
             return;
         }
 

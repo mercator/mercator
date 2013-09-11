@@ -22,56 +22,58 @@
 class Fontis_Blog_Model_Mysql4_Blog extends Mage_Core_Model_Mysql4_Abstract
 {
     public function _construct()
-    {    
+    {
         // Note that the blog_id refers to the key field in your database table.
         $this->_init('blog/blog', 'post_id');
     }
-	
+
     protected function _afterSave(Mage_Core_Model_Abstract $object)
     {
-        $condition = $this->_getWriteAdapter()->quoteInto('post_id = ?', $object->getId());
-        $this->_getWriteAdapter()->delete($this->getTable('store'), $condition);
+        $writeAdapter = $this->_getWriteAdapter();
+        $condition = $writeAdapter->quoteInto("post_id = ?", $object->getId());
+        $writeAdapter->delete($this->getTable("store"), $condition);
 
-        if ($object->getData('stores')) {
-            foreach ((array)$object->getData('stores') as $store) {
+        if ($object->getData("stores")) {
+            foreach ((array) $object->getData("stores") as $store) {
                 $storeArray = array();
-                $storeArray['post_id'] = $object->getId();
-                $storeArray['store_id'] = $store;
-                $this->_getWriteAdapter()->insert($this->getTable('store'), $storeArray);
+                $storeArray["post_id"] = $object->getId();
+                $storeArray["store_id"] = $store;
+                $writeAdapter->insert($this->getTable("store"), $storeArray);
             }
         } else {
             $storeArray = array();
-            $storeArray['post_id'] = $object->getId();
-            $storeArray['store_id'] = '0';
-            $this->_getWriteAdapter()->insert($this->getTable('store'), $storeArray);
+            $storeArray["post_id"] = $object->getId();
+            $storeArray["store_id"] = "0";
+            $writeAdapter->insert($this->getTable("store"), $storeArray);
         }
 
         return parent::_afterSave($object);
     }
-	
-	/**
+
+    /**
      *
      * @param Mage_Core_Model_Abstract $object
      */
     protected function _afterLoad(Mage_Core_Model_Abstract $object)
     {
-        $select = $this->_getReadAdapter()->select()
+        $readAdapter = $this->_getReadAdapter();
+        $select = $readAdapter->select()
             ->from($this->getTable('store'))
             ->where('post_id = ?', $object->getId());
 
-        if ($data = $this->_getReadAdapter()->fetchAll($select)) {
+        if ($data = $readAdapter->fetchAll($select)) {
             $storesArray = array();
             foreach ($data as $row) {
                 $storesArray[] = $row['store_id'];
             }
             $object->setData('store_id', $storesArray);
         }
-		
-		$select = $this->_getReadAdapter()->select()
+
+        $select = $readAdapter->select()
             ->from($this->getTable('post_cat'))
             ->where('post_id = ?', $object->getId());
 
-        if ($data = $this->_getReadAdapter()->fetchAll($select)) {
+        if ($data = $readAdapter->fetchAll($select)) {
             $catsArray = array();
             foreach ($data as $row) {
                 $catsArray[] = $row['cat_id'];

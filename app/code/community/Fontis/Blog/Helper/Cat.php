@@ -37,18 +37,19 @@ class Fontis_Blog_Helper_Cat extends Mage_Core_Helper_Abstract
         }
 
         $action->loadLayout();
+        $layout = $action->getLayout();
         if ($storage = Mage::getSingleton("customer/session")) {
-            $action->getLayout()->getMessagesBlock()->addMessages($storage->getMessages(true));
+            $layout->getMessagesBlock()->addMessages($storage->getMessages(true));
         }
         $blogTitle = Mage::getStoreConfig("fontis_blog/blog/title");
         $pageTitle = Mage::getSingleton("blog/cat")->load($identifier)->getTitle();
-        $action->getLayout()->getBlock("head")->setTitle($blogTitle . " - " . $pageTitle);
-        if (Mage::getStoreConfig("fontis_blog/rss/enabled")) {
-            if ($head = $action->getLayout()->getBlock("head")) {
+        if ($head = $layout->getBlock("head")) {
+            $head->setTitle($blogTitle . " - " . $pageTitle);
+            if (Mage::getStoreConfig("fontis_blog/rss/enabled")) {
                 $head->addItem("rss", Mage::getUrl(Mage::helper("blog")->getBlogRoute() . "/cat/" . $identifier) . "rss");
             }
         }
-        $action->getLayout()->getBlock("root")->setTemplate(Mage::getStoreConfig("fontis_blog/blog/layout"));
+        $layout->getBlock("root")->setTemplate(Mage::getStoreConfig("fontis_blog/blog/layout"));
         $action->renderLayout();
 
         return true;

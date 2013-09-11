@@ -41,6 +41,9 @@
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
         </reference>
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
         <reference name="content">
               <block type="rss/list" name="rss.list" template="rss/list.phtml"/>
         </reference>
@@ -48,6 +51,9 @@
 
     <rss_index_nofeed>
         <block type="core/template" name="root" output="toHtml" template="rss/nofeed.phtml"/>
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
     </rss_index_nofeed>
 
     <rss_index_wishlist>
@@ -62,34 +68,55 @@ Catalog layout
         <block type="rss/catalog_new" output="toHtml" name="rss.catalog.new">
             <action method="addPriceBlockType"><type>msrp_rss</type><block>catalog/product_price</block><template>catalog/product/price_msrp_rss.phtml</template></action>
         </block>
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
     </rss_catalog_new>
 
     <rss_catalog_special>
         <block type="rss/catalog_special" output="toHtml" name="rss.catalog.special" />
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
     </rss_catalog_special>
 
     <rss_catalog_salesrule>
         <block type="rss/catalog_salesrule" output="toHtml" name="rss.catalog.salesrule" />
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
     </rss_catalog_salesrule>
 
     <rss_catalog_tag>
         <block type="rss/catalog_tag" output="toHtml" name="rss.catalog.tag">
             <action method="addPriceBlockType"><type>msrp_rss</type><block>catalog/product_price</block><template>catalog/product/price_msrp_rss.phtml</template></action>
         </block>
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
     </rss_catalog_tag>
 
     <rss_catalog_notifystock>
         <block type="rss/catalog_notifyStock" output="toHtml" name="rss.catalog.notifystock" />
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
     </rss_catalog_notifystock>
 
     <rss_catalog_review>
         <block type="rss/catalog_review" output="toHtml" name="rss.catalog.review" />
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
     </rss_catalog_review>
 
     <rss_catalog_category>
         <block type="rss/catalog_category" output="toHtml" name="rss.catalog.category">
             <action method="addPriceBlockType"><type>msrp_rss</type><block>catalog/product_price</block><template>catalog/product/price_msrp_rss.phtml</template></action>
         </block>
+        <reference name="head">
+            <action method="setRobots" ifconfig="web/noindex/rss"><meta>NOINDEX,FOLLOW</meta></action>
+        </reference>
     </rss_catalog_category>
 <!--
 Order layout

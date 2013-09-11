@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>jr_clevercms/page/html/topmenu.phtml</template></action>
+        </reference>
+    </default>
+
+    <cms_page_view>
+        <reference name="left">
+            <block type="jr_clevercms/cms_navigation" name="cms_navigation" template="jr_clevercms/cms/navigation/default.phtml" before="-">
+                <action method="setMaxLevel"><depth>2</depth></action>
+            </block>
+        </reference>
+    </cms_page_view>
+</layout>

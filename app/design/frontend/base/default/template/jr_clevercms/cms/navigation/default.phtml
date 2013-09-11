@@ -1,0 +1,11 @@
+<?php /** @var $this JR_CleverCms_Block_Cms_Navigation */ ?>
+<div class="block block-cms-navigation block-<?php echo $this->getNameInLayout(); ?>">
+    <div class="block-title">
+	    <strong><span><?php echo $this->getRoot()->getTitle(); ?></span></strong>
+    </div>
+    <div class="block-content">
+        <ul class="cms-pages">
+            <?php echo $this->getPages(); ?>
+        </ul>
+    </div>
+</div>

@@ -70,43 +70,43 @@ class Fontis_Blog_Block_Manage_Blog_Edit_Tab_Related extends Mage_Adminhtml_Bloc
 
     protected function _prepareColumns()
     {
-        $this->addColumn('related_product', array(
-            'header_css_class' => 'a-center',
-            'type'      => 'checkbox',
-            'name'      => 'related_product',
-            'values'    => $this->_getSelectedProducts(),
-            'align'     => 'center',
-            'index'     => 'entity_id'
+        $this->addColumn("related_product", array(
+            "header_css_class" => "a-center",
+            "type"      => "checkbox",
+            "name"      => "related_product",
+            "values"    => $this->_getSelectedProducts(),
+            "align"     => "center",
+            "index"     => "entity_id"
         ));
-        $this->addColumn('id', array(
-            'header'    => Mage::helper('catalog')->__('ID'),
-            'sortable'  => true,
-            'width'     => '60px',
-            'index'     => 'entity_id'
+        $this->addColumn("id", array(
+            "header"    => Mage::helper("catalog")->__("ID"),
+            "sortable"  => true,
+            "width"     => "60px",
+            "index"     => "entity_id"
         ));
-        $this->addColumn('name', array(
-            'header'    => Mage::helper('catalog')->__('Name'),
-            'index'     => 'name'
+        $this->addColumn("name", array(
+            "header"    => Mage::helper("catalog")->__("Name"),
+            "index"     => "name"
         ));
-        $this->addColumn('sku', array(
-            'header'    => Mage::helper('catalog')->__('SKU'),
-            'width'     => '120px',
-            'index'     => 'sku'
+        $this->addColumn("sku", array(
+            "header"    => Mage::helper("catalog")->__("SKU"),
+            "width"     => "120px",
+            "index"     => "sku"
         ));
-        $this->addColumn('price', array(
-            'header'        => Mage::helper('catalog')->__('Price'),
-            'type'          => 'currency',
-            'currency_code' => (string) Mage::getStoreConfig(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE),
-            'index'         => 'price'
+        $this->addColumn("price", array(
+            "header"        => Mage::helper("catalog")->__("Price"),
+            "type"          => "currency",
+            "currency_code" => (string) Mage::getStoreConfig(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE),
+            "index"         => "price"
         ));
-        $this->addColumn('position', array(
-            'header'            => Mage::helper('catalog')->__('Position'),
-            'name'              => 'position',
-            'type'              => 'number',
-            'validate_class'    => 'validate-number',
-            'index'             => 'position',
-            'width'             => '60px',
-            'editable'          => true,
+        $this->addColumn("position", array(
+            "header"            => Mage::helper("catalog")->__("Position"),
+            "name"              => "position",
+            "type"              => "number",
+            "validate_class"    => "validate-number",
+            "index"             => "position",
+            "width"             => "60px",
+            "editable"          => true,
         ));
 
         return parent::_prepareColumns();
@@ -114,7 +114,7 @@ class Fontis_Blog_Block_Manage_Blog_Edit_Tab_Related extends Mage_Adminhtml_Bloc
 
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl("*/*/grid", array("_current"=>true));
     }
 
     protected function _getProduct()
