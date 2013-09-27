@@ -48,7 +48,7 @@ class Catalin_SEO_Model_Catalog_Layer_Filter_Category extends Mage_Catalog_Model
                     }
                     
                     $data[] = array(
-                        'label' => Mage::helper('core')->htmlEscape($category->getName()),
+                        'label' => Mage::helper('core')->escapeHtml($category->getName()),
                         'value' => $urlKey,
                         'count' => $category->getProductCount(),
                     );

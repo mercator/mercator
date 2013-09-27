@@ -44,7 +44,8 @@ class Fontis_Blog_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         $priority   = (string) Mage::getStoreConfig("sitemap/category/priority");
         $collection = Mage::getResourceModel("sitemap/catalog_category")->getCollection($storeId);
         foreach ($collection as $item) {
-            $xml = sprintf('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
+            $xml = sprintf(
+                '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $item->getUrl()),
                 $date,
                 $changefreq,
@@ -61,7 +62,8 @@ class Fontis_Blog_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         $priority   = (string) Mage::getStoreConfig("sitemap/product/priority");
         $collection = Mage::getResourceModel("sitemap/catalog_product")->getCollection($storeId);
         foreach ($collection as $item) {
-            $xml = sprintf('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
+            $xml = sprintf(
+                '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $item->getUrl()),
                 $date,
                 $changefreq,
@@ -78,7 +80,8 @@ class Fontis_Blog_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         $priority   = (string)Mage::getStoreConfig("sitemap/page/priority");
         $collection = Mage::getResourceModel("sitemap/cms_page")->getCollection($storeId);
         foreach ($collection as $item) {
-            $xml = sprintf('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
+            $xml = sprintf(
+                '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $item->getUrl()),
                 $date,
                 $changefreq,
@@ -97,7 +100,8 @@ class Fontis_Blog_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         Mage::getSingleton("blog/status")->addEnabledFilterToCollection($collection);
         $route = Mage::helper("blog")->getBlogRoute();
         foreach ($collection as $item) {
-            $xml = sprintf('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
+            $xml = sprintf(
+                '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $route . "/" . $item->getIdentifier()),
                 substr($item->getUpdateTime(), 0, 10),
                 $changefreq,
@@ -115,7 +119,8 @@ class Fontis_Blog_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         $collection = Mage::getModel("blog/cat")->getCollection($storeId);
         $route = Mage::helper("blog")->getBlogRoute();
         foreach ($collection as $item) {
-            $xml = sprintf('<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
+            $xml = sprintf(
+                '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $route . "/cat/" . $item->getIdentifier()),
                 $date,
                 $changefreq,

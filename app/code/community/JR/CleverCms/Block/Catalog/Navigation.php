@@ -6,13 +6,11 @@ class JR_CleverCms_Block_Catalog_Navigation extends Mage_Catalog_Block_Navigatio
 
     protected function _construct()
     {
-        $this->addData(array(
-            'cache_lifetime' => false,
-            'cache_tags'     => array(
-                Mage_Catalog_Model_Category::CACHE_TAG,
-                Mage_Core_Model_Store_Group::CACHE_TAG,
-                self::CACHE_TAG,
-            ),
+        $this->addData(array('cache_lifetime' => false));
+        $this->addCacheTag(array(
+            Mage_Catalog_Model_Category::CACHE_TAG,
+            Mage_Core_Model_Store_Group::CACHE_TAG,
+            self::CACHE_TAG,
         ));
     }
 

@@ -155,7 +155,7 @@ class Credis_Client {
      * @var string
      */
     protected $host;
-    
+
     /**
      * Port on which the Redis server is running
      * @var integer
@@ -459,12 +459,12 @@ class Credis_Client {
                         $argsFlat = array_slice($args, 0, $index);
                     }
                     if($name == 'mset' || $name == 'msetnx' || $name == 'hmset') {
-                      foreach($arg as $key => $value) {
-                        $argsFlat[] = $key;
-                        $argsFlat[] = $value;
-                      }
+                        foreach($arg as $key => $value) {
+                            $argsFlat[] = $key;
+                            $argsFlat[] = $value;
+                        }
                     } else {
-                      $argsFlat = array_merge($argsFlat, $arg);
+                        $argsFlat = array_merge($argsFlat, $arg);
                     }
                 } else if($argsFlat !== NULL) {
                     $argsFlat[] = $arg;
@@ -626,7 +626,7 @@ class Credis_Client {
 
                 $response = call_user_func_array(array($this->redis, $name), $args);
             }
-            // Wrap exceptions
+                // Wrap exceptions
             catch(RedisException $e) {
                 throw new CredisException($e->getMessage(), $e->getCode());
             }
@@ -641,12 +641,12 @@ class Credis_Client {
                     break;
                 case 'type':
                     $typeMap = array(
-                      self::TYPE_NONE,
-                      self::TYPE_STRING,
-                      self::TYPE_SET,
-                      self::TYPE_LIST,
-                      self::TYPE_ZSET,
-                      self::TYPE_HASH,
+                        self::TYPE_NONE,
+                        self::TYPE_STRING,
+                        self::TYPE_SET,
+                        self::TYPE_LIST,
+                        self::TYPE_ZSET,
+                        self::TYPE_HASH,
                     );
                     $response = $typeMap[$response];
                     break;
@@ -708,7 +708,7 @@ class Credis_Client {
             case '+':
                 $response = substr($reply, 1);
                 if($response == 'OK' || $response == 'QUEUED') {
-                  return TRUE;
+                    return TRUE;
                 }
                 break;
             /* Bulk reply */
@@ -727,7 +727,7 @@ class Credis_Client {
 
                 $response = array();
                 for ($i = 0; $i < $count; $i++) {
-                        $response[] = $this->read_reply();
+                    $response[] = $this->read_reply();
                 }
                 break;
             /* Integer reply */
@@ -758,7 +758,7 @@ class Credis_Client {
                 $response = array();
                 foreach($lines as $line) {
                     if ( ! $line || substr($line, 0, 1) == '#') {
-                      continue;
+                        continue;
                     }
                     list($key, $value) = explode(':', $line, 2);
                     $response[$key] = $value;

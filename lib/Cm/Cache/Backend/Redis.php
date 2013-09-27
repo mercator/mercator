@@ -91,10 +91,9 @@ class Cm_Cache_Backend_Redis extends Zend_Cache_Backend implements Zend_Cache_Ba
             Zend_Cache::throwException('Redis \'port\' not specified.');
         }
 
-        $port = isset($options['port']) ? $options['port'] : NULL;
         $timeout = isset($options['timeout']) ? $options['timeout'] : self::DEFAULT_CONNECT_TIMEOUT;
         $persistent = isset($options['persistent']) ? $options['persistent'] : '';
-        $this->_redis = new Credis_Client($options['server'], $port, $timeout, $persistent);
+        $this->_redis = new Credis_Client($options['server'], $options['port'], $timeout, $persistent);
 
         if ( isset($options['force_standalone']) && $options['force_standalone']) {
             $this->_redis->forceStandalone();
@@ -213,10 +212,10 @@ class Cm_Cache_Backend_Redis extends Zend_Cache_Backend implements Zend_Cache_Ba
 
         // Set the data
         $result = $this->_redis->hMSet(self::PREFIX_KEY.$id, array(
-          self::FIELD_DATA => $this->_encodeData($data, $this->_compressData),
-          self::FIELD_TAGS => $this->_encodeData(implode(',',$tags), $this->_compressTags),
-          self::FIELD_MTIME => time(),
-          self::FIELD_INF => $lifetime ? 0 : 1,
+            self::FIELD_DATA => $this->_encodeData($data, $this->_compressData),
+            self::FIELD_TAGS => $this->_encodeData(implode(',',$tags), $this->_compressTags),
+            self::FIELD_MTIME => time(),
+            self::FIELD_INF => $lifetime ? 0 : 1,
         ));
         if( ! $result) {
             throw new CredisException("Could not set cache key $id");
@@ -224,7 +223,7 @@ class Cm_Cache_Backend_Redis extends Zend_Cache_Backend implements Zend_Cache_Ba
 
         // Set expiration if specified
         if ($lifetime) {
-          $this->_redis->expire(self::PREFIX_KEY.$id, min($lifetime, self::MAX_LIFETIME));
+            $this->_redis->expire(self::PREFIX_KEY.$id, min($lifetime, self::MAX_LIFETIME));
         }
 
         // Process added tags
@@ -616,7 +615,7 @@ class Cm_Cache_Backend_Redis extends Zend_Cache_Backend implements Zend_Cache_Ba
     {
         list($tags, $mtime, $inf) = $this->_redis->hMGet(self::PREFIX_KEY.$id, array(self::FIELD_TAGS, self::FIELD_MTIME, self::FIELD_INF));
         if( ! $mtime) {
-          return FALSE;
+            return FALSE;
         }
         $tags = explode(',', $this->_decodeData($tags));
         $expire = $inf === '1' ? FALSE : time() + $this->_redis->ttl(self::PREFIX_KEY.$id);
@@ -681,9 +680,9 @@ class Cm_Cache_Backend_Redis extends Zend_Cache_Backend implements Zend_Cache_Ba
     {
         if ($level && strlen($data) >= $this->_compressThreshold) {
             switch($this->_compressionLib) {
-              case 'snappy': $data = snappy_compress($data); break;
-              case 'lzf':    $data = lzf_compress($data); break;
-              case 'gzip':   $data = gzcompress($data, $level); break;
+                case 'snappy': $data = snappy_compress($data); break;
+                case 'lzf':    $data = lzf_compress($data); break;
+                case 'gzip':   $data = gzcompress($data, $level); break;
             }
             if( ! $data) {
                 throw new CredisException("Could not compress cache data.");

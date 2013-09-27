@@ -28,7 +28,7 @@ class JR_CleverCms_Block_Adminhtml_Cms_Page_Edit extends Mage_Adminhtml_Block_Cm
     public function getHeaderText()
     {
         if (Mage::registry('cms_page')->getId()) {
-            return Mage::helper('cms')->__("Edit Page '%s'", $this->htmlEscape(Mage::registry('cms_page')->getTitle()))
+            return Mage::helper('cms')->__("Edit Page '%s'", $this->escapeHtml(Mage::registry('cms_page')->getTitle()))
                 .' (ID: '.Mage::registry('cms_page')->getId().')';
         }
         else {
