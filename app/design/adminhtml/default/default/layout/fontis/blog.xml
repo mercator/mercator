@@ -27,6 +27,9 @@
             <block type="blog/manage_blog" name="blog" template="fontis/blog/posts.phtml" />
         </reference>
     </adminhtml_blog_blog_index>
+    <adminhtml_blog_blog_new>
+        <update handle="editor"/>
+    </adminhtml_blog_blog_new>
     <adminhtml_blog_blog_edit>
         <update handle="editor"/>
     </adminhtml_blog_blog_edit>

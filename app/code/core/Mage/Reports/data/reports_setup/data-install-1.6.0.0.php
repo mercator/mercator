@@ -70,10 +70,14 @@ foreach ($eventTypeData as $row) {
 $installer->endSetup();
 
 /**
- * Cms Page  with 'home' identifier page modification for report pages
+ * Cms Page  with 'home-page' identifier page modification for report pages
  */
 /** @var $cms Mage_Cms_Model_Page */
-$cms = Mage::getModel('cms/page')->load('home', 'identifier');
+// handle this running either before or after the Clever CMS install script
+$cms = Mage::getModel('cms/page')->load('home-page', 'identifier');
+if(!$cms->getId()) {
+    $cms = Mage::getModel('cms/page')->load('home', 'identifier');
+}
 
 $reportLayoutUpdate    = '<!--<reference name="content">
         <block type="catalog/product_new" name="home.catalog.product.new" alias="product_new" template="catalog/product/new.phtml" after="cms_page">
