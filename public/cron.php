@@ -24,6 +24,9 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
+// Change current directory to the directory of current script
+chdir(dirname(__DIR__)); // Changed for Mercator to point to the root Magento folder
+
 require dirname(__DIR__) . '/app/Mage.php';
 
 if (!Mage::isInstalled()) {
