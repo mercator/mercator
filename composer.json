@@ -1,0 +1,83 @@
+{
+    "require": {
+        "magento-hackathon/magento-composer-installer": "dev-mercator",
+        "mercator/SystemConfigurationSearch":           "dev-mercator",
+        "fbrnc/Aoe_Scheduler":                          "dev-mercator",
+        "mercator/mage-enhanced-admin-grids":           "dev-mercator",
+        "mercator/catalin_seo":                         "dev-mercator",
+        "mercator/Magento-ChangeAttributeSet":          "dev-mercator",
+        "fontis/blog":                                  "dev-mercator",
+        "mercator/fontis_recaptcha":                    "dev-mercator",
+        "mercator/indust_customshippingrate":           "dev-mercator",
+        "mercator/magento-clever-cms":                  "dev-mercator",
+        "quafzi/product-visibility":                    "dev-mercator",
+        "netzarbeiter/groups-catalog2":                 "dev-mercator",
+        "netzarbeiter/customer-activation":             "dev-mercator",
+        "mercator/offi_customerattribute":              "dev-mercator",
+        "mercator/PulsestormLauncher":                  "dev-mercator",
+        "mercator/unirgy_giftcert":                     "dev-mercator"
+    },
+    "require-dev": {
+        "ivanchepurnyi/ecomdev_phpunit":                "dev-mercator"
+    },
+    "repositories": [ {
+            "type": "vcs",
+            "url": "https://github.com/mercator/EcomDev_PHPUnit.git"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/magento-composer-installer"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/SystemConfigurationSearch"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/Aoe_Scheduler"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/mage-enhanced-admin-grids"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/catalin_seo"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/Magento-ChangeAttributeSet"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/fontis_blog"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/fontis_recaptcha"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/indust_customshippingrate"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/magento-clever-cms"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/Magento-Productvisibility"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/groupscatalog2"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/customer-activation"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/offi_customerattribute"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/PulsestormLauncher"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/unirgy_giftcert"
+        }
+    ],
+    "extra": {
+        "magento-root-dir": ".",
+        "magento-deploystrategy": "symlink"
+    },
+    "scripts": {
+        "post-package-install": "cp .git/info/exclude .git/info/exclude.tmp; find * -type l -not -exec grep -q \"^{}$\" .git/info/exclude.tmp \\; -print >> .git/info/exclude; rm .git/info/exclude.tmp"
+    }
+}

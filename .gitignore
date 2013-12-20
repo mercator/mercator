@@ -3,4 +3,4 @@
 /downloader/*.cfg
 .DS_Store
 .idea/
-
+vendor

@@ -257,6 +257,11 @@
             <debug>
                 <profiler>0</profiler>
             </debug>
+            <!-- Mercator: default to allowing template symlinks, as otherwise
+                 modules included by Composer often won't work correctly. -->
+            <template>
+                <allow_symlink>1</allow_symlink>
+            </template>
             <translate_inline>
                 <active>0</active>
                 <active_admin>0</active_admin>

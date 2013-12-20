@@ -65,9 +65,9 @@ class Mage_Connect_Package_Target
             $this->_targetMap[] = array('name'=>"mageetc" ,'label'=>"Magento Global Configuration" , 'uri'=>"./app/etc");
             $this->_targetMap[] = array('name'=>"magelib" ,'label'=>"Magento PHP Library file" , 'uri'=>"./lib");
             $this->_targetMap[] = array('name'=>"magelocale" ,'label'=>"Magento Locale language file" , 'uri'=>"./app/locale");
-            $this->_targetMap[] = array('name'=>"magemedia" ,'label'=>"Magento Media library" , 'uri'=>"./media");
-            $this->_targetMap[] = array('name'=>"mageskin" ,'label'=>"Magento Theme Skin (Images, CSS, JS)" , 'uri'=>"./skin");
-            $this->_targetMap[] = array('name'=>"mageweb" ,'label'=>"Magento Other web accessible file" , 'uri'=>".");
+            $this->_targetMap[] = array('name'=>"magemedia" ,'label'=>"Magento Media library" , 'uri'=>"./public/media");
+            $this->_targetMap[] = array('name'=>"mageskin" ,'label'=>"Magento Theme Skin (Images, CSS, JS)" , 'uri'=>"./public/skin");
+            $this->_targetMap[] = array('name'=>"mageweb" ,'label'=>"Magento Other web accessible file" , 'uri'=>"./public");
             $this->_targetMap[] = array('name'=>"magetest" ,'label'=>"Magento PHPUnit test" , 'uri'=>"./tests");
             $this->_targetMap[] = array('name'=>"mage" ,'label'=>"Magento other" , 'uri'=>".");
         }        

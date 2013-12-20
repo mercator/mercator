@@ -1,0 +1,1095 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "1e2bc422204265260c4d11b7e0920496",
+    "packages": [
+        {
+            "name": "fbrnc/Aoe_Scheduler",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/Aoe_Scheduler.git",
+                "reference": "46667a6b1bbadd8c7e7efa5f42b15fa7e195a823"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/Aoe_Scheduler/zipball/46667a6b1bbadd8c7e7efa5f42b15fa7e195a823",
+                "reference": "46667a6b1bbadd8c7e7efa5f42b15fa7e195a823",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Fabrizio Branca",
+                    "email": "mail@{firstname}-{lastname}.de"
+                }
+            ],
+            "description": "Magento Cron Scheduler",
+            "homepage": "http://www.fabrizio-branca.de/magento-cron-scheduler.html",
+            "support": {
+                "source": "https://github.com/mercator/Aoe_Scheduler/tree/mercator"
+            },
+            "time": "2013-12-06 04:17:20"
+        },
+        {
+            "name": "fontis/blog",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/fontis_blog.git",
+                "reference": "83fda5408d6f06db7e004cf04eb05d3a41568ef5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/fontis_blog/zipball/83fda5408d6f06db7e004cf04eb05d3a41568ef5",
+                "reference": "83fda5408d6f06db7e004cf04eb05d3a41568ef5",
+                "shasum": ""
+            },
+            "type": "magento-module",
+            "extra": {
+                "magento_connect": {
+                    "channel": "community",
+                    "php_min": "5.3.0",
+                    "php_max": "6.0.0",
+                    "stability": "stable",
+                    "license_uri": "http://opensource.org/licenses/osl-3.0.php",
+                    "summary": "Native blog for Magento.",
+                    "content": [
+                        {
+                            "type": "magecommunity",
+                            "structure": "dir",
+                            "path": "Fontis/Blog"
+                        },
+                        {
+                            "type": "magedesign",
+                            "structure": "file",
+                            "path": "adminhtml/default/default/layout/fontis/blog.xml"
+                        },
+                        {
+                            "type": "magedesign",
+                            "structure": "dir",
+                            "path": "adminhtml/default/default/template/fontis/blog"
+                        },
+                        {
+                            "type": "magedesign",
+                            "structure": "file",
+                            "path": "frontend/base/default/layout/fontis/blog.xml"
+                        },
+                        {
+                            "type": "magedesign",
+                            "structure": "dir",
+                            "path": "frontend/base/default/template/fontis/blog"
+                        },
+                        {
+                            "type": "mageetc",
+                            "structure": "file",
+                            "path": "modules/Fontis_Blog.xml"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "cs_CZ/Fontis_Blog.csv"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "de_DE/Fontis_Blog.csv"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "en_GB/Fontis_Blog.csv"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "en_US/Fontis_Blog.csv"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "fr_FR/Fontis_Blog.csv"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "cs_CZ/template/email/comment_submitted.html"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "de_DE/template/email/comment_submitted.html"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "en_GB/template/email/comment_submitted.html"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "en_US/template/email/comment_submitted.html"
+                        },
+                        {
+                            "type": "magelocale",
+                            "structure": "file",
+                            "path": "fr_FR/template/email/comment_submitted.html"
+                        },
+                        {
+                            "type": "mageskin",
+                            "structure": "dir",
+                            "path": "frontend/base/default/fontis/blog"
+                        }
+                    ]
+                }
+            },
+            "license": [
+                "Open Software License (OSL 3.0)"
+            ],
+            "authors": [
+                {
+                    "name": "Fontis",
+                    "email": "magento@fontis.com.au"
+                }
+            ],
+            "description": "This extension provides a native blog for Magento.",
+            "homepage": "http://www.fontis.com.au",
+            "support": {
+                "source": "https://github.com/mercator/fontis_blog/tree/v1.1.2"
+            },
+            "time": "2013-10-21 07:00:01"
+        },
+        {
+            "name": "magento-hackathon/magento-composer-installer",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/magento-composer-installer.git",
+                "reference": "7f720782854454ae06bbab7125d83d2d39b59b7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/magento-composer-installer/zipball/7f720782854454ae06bbab7125d83d2d39b59b7e",
+                "reference": "7f720782854454ae06bbab7125d83d2d39b59b7e",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0"
+            },
+            "require-dev": {
+                "composer/composer": "*",
+                "phpunit/phpunit": "*"
+            },
+            "suggest": {
+                "magento-hackathon/composer-command-integrator": "*"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "composer-command-registry": [
+                    "MagentoHackathon\\Composer\\Magento\\Command\\DeployCommand"
+                ],
+                "class": "MagentoHackathon\\Composer\\Magento\\Installer"
+            },
+            "autoload": {
+                "psr-0": {
+                    "MagentoHackathon\\Composer\\Magento": "src/"
+                }
+            },
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Fahlke aka Flyingmana",
+                    "email": "daniel@digitalmanufaktur.com"
+                },
+                {
+                    "name": "Jörg Weller",
+                    "email": "weller@flagbit.de"
+                },
+                {
+                    "name": "Karl Spies",
+                    "email": "karl.spies@gmx.net"
+                },
+                {
+                    "name": "Tobias Vogt",
+                    "email": "tobi@webguys.de"
+                },
+                {
+                    "name": "David Fuhr",
+                    "email": "fuhr@flagbit.de"
+                },
+                {
+                    "name": "Vinai Kopp",
+                    "email": "vinai@netzarbeiter.com"
+                }
+            ],
+            "description": "Composer installer for Magento modules",
+            "homepage": "https://github.com/magento-hackathon/magento-composer-installer",
+            "keywords": [
+                "composer-installer",
+                "magento"
+            ],
+            "support": {
+                "source": "https://github.com/mercator/magento-composer-installer/tree/mercator"
+            },
+            "time": "2013-12-02 01:25:39"
+        },
+        {
+            "name": "mercator/Magento-ChangeAttributeSet",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/Magento-ChangeAttributeSet.git",
+                "reference": "ac08dc72927efc876468f7d547319e3ddebf6f66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/Magento-ChangeAttributeSet/zipball/ac08dc72927efc876468f7d547319e3ddebf6f66",
+                "reference": "ac08dc72927efc876468f7d547319e3ddebf6f66",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "description": "Mercator repository for Flagbit_ChangeAttributeSet. Allows changing the attribute set of products.",
+            "homepage": "https://github.com/Flagbit/Magento-ChangeAttributeSet",
+            "support": {
+                "source": "https://github.com/mercator/Magento-ChangeAttributeSet/tree/mercator"
+            },
+            "time": "2013-12-02 01:53:24"
+        },
+        {
+            "name": "mercator/PulsestormLauncher",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/PulsestormLauncher.git",
+                "reference": "b89227c6fe3dbf1d8abcec8815320f03748d33a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/PulsestormLauncher/zipball/b89227c6fe3dbf1d8abcec8815320f03748d33a1",
+                "reference": "b89227c6fe3dbf1d8abcec8815320f03748d33a1",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "description": "Mercator repository for Pulsestorm_Launcher. Provides navigation shortcuts for the admin console's navigation and gloal search.",
+            "homepage": "https://github.com/mercator/PulsestormLauncher",
+            "support": {
+                "source": "https://github.com/mercator/PulsestormLauncher/tree/mercator"
+            },
+            "time": "2013-12-02 01:26:54"
+        },
+        {
+            "name": "mercator/SystemConfigurationSearch",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/SystemConfigurationSearch.git",
+                "reference": "db7bb13e2bcf63c2325d6e4687bd3e24f93a33cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/SystemConfigurationSearch/zipball/db7bb13e2bcf63c2325d6e4687bd3e24f93a33cf",
+                "reference": "db7bb13e2bcf63c2325d6e4687bd3e24f93a33cf",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "description": "Mercator repository for Alanstormdotcom_Systemsearch. Installs a search form that allows you to quickly find System Configuration fields.",
+            "homepage": "https://github.com/mercator/SystemConfigurationSearch",
+            "support": {
+                "source": "https://github.com/mercator/SystemConfigurationSearch/tree/mercator"
+            },
+            "time": "2013-12-02 01:27:27"
+        },
+        {
+            "name": "mercator/catalin_seo",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/catalin_seo.git",
+                "reference": "5342c3b1e5bbb8b6f615f42123236625e156d5c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/catalin_seo/zipball/5342c3b1e5bbb8b6f615f42123236625e156d5c8",
+                "reference": "5342c3b1e5bbb8b6f615f42123236625e156d5c8",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "extra": {
+                "package-xml": "package.xml"
+            },
+            "description": "Mercator repository for Catalin_Seo. Provides AJAX layered nav and cleaner category URLs.",
+            "homepage": "https://github.com/mercator/catalin_seo",
+            "support": {
+                "source": "https://github.com/mercator/catalin_seo/tree/master",
+                "issues": "https://github.com/mercator/catalin_seo/issues"
+            },
+            "time": "2013-11-08 03:51:16"
+        },
+        {
+            "name": "mercator/fontis_recaptcha",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/fontis_recaptcha.git",
+                "reference": "b644d1c9755920f986f80ab6238cddfb9df4b853"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/fontis_recaptcha/zipball/b644d1c9755920f986f80ab6238cddfb9df4b853",
+                "reference": "b644d1c9755920f986f80ab6238cddfb9df4b853",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "description": "Mercator repository for Fontis_Recaptcha. Protects Magento forms with ReCAPTCHA.",
+            "homepage": "http://www.fontis.com.au",
+            "support": {
+                "source": "https://github.com/mercator/fontis_recaptcha/tree/mercator"
+            },
+            "time": "2013-11-14 05:59:32"
+        },
+        {
+            "name": "mercator/indust_customshippingrate",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/indust_customshippingrate.git",
+                "reference": "a678e7d9c90a665f47cef41c24adf25ef0de161d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/indust_customshippingrate/zipball/a678e7d9c90a665f47cef41c24adf25ef0de161d",
+                "reference": "a678e7d9c90a665f47cef41c24adf25ef0de161d",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "extra": {
+                "package-xml": "package.xml"
+            },
+            "description": "Mercator repository for Indust_CustomShippingRate. Allows administrators to set a custom shipping rate for an order.",
+            "homepage": "https://github.com/mercator/indust_customshippingrate",
+            "support": {
+                "source": "https://github.com/mercator/indust_customshippingrate/tree/master",
+                "issues": "https://github.com/mercator/indust_customshippingrate/issues"
+            },
+            "time": "2013-11-14 06:33:35"
+        },
+        {
+            "name": "mercator/mage-enhanced-admin-grids",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/mage-enhanced-admin-grids.git",
+                "reference": "1387b2b1c9cd32106803512c1c0d7973e7d47bc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/mage-enhanced-admin-grids/zipball/1387b2b1c9cd32106803512c1c0d7973e7d47bc5",
+                "reference": "1387b2b1c9cd32106803512c1c0d7973e7d47bc5",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "description": "Enhanced Admin Grids Extension for Magento",
+            "support": {
+                "source": "https://github.com/mercator/mage-enhanced-admin-grids/tree/mercator"
+            },
+            "time": "2013-11-07 06:35:59"
+        },
+        {
+            "name": "mercator/magento-clever-cms",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/magento-clever-cms.git",
+                "reference": "bc0169b9315a6f4dbb08201c2dccbb5343c58388"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/magento-clever-cms/zipball/bc0169b9315a6f4dbb08201c2dccbb5343c58388",
+                "reference": "bc0169b9315a6f4dbb08201c2dccbb5343c58388",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "description": "Mercator repository for the H&O fork of the Clever_Cms extension. Adds CMS tree structure and permissions.",
+            "homepage": "https://github.com/mercator/magento-clever-cms",
+            "support": {
+                "source": "https://github.com/mercator/magento-clever-cms/tree/mercator"
+            },
+            "time": "2013-12-02 01:24:45"
+        },
+        {
+            "name": "mercator/offi_customerattribute",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/offi_customerattribute.git",
+                "reference": "2a53979a7c9eb9cc7a9f744856fb4d010478ea30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/offi_customerattribute/zipball/2a53979a7c9eb9cc7a9f744856fb4d010478ea30",
+                "reference": "2a53979a7c9eb9cc7a9f744856fb4d010478ea30",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "extra": {
+                "package-xml": "package.xml"
+            },
+            "description": "Mercator repository for Offi_CustomerAttribute. Allows adding custom attributes to customers.",
+            "homepage": "https://github.com/mercator/offi_customerattribute",
+            "support": {
+                "source": "https://github.com/mercator/offi_customerattribute/tree/master",
+                "issues": "https://github.com/mercator/offi_customerattribute/issues"
+            },
+            "time": "2013-11-15 05:58:13"
+        },
+        {
+            "name": "mercator/unirgy_giftcert",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/unirgy_giftcert.git",
+                "reference": "9862477bcf3f82cb8389d4ad9e8d09d538274b8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/unirgy_giftcert/zipball/9862477bcf3f82cb8389d4ad9e8d09d538274b8a",
+                "reference": "9862477bcf3f82cb8389d4ad9e8d09d538274b8a",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "description": "Mercator repository for Unirgy_Giftcart. Provides a gift certificate product type.",
+            "homepage": "https://github.com/mercator/unirgy_giftcert",
+            "support": {
+                "source": "https://github.com/mercator/unirgy_giftcert/tree/mercator",
+                "issues": "https://github.com/mercator/unirgy_giftcert/issues"
+            },
+            "time": "2013-11-17 23:41:15"
+        },
+        {
+            "name": "netzarbeiter/customer-activation",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/customer-activation.git",
+                "reference": "a38727f620870d2e2b41e6ddbc973b9f6439835e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/customer-activation/zipball/a38727f620870d2e2b41e6ddbc973b9f6439835e",
+                "reference": "a38727f620870d2e2b41e6ddbc973b9f6439835e",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "require-dev": {
+                "ivanchepurnyi/ecomdev_phpunit": "*"
+            },
+            "type": "magento-module",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Vinai Kopp",
+                    "email": "vinai@netzarbeiter.com"
+                }
+            ],
+            "description": "Makes it impossible for a customer to log in until the account has been activated by the administrator.",
+            "homepage": "https://github.com/Vinai/customer-activation",
+            "support": {
+                "source": "https://github.com/mercator/customer-activation/tree/mercator"
+            },
+            "time": "2013-11-15 04:14:04"
+        },
+        {
+            "name": "netzarbeiter/groups-catalog2",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/groupscatalog2.git",
+                "reference": "b45247261f7e9744b03386298ccbd5f00aa7d590"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/groupscatalog2/zipball/b45247261f7e9744b03386298ccbd5f00aa7d590",
+                "reference": "b45247261f7e9744b03386298ccbd5f00aa7d590",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "require-dev": {
+                "ivanchepurnyi/ecomdev_phpunit": "*"
+            },
+            "type": "magento-module",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Vinai Kopp",
+                    "email": "vinai@netzarbeiter.com"
+                }
+            ],
+            "description": "Magento extension to hide categories and products from customers depending on their customer group.",
+            "homepage": "https://github.com/Vinai/groupscatalog2",
+            "support": {
+                "source": "https://github.com/mercator/groupscatalog2/tree/0.3.3"
+            },
+            "time": "2013-11-23 12:18:31"
+        },
+        {
+            "name": "quafzi/product-visibility",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/Magento-Productvisibility.git",
+                "reference": "08ee42eb39b3645a80bceab304cce6380c471043"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/Magento-Productvisibility/zipball/08ee42eb39b3645a80bceab304cce6380c471043",
+                "reference": "08ee42eb39b3645a80bceab304cce6380c471043",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*"
+            },
+            "type": "magento-module",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Birke",
+                    "email": "tbirke@netextreme.de"
+                }
+            ],
+            "description": "This extension shows, why a product is visible for customers - or why not.",
+            "support": {
+                "source": "https://github.com/mercator/Magento-Productvisibility/tree/mercator"
+            },
+            "time": "2013-12-06 04:25:34"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "ivanchepurnyi/ecomdev_phpunit",
+            "version": "dev-mercator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercator/EcomDev_PHPUnit.git",
+                "reference": "c607498d2299a8ee70fe86cebd6e4298dd68ba6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercator/EcomDev_PHPUnit/zipball/c607498d2299a8ee70fe86cebd6e4298dd68ba6e",
+                "reference": "c607498d2299a8ee70fe86cebd6e4298dd68ba6e",
+                "shasum": ""
+            },
+            "require": {
+                "magento-hackathon/magento-composer-installer": "*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "magento-module",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Chepurnyi"
+                }
+            ],
+            "description": "Magento PHPUnit Integration",
+            "homepage": "http://www.ecomdev.org/shop/code-testing/php-unit-test-suite.html",
+            "support": {
+                "source": "https://github.com/mercator/EcomDev_PHPUnit/tree/dev"
+            },
+            "time": "2013-11-07 16:47:59"
+        },
+        {
+            "name": "phpunit/php-code-coverage",
+            "version": "1.2.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
+                "reference": "466e7cd2554b4e264c9e3f31216d25ac0e5f3d94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/466e7cd2554b4e264c9e3f31216d25ac0e5f3d94",
+                "reference": "466e7cd2554b4e264c9e3f31216d25ac0e5f3d94",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "phpunit/php-file-iterator": ">=1.3.0@stable",
+                "phpunit/php-text-template": ">=1.1.1@stable",
+                "phpunit/php-token-stream": ">=1.1.3@stable"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*@dev"
+            },
+            "suggest": {
+                "ext-dom": "*",
+                "ext-xdebug": ">=2.0.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "PHP/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
+            "homepage": "https://github.com/sebastianbergmann/php-code-coverage",
+            "keywords": [
+                "coverage",
+                "testing",
+                "xunit"
+            ],
+            "time": "2013-09-10 08:14:32"
+        },
+        {
+            "name": "phpunit/php-file-iterator",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
+                "reference": "acd690379117b042d1c8af1fafd61bde001bf6bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/acd690379117b042d1c8af1fafd61bde001bf6bb",
+                "reference": "acd690379117b042d1c8af1fafd61bde001bf6bb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "File/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "FilterIterator implementation that filters files based on a list of suffixes.",
+            "homepage": "https://github.com/sebastianbergmann/php-file-iterator/",
+            "keywords": [
+                "filesystem",
+                "iterator"
+            ],
+            "time": "2013-10-10 15:34:57"
+        },
+        {
+            "name": "phpunit/php-text-template",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-text-template.git",
+                "reference": "5180896f51c5b3648ac946b05f9ec02be78a0b23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/5180896f51c5b3648ac946b05f9ec02be78a0b23",
+                "reference": "5180896f51c5b3648ac946b05f9ec02be78a0b23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Text/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Simple template engine.",
+            "homepage": "https://github.com/sebastianbergmann/php-text-template/",
+            "keywords": [
+                "template"
+            ],
+            "time": "2012-10-31 18:15:28"
+        },
+        {
+            "name": "phpunit/php-timer",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-timer.git",
+                "reference": "19689d4354b295ee3d8c54b4f42c3efb69cbc17c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/19689d4354b295ee3d8c54b4f42c3efb69cbc17c",
+                "reference": "19689d4354b295ee3d8c54b4f42c3efb69cbc17c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "PHP/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Utility class for timing",
+            "homepage": "https://github.com/sebastianbergmann/php-timer/",
+            "keywords": [
+                "timer"
+            ],
+            "time": "2013-08-02 07:42:54"
+        },
+        {
+            "name": "phpunit/php-token-stream",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-token-stream.git",
+                "reference": "5220af2a7929aa35cf663d97c89ad3d50cf5fa3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/5220af2a7929aa35cf663d97c89ad3d50cf5fa3e",
+                "reference": "5220af2a7929aa35cf663d97c89ad3d50cf5fa3e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "PHP/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Wrapper around PHP's tokenizer extension.",
+            "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
+            "keywords": [
+                "tokenizer"
+            ],
+            "time": "2013-09-13 04:58:23"
+        },
+        {
+            "name": "phpunit/phpunit",
+            "version": "3.7.28",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "3b97c8492bcafbabe6b6fbd2ab35f2f04d932a8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3b97c8492bcafbabe6b6fbd2ab35f2f04d932a8d",
+                "reference": "3b97c8492bcafbabe6b6fbd2ab35f2f04d932a8d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-pcre": "*",
+                "ext-reflection": "*",
+                "ext-spl": "*",
+                "php": ">=5.3.3",
+                "phpunit/php-code-coverage": "~1.2.1",
+                "phpunit/php-file-iterator": ">=1.3.1",
+                "phpunit/php-text-template": ">=1.1.1",
+                "phpunit/php-timer": ">=1.0.4",
+                "phpunit/phpunit-mock-objects": "~1.2.0",
+                "symfony/yaml": "~2.0"
+            },
+            "require-dev": {
+                "pear-pear/pear": "1.9.4"
+            },
+            "suggest": {
+                "ext-json": "*",
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "phpunit/php-invoker": ">=1.1.0,<1.2.0"
+            },
+            "bin": [
+                "composer/bin/phpunit"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.7.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "PHPUnit/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "",
+                "../../symfony/yaml/"
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "The PHP Unit Testing framework.",
+            "homepage": "http://www.phpunit.de/",
+            "keywords": [
+                "phpunit",
+                "testing",
+                "xunit"
+            ],
+            "time": "2013-10-17 07:27:40"
+        },
+        {
+            "name": "phpunit/phpunit-mock-objects",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
+                "reference": "5794e3c5c5ba0fb037b11d8151add2a07fa82875"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/5794e3c5c5ba0fb037b11d8151add2a07fa82875",
+                "reference": "5794e3c5c5ba0fb037b11d8151add2a07fa82875",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "phpunit/php-text-template": ">=1.1.1@stable"
+            },
+            "suggest": {
+                "ext-soap": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "PHPUnit/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Mock Object library for PHPUnit",
+            "homepage": "https://github.com/sebastianbergmann/phpunit-mock-objects/",
+            "keywords": [
+                "mock",
+                "xunit"
+            ],
+            "time": "2013-01-13 10:24:48"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.4.0",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "1ae235a1b9d3ad3d9f3860ff20acc072df95b7f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/1ae235a1b9d3ad3d9f3860ff20acc072df95b7f5",
+                "reference": "1ae235a1b9d3ad3d9f3860ff20acc072df95b7f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-11-26 16:40:27"
+        }
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "magento-hackathon/magento-composer-installer": 20,
+        "mercator/systemconfigurationsearch": 20,
+        "fbrnc/aoe_scheduler": 20,
+        "mercator/mage-enhanced-admin-grids": 20,
+        "mercator/catalin_seo": 20,
+        "mercator/magento-changeattributeset": 20,
+        "fontis/blog": 20,
+        "mercator/fontis_recaptcha": 20,
+        "mercator/indust_customshippingrate": 20,
+        "mercator/magento-clever-cms": 20,
+        "quafzi/product-visibility": 20,
+        "netzarbeiter/groups-catalog2": 20,
+        "netzarbeiter/customer-activation": 20,
+        "mercator/offi_customerattribute": 20,
+        "mercator/pulsestormlauncher": 20,
+        "mercator/unirgy_giftcert": 20,
+        "ivanchepurnyi/ecomdev_phpunit": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

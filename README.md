@@ -13,6 +13,12 @@ The project has the following goals:
 * Present an alternative to Enterprise Edition, with a similar feature set but under an open source licensing and development model.
 * Continue support and development of the Magento 1.x codebase.
 
+Installation
+------------
+
+1. Clone the [Mercator](https://github.com/mercator/mercator) repository using git.
+1. Download and install [Composer](http://getcomposer.org/download/).
+1. From inside the cloned Mercator directory, use Composer to download and symlink extensions. If you added Composer to your path, you can run: `composer.phar install`
 
 Features
 --------
@@ -35,6 +41,7 @@ All the standard features of Magento Community Edition, plus the following exten
 * [Netzarbeiter Groups Catalog 2](https://github.com/Vinai/groupscatalog2) (OSL 3.0)
 * [Offi Customer Attributes Manager](http://www.magentocommerce.com/magento-connect/customer-attributes-manager-5092.html) (OSL-3.0)
 * [Pulsestorm Launcher](https://github.com/astorm/PulsestormLauncher) (MIT)
+* [System Configuration Search](https://github.com/astorm/SystemConfigurationSearch) (MIT)
 * [Unirgy Gift Certificates](http://www.unirgy.com/products/ugiftcert/) (OSL-3.0)
 
 Where necessary, extensions are modified to allow them to be integrated into Mercator.
