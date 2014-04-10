@@ -15,7 +15,11 @@
         "netzarbeiter/customer-activation":             "dev-mercator",
         "mercator/offi_customerattribute":              "dev-mercator",
         "mercator/PulsestormLauncher":                  "dev-mercator",
-        "mercator/unirgy_giftcert":                     "dev-mercator"
+        "mercator/unirgy_giftcert":                     "dev-mercator",
+        "mercator/magento-elasticsearch":               "dev-mercator",
+        "webcomm/magento-boilerplate":                  "dev-mercator",
+        "iwd/onepagecheckout":                          "dev-mercator",
+        "fbrnc/aoe_classpathcache":                     "dev-mercator"
     },
     "require-dev": {
         "ivanchepurnyi/ecomdev_phpunit":                "dev-mercator"
@@ -71,6 +75,18 @@
         }, {
             "type": "vcs",
             "url": "https://github.com/mercator/unirgy_giftcert"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/magento-elasticsearch"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/magento-boilerplate"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/iwd_onepagecheckout"
+        }, {
+            "type": "vcs",
+            "url": "https://github.com/mercator/Aoe_ClassPathCache"
         }
     ],
     "extra": {
