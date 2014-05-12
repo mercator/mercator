@@ -393,12 +393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercator/catalin_seo.git",
-                "reference": "268270f3600cd0a2cda68e31a71ec68e89d8c68a"
+                "reference": "d3ff5379b8f6cf2ddde2ca6d48507bee04fdcc05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercator/catalin_seo/zipball/268270f3600cd0a2cda68e31a71ec68e89d8c68a",
-                "reference": "268270f3600cd0a2cda68e31a71ec68e89d8c68a",
+                "url": "https://api.github.com/repos/mercator/catalin_seo/zipball/d3ff5379b8f6cf2ddde2ca6d48507bee04fdcc05",
+                "reference": "d3ff5379b8f6cf2ddde2ca6d48507bee04fdcc05",
                 "shasum": ""
             },
             "require": {
@@ -411,7 +411,7 @@
                 "source": "https://github.com/mercator/catalin_seo/tree/mercator",
                 "issues": "https://github.com/mercator/catalin_seo/issues"
             },
-            "time": "2014-04-10 01:15:23"
+            "time": "2014-05-12 01:07:46"
         },
         {
             "name": "mercator/fontis_recaptcha",
@@ -497,12 +497,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercator/magento-clever-cms.git",
-                "reference": "1c2f5ba043b6dd19d4d6715d73e3099766b0676f"
+                "reference": "f7c62d67c33ac119fe0452fab22f50b468552ee1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercator/magento-clever-cms/zipball/1c2f5ba043b6dd19d4d6715d73e3099766b0676f",
-                "reference": "1c2f5ba043b6dd19d4d6715d73e3099766b0676f",
+                "url": "https://api.github.com/repos/mercator/magento-clever-cms/zipball/f7c62d67c33ac119fe0452fab22f50b468552ee1",
+                "reference": "f7c62d67c33ac119fe0452fab22f50b468552ee1",
                 "shasum": ""
             },
             "require": {
@@ -514,7 +514,7 @@
             "support": {
                 "source": "https://github.com/mercator/magento-clever-cms/tree/mercator"
             },
-            "time": "2014-04-07 01:39:33"
+            "time": "2014-05-05 02:00:24"
         },
         {
             "name": "mercator/magento-elasticsearch",
@@ -522,12 +522,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercator/magento-elasticsearch.git",
-                "reference": "e9705158baa24a042de19c3eaf300dd87b35bf6c"
+                "reference": "5448a914aecaf44175da5948b70e8f523da3f4b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercator/magento-elasticsearch/zipball/e9705158baa24a042de19c3eaf300dd87b35bf6c",
-                "reference": "e9705158baa24a042de19c3eaf300dd87b35bf6c",
+                "url": "https://api.github.com/repos/mercator/magento-elasticsearch/zipball/5448a914aecaf44175da5948b70e8f523da3f4b7",
+                "reference": "5448a914aecaf44175da5948b70e8f523da3f4b7",
                 "shasum": ""
             },
             "require": {
@@ -539,7 +539,7 @@
             "support": {
                 "source": "https://github.com/mercator/magento-elasticsearch/tree/mercator"
             },
-            "time": "2014-02-03 01:07:47"
+            "time": "2014-05-12 00:58:44"
         },
         {
             "name": "mercator/offi_customerattribute",
@@ -602,12 +602,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercator/customer-activation.git",
-                "reference": "a38727f620870d2e2b41e6ddbc973b9f6439835e"
+                "reference": "f6e0eb364d29bed7199be0f7f76bf6d5487b9842"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercator/customer-activation/zipball/a38727f620870d2e2b41e6ddbc973b9f6439835e",
-                "reference": "a38727f620870d2e2b41e6ddbc973b9f6439835e",
+                "url": "https://api.github.com/repos/mercator/customer-activation/zipball/f6e0eb364d29bed7199be0f7f76bf6d5487b9842",
+                "reference": "f6e0eb364d29bed7199be0f7f76bf6d5487b9842",
                 "shasum": ""
             },
             "require": {
@@ -631,7 +631,7 @@
             "support": {
                 "source": "https://github.com/mercator/customer-activation/tree/mercator"
             },
-            "time": "2013-11-15 04:14:04"
+            "time": "2014-04-10 06:21:07"
         },
         {
             "name": "netzarbeiter/groups-catalog2",
@@ -639,12 +639,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercator/groupscatalog2.git",
-                "reference": "b45247261f7e9744b03386298ccbd5f00aa7d590"
+                "reference": "0dea7fe932462386b433375f90d3b3b16f95456a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercator/groupscatalog2/zipball/b45247261f7e9744b03386298ccbd5f00aa7d590",
-                "reference": "b45247261f7e9744b03386298ccbd5f00aa7d590",
+                "url": "https://api.github.com/repos/mercator/groupscatalog2/zipball/0dea7fe932462386b433375f90d3b3b16f95456a",
+                "reference": "0dea7fe932462386b433375f90d3b3b16f95456a",
                 "shasum": ""
             },
             "require": {
@@ -666,9 +666,9 @@
             "description": "Magento extension to hide categories and products from customers depending on their customer group.",
             "homepage": "https://github.com/Vinai/groupscatalog2",
             "support": {
-                "source": "https://github.com/mercator/groupscatalog2/tree/0.3.3"
+                "source": "https://github.com/mercator/groupscatalog2/tree/mercator"
             },
-            "time": "2013-11-23 12:18:31"
+            "time": "2014-04-10 06:19:02"
         },
         {
             "name": "quafzi/product-visibility",
@@ -709,12 +709,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercator/magento-boilerplate.git",
-                "reference": "cb105cd0b731f916a91523580b38a6b31c97f6c5"
+                "reference": "0bc934e520552e4d036c137bcba9035d79cbb4bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercator/magento-boilerplate/zipball/cb105cd0b731f916a91523580b38a6b31c97f6c5",
-                "reference": "cb105cd0b731f916a91523580b38a6b31c97f6c5",
+                "url": "https://api.github.com/repos/mercator/magento-boilerplate/zipball/0bc934e520552e4d036c137bcba9035d79cbb4bb",
+                "reference": "0bc934e520552e4d036c137bcba9035d79cbb4bb",
                 "shasum": ""
             },
             "require": {
@@ -755,7 +755,7 @@
             "support": {
                 "source": "https://github.com/mercator/magento-boilerplate/tree/mercator"
             },
-            "time": "2014-04-10 05:14:21"
+            "time": "2014-05-12 01:06:44"
         }
     ],
     "packages-dev": null,
