@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9b65ba1842b00b866efb324caed809ff",
+    "hash": "78e5670f95871843c324164d84119989",
     "packages": [
         {
             "name": "fbrnc/Aoe_Scheduler",
@@ -207,12 +207,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercator/iwd_onepagecheckout.git",
-                "reference": "9550c50c940026d18fb16bb30841a3352ac1cc18"
+                "reference": "b1f9b2a534a1973c2865918fc24e5a1811d1bb1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercator/iwd_onepagecheckout/zipball/9550c50c940026d18fb16bb30841a3352ac1cc18",
-                "reference": "9550c50c940026d18fb16bb30841a3352ac1cc18",
+                "url": "https://api.github.com/repos/mercator/iwd_onepagecheckout/zipball/b1f9b2a534a1973c2865918fc24e5a1811d1bb1b",
+                "reference": "b1f9b2a534a1973c2865918fc24e5a1811d1bb1b",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
                 "source": "https://github.com/mercator/iwd_onepagecheckout/tree/master",
                 "issues": "https://github.com/mercator/iwd_onepagecheckout/issues"
             },
-            "time": "2014-02-21 06:01:15"
+            "time": "2014-05-16 06:03:36"
         },
         {
             "name": "magento-hackathon/magento-composer-installer",
@@ -393,12 +393,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mercator/catalin_seo.git",
-                "reference": "d3ff5379b8f6cf2ddde2ca6d48507bee04fdcc05"
+                "reference": "2d7014568719c7f3039666928ba2e48f7f865f79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mercator/catalin_seo/zipball/d3ff5379b8f6cf2ddde2ca6d48507bee04fdcc05",
-                "reference": "d3ff5379b8f6cf2ddde2ca6d48507bee04fdcc05",
+                "url": "https://api.github.com/repos/mercator/catalin_seo/zipball/2d7014568719c7f3039666928ba2e48f7f865f79",
+                "reference": "2d7014568719c7f3039666928ba2e48f7f865f79",
                 "shasum": ""
             },
             "require": {
@@ -411,7 +411,7 @@
                 "source": "https://github.com/mercator/catalin_seo/tree/mercator",
                 "issues": "https://github.com/mercator/catalin_seo/issues"
             },
-            "time": "2014-05-12 01:07:46"
+            "time": "2014-05-13 05:23:32"
         },
         {
             "name": "mercator/fontis_recaptcha",
@@ -437,35 +437,6 @@
                 "source": "https://github.com/mercator/fontis_recaptcha/tree/mercator"
             },
             "time": "2013-11-14 05:59:32"
-        },
-        {
-            "name": "mercator/indust_customshippingrate",
-            "version": "dev-mercator",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mercator/indust_customshippingrate.git",
-                "reference": "a678e7d9c90a665f47cef41c24adf25ef0de161d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mercator/indust_customshippingrate/zipball/a678e7d9c90a665f47cef41c24adf25ef0de161d",
-                "reference": "a678e7d9c90a665f47cef41c24adf25ef0de161d",
-                "shasum": ""
-            },
-            "require": {
-                "magento-hackathon/magento-composer-installer": "*"
-            },
-            "type": "magento-module",
-            "extra": {
-                "package-xml": "package.xml"
-            },
-            "description": "Mercator repository for Indust_CustomShippingRate. Allows administrators to set a custom shipping rate for an order.",
-            "homepage": "https://github.com/mercator/indust_customshippingrate",
-            "support": {
-                "source": "https://github.com/mercator/indust_customshippingrate/tree/master",
-                "issues": "https://github.com/mercator/indust_customshippingrate/issues"
-            },
-            "time": "2013-11-14 06:33:35"
         },
         {
             "name": "mercator/mage-enhanced-admin-grids",
@@ -772,7 +743,6 @@
         "mercator/magento-changeattributeset": 20,
         "fontis/blog": 20,
         "mercator/fontis_recaptcha": 20,
-        "mercator/indust_customshippingrate": 20,
         "mercator/magento-clever-cms": 20,
         "quafzi/product-visibility": 20,
         "netzarbeiter/groups-catalog2": 20,

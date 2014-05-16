@@ -8,7 +8,6 @@
         "mercator/Magento-ChangeAttributeSet":          "dev-mercator",
         "fontis/blog":                                  "dev-mercator",
         "mercator/fontis_recaptcha":                    "dev-mercator",
-        "mercator/indust_customshippingrate":           "dev-mercator",
         "mercator/magento-clever-cms":                  "dev-mercator",
         "quafzi/product-visibility":                    "dev-mercator",
         "netzarbeiter/groups-catalog2":                 "dev-mercator",
@@ -51,9 +50,6 @@
         }, {
             "type": "vcs",
             "url": "https://github.com/mercator/fontis_recaptcha"
-        }, {
-            "type": "vcs",
-            "url": "https://github.com/mercator/indust_customshippingrate"
         }, {
             "type": "vcs",
             "url": "https://github.com/mercator/magento-clever-cms"
