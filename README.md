@@ -13,6 +13,18 @@ The project has the following goals:
 * Present an alternative to Enterprise Edition, with a similar feature set but under an open source licensing and development model.
 * Continue support and development of the Magento 1.x codebase.
 
+Quickstart
+----------
+
+A pre-built [Vagrant box](https://github.com/mercator/mercator/wiki/Vagrant) is available to get up and running with Mercator in minutes. Full details can be found on the [wiki](https://github.com/mercator/mercator/wiki/Vagrant), but for the impatient:
+
+    wget http://dl.fontis.com.au/mercator.box
+    vagrant box add --name mercator mercator.box
+    vagrant init mercator
+    vagrant up
+
+Then point a browser at [http://127.0.0.1:8081](http://127.0.0.1:8081/).
+
 Installation
 ------------
 
