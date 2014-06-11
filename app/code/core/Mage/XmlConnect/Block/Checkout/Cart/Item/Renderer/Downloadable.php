@@ -31,7 +31,7 @@
  * @package     Mage_XmlConnect
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Xmlconnect_Block_Checkout_Cart_Item_Renderer_Downloadable
+class Mage_XmlConnect_Block_Checkout_Cart_Item_Renderer_Downloadable
     extends Mage_Downloadable_Block_Checkout_Cart_Item_Renderer
 {
     /**

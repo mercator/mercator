@@ -2,5 +2,4 @@
 /public/errors/local.xml
 /downloader/*.cfg
 .DS_Store
-.idea/
 vendor

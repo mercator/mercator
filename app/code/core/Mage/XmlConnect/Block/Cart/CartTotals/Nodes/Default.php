@@ -31,7 +31,7 @@
  * @package     Mage_XmlConnect
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Xmlconnect_Block_Cart_CartTotals_Nodes_Default extends Mage_Checkout_Block_Total_Default
+class Mage_XmlConnect_Block_Cart_CartTotals_Nodes_Default extends Mage_Checkout_Block_Total_Default
 {
     /**
      * Add cart total node to xml

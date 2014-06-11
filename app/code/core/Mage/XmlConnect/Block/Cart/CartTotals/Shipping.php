@@ -31,7 +31,7 @@
  * @package     Mage_XmlConnect
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Xmlconnect_Block_Cart_CartTotals_Shipping extends Mage_Tax_Block_Checkout_Shipping
+class Mage_XmlConnect_Block_Cart_CartTotals_Shipping extends Mage_Tax_Block_Checkout_Shipping
 {
     /**
      * Total id prefix

@@ -31,7 +31,7 @@
  * @package     Mage_XmlConnect
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Xmlconnect_Block_Cart_CartTotals_Subtotal extends Mage_Tax_Block_Checkout_Subtotal
+class Mage_XmlConnect_Block_Cart_CartTotals_Subtotal extends Mage_Tax_Block_Checkout_Subtotal
 {
     /**
      * Total id prefix

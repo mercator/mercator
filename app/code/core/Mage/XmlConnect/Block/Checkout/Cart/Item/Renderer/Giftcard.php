@@ -31,7 +31,7 @@
  * @package     Mage_XmlConnect
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Xmlconnect_Block_Checkout_Cart_Item_Renderer_Giftcard
+class Mage_XmlConnect_Block_Checkout_Cart_Item_Renderer_Giftcard
     extends Enterprise_GiftCard_Block_Checkout_Cart_Item_Renderer
 {
     /**
