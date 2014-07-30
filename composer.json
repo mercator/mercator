@@ -23,64 +23,84 @@
     "require-dev": {
         "ivanchepurnyi/ecomdev_phpunit":                "dev-mercator"
     },
-    "repositories": [ {
+    "repositories": [
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/EcomDev_PHPUnit.git"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/magento-composer-installer"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/SystemConfigurationSearch"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/Aoe_Scheduler"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/mage-enhanced-admin-grids"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/catalin_seo"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/Magento-ChangeAttributeSet"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/fontis_blog"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/fontis_recaptcha"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/magento-clever-cms"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/Magento-Productvisibility"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/groupscatalog2"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/customer-activation"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/offi_customerattribute"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/PulsestormLauncher"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/unirgy_giftcert"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/magento-elasticsearch"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/magento-boilerplate"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/iwd_onepagecheckout"
-        }, {
+        },
+        {
             "type": "vcs",
             "url": "https://github.com/mercator/Aoe_ClassPathCache"
         }
@@ -90,6 +110,10 @@
         "magento-deploystrategy": "symlink"
     },
     "scripts": {
-        "post-package-install": "cp .git/info/exclude .git/info/exclude.tmp; find * -type l -not -exec grep -q \"^{}$\" .git/info/exclude.tmp \\; -print >> .git/info/exclude; rm .git/info/exclude.tmp"
+        "post-package-install": [
+            "cp .git/info/exclude .git/info/exclude.tmp;",
+            "find * -type l -not -exec grep -q \"^{}$\" .git/info/exclude.tmp \\; -print >> .git/info/exclude;",
+            "rm .git/info/exclude.tmp"
+        ]
     }
 }
