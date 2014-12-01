@@ -2,4 +2,4 @@
 /public/errors/local.xml
 /downloader/*.cfg
 .DS_Store
-vendor
+/vendor
