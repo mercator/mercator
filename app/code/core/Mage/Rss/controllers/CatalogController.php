@@ -118,12 +118,11 @@ class Mage_Rss_CatalogController extends Mage_Core_Controller_Front_Action
      */
     public function preDispatch()
     {
-        $action = strtolower($this->getRequest()->getActionName());
-        if ($action == 'notifystock') {
+        if ($this->getRequest()->getActionName() == 'notifystock') {
             $this->_currentArea = 'adminhtml';
             Mage::helper('rss')->authAdmin('catalog/products');
         }
-        if ($action == 'review') {
+        if ($this->getRequest()->getActionName() == 'review') {
             $this->_currentArea = 'adminhtml';
             Mage::helper('rss')->authAdmin('catalog/reviews_ratings');
         }

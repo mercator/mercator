@@ -814,12 +814,12 @@ final class Mage
 
                 if (!is_dir($logDir)) {
                     mkdir($logDir);
-                    chmod($logDir, 0750);
+                    chmod($logDir, 0777);
                 }
 
                 if (!file_exists($logFile)) {
                     file_put_contents($logFile, '');
-                    chmod($logFile, 0640);
+                    chmod($logFile, 0777);
                 }
 
                 $format = '%timestamp% %priorityName% (%priority%): %message%' . PHP_EOL;

@@ -320,10 +320,6 @@ final class Maged_Controller
      */
     public function connectPackagesPostAction()
     {
-        if (!$this->_validateFormKey()) {
-            echo "INVALID POST DATA";
-            return;
-        }
         $actions = isset($_POST['actions']) ? $_POST['actions'] : array();
         if (isset($_POST['ignore_local_modification'])) {
             $ignoreLocalModification = $_POST['ignore_local_modification'];
@@ -338,10 +334,6 @@ final class Maged_Controller
      */
     public function connectPreparePackagePostAction()
     {
-        if (!$this->_validateFormKey()) {
-            echo "INVALID POST DATA";
-            return;
-        }
         if (!$_POST) {
             echo "INVALID POST DATA";
             return;
@@ -363,10 +355,6 @@ final class Maged_Controller
      */
     public function connectInstallPackagePostAction()
     {
-        if (!$this->_validateFormKey()) {
-            echo "INVALID POST DATA";
-            return;
-        }
         if (!$_POST) {
             echo "INVALID POST DATA";
             return;
@@ -456,11 +444,6 @@ final class Maged_Controller
      */
     public function settingsPostAction()
     {
-        if (!$this->_validateFormKey()) {
-            $this->session()->addMessage('error', "Unable to save settings");
-            $this->redirect($this->url('settings'));
-            return;
-        }
         if ($_POST) {
             $ftp = $this->getFtpPost($_POST);
 
@@ -1139,7 +1122,10 @@ final class Maged_Controller
      */
     protected function _validateFormKey()
     {
-        return $this->session()->validateFormKey();
+        if (!($formKey = $_REQUEST['form_key']) || $formKey != $this->session()->getFormKey()) {
+            return false;
+        }
+        return true;
     }
 
     /**

@@ -34,21 +34,17 @@
 
 class Mage_Adminhtml_Rss_CatalogController extends Mage_Adminhtml_Controller_Action
 {
-    /**
-     * Check is allowed access to action
-     *
-     * @return bool
-     */
-    protected function _isAllowed()
+    public function preDispatch()
     {
         $path = '';
-        $action = strtolower($this->getRequest()->getActionName());
-        if ($action == 'review') {
+        if ($this->getRequest()->getActionName() == 'review') {
             $path = 'catalog/reviews_ratings';
-        } elseif ($action == 'notifystock') {
+        } elseif ($this->getRequest()->getActionName() == 'notifystock') {
             $path = 'catalog/products';
         }
-        return Mage::getSingleton('admin/session')->isAllowed($path);
+        Mage::helper('adminhtml/rss')->authAdmin($path);
+        parent::preDispatch();
+        return $this;
     }
 
     public function notifystockAction()

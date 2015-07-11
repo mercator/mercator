@@ -160,13 +160,12 @@ class Mage_Adminhtml_NotificationController extends Mage_Adminhtml_Controller_Ac
 
     protected function _isAllowed()
     {
-        $action = strtolower($this->getRequest()->getActionName());
-        switch ($action) {
-            case 'markasread':
+        switch ($this->getRequest()->getActionName()) {
+            case 'markAsRead':
                 $acl = 'system/adminnotification/mark_as_read';
                 break;
 
-            case 'massmarkasread':
+            case 'massMarkAsRead':
                 $acl = 'system/adminnotification/mark_as_read';
                 break;
 
@@ -174,7 +173,7 @@ class Mage_Adminhtml_NotificationController extends Mage_Adminhtml_Controller_Ac
                 $acl = 'system/adminnotification/remove';
                 break;
 
-            case 'massremove':
+            case 'massRemove':
                 $acl = 'system/adminnotification/remove';
                 break;
 

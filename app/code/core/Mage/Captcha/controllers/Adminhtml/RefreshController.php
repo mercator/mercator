@@ -47,14 +47,4 @@ class Mage_Captcha_Adminhtml_RefreshController extends Mage_Adminhtml_Controller
         $this->getResponse()->setBody(json_encode(array('imgSrc' => $captchaModel->getImgSrc())));
         $this->setFlag('', self::FLAG_NO_POST_DISPATCH, true);
     }
-
-    /**
-     * Check is allowed access to action
-     *
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return true;
-    }
 }
