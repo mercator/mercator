@@ -68,6 +68,10 @@ class Varien_Image_Adapter_Gd2 extends Varien_Image_Adapter_Abstract
     protected function _isMemoryLimitReached()
     {
         $limit = $this->_convertToByte(ini_get('memory_limit'));
+        // If the memory limit is -1 we want to return false as this value means we have no memory limit.
+        if ($limit === -1) {
+            return false;
+        }
         $size = getimagesize($this->_fileName);
         $requiredMemory = $size[0] * $size[1] * 3;
         return (memory_get_usage(true) + $requiredMemory) > $limit;
