@@ -16,7 +16,7 @@
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
+ * needs please refer to http://www.magentocommerce.com for more information.
  *
  * @category    Mage
  * @package     Mage
@@ -27,7 +27,8 @@
 // Change current directory to the directory of current script
 chdir(dirname(__DIR__)); // Changed for Mercator to point to the root Magento folder
 
-require dirname(__DIR__) . '/app/Mage.php';
+require 'app/bootstrap.php';
+require 'app/Mage.php';
 
 if (!Mage::isInstalled()) {
     echo "Application is not installed yet, please complete install wizard first.";
@@ -59,9 +60,11 @@ try {
                 Mage::throwException('Unrecognized cron mode was defined');
             }
         } else if (!$isShellDisabled) {
-            $baseDir = dirname(__DIR__);
-            shell_exec("/bin/sh $baseDir/shell/cron.sh " . __FILE__ . " -mdefault 1 > /dev/null 2>&1 &");
-            shell_exec("/bin/sh $baseDir/shell/cron.sh " . __FILE__ . " -malways 1 > /dev/null 2>&1 &");
+            $fileName = escapeshellarg(basename(__FILE__));
+            $cronPath = escapeshellarg(dirname(__DIR__) . '/shell/cron.sh');
+
+            shell_exec(escapeshellcmd("/bin/sh $cronPath $fileName -mdefault 1 > /dev/null 2>&1 &"));
+            shell_exec(escapeshellcmd("/bin/sh $cronPath $fileName -malways 1 > /dev/null 2>&1 &"));
             exit;
         }
     }
