@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Page
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -33,8 +33,6 @@
  */
 class Mage_Page_Block_Html_Notices extends Mage_Core_Block_Template
 {
-    const DEFAULT_COLOR = "#D75F07";
-    
     /**
      * Check if noscript notice should be displayed
      *
@@ -52,27 +50,7 @@ class Mage_Page_Block_Html_Notices extends Mage_Core_Block_Template
      */
     public function displayDemoNotice()
     {
-        if (!is_null(Mage::getConfig()->getNode('global/environment/show_banner_in_frontend')))
-        {
-            return (int) Mage::getConfig()->getNode('global/environment/show_banner_in_frontend');
-        } else {
-            return Mage::getStoreConfig('design/head/demonotice');
-        }
-    }
-    
-    /**
-     * Get the background color for the demo/environment notice banner
-     *
-     * @return string
-     */
-    public function getNoticeColor()
-    {
-        if (!is_null(Mage::getConfig()->getNode('global/environment/banner_color')))
-        {
-            return Mage::getConfig()->getNode('global/environment/banner_color');
-        } else {
-            return self::DEFAULT_COLOR;
-        }
+        return Mage::getStoreConfig('design/head/demonotice');
     }
 
     /**

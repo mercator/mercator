@@ -21,7 +21,7 @@
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 -->
@@ -289,11 +289,6 @@
             <debug>
                 <profiler>0</profiler>
             </debug>
-            <!-- Mercator: default to allowing template symlinks, as otherwise
-                 modules included by Composer often won't work correctly. -->
-            <template>
-                <allow_symlink>1</allow_symlink>
-            </template>
             <translate_inline>
                 <active>0</active>
                 <active_admin>0</active_admin>
@@ -311,6 +306,9 @@
             </js>
         </dev>
         <system>
+            <csrf>
+                <use_form_key>1</use_form_key>
+            </csrf>
             <smtp>
                 <disable>0</disable>
                 <host>localhost</host>
@@ -404,18 +402,6 @@
                 <cookies>1</cookies>
                 <javascript>1</javascript>
             </browser_capabilities>
-            <noindex>
-                <customer>1</customer>
-                <checkout>1</checkout>
-                <contacts>1</contacts>
-                <wishlist>1</wishlist>
-                <compare>1</compare>
-                <friend>1</friend>
-                <reviews>1</reviews>
-                <tags>1</tags>
-                <rss>1</rss>
-                <search>1</search>
-            </noindex>
         </web>
         <admin>
             <startup>
@@ -429,6 +415,7 @@
                 <use_form_key>1</use_form_key>
                 <domain_policy_backend>2</domain_policy_backend>
                 <domain_policy_frontend>2</domain_policy_frontend>
+                <extensions_compatibility_mode>1</extensions_compatibility_mode>
             </security>
         </admin>
         <general>

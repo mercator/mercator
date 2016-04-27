@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Paypal
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -389,6 +389,7 @@ class Mage_Paypal_Model_Payflowpro extends  Mage_Payment_Model_Method_Cc
             'verifypeer' => $this->getConfigData('verify_peer')
         );
 
+        //checking proxy
         $_isProxy = $this->getConfigData('use_proxy', false);
         if ($_isProxy) {
             $_config['proxy'] = $this->getConfigData('proxy_host')

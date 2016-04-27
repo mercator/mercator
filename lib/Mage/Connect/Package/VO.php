@@ -16,11 +16,11 @@
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Connect
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -43,54 +43,53 @@ class Mage_Connect_Package_VO implements Iterator
         'contents' => '',
         'compatible' => '',
         'hotfix' => ''
-        );
+    );
 
-        public function rewind() {
-            reset($this->properties);
+    public function rewind() {
+        reset($this->properties);
+    }
+
+    public function valid() {
+        return current($this->properties) !== false;
+    }
+
+    public function key() {
+        return key($this->properties);
+    }
+
+    public function current() {
+        return current($this->properties);
+    }
+
+    public function next() {
+        next($this->properties);
+    }
+
+    public function __get($var)
+    {
+        if (isset($this->properties[$var])) {
+            return $this->properties[$var];
         }
+        return null;
+    }
 
-        public function valid() {
-            return current($this->properties) !== false;
+    public function __set($var, $value)
+    {
+        if (is_string($value)) {
+            $value = trim($value);
         }
-
-        public function key() {
-            return key($this->properties);
-        }
-
-        public function current() {
-            return current($this->properties);
-        }
-
-        public function next() {
-            next($this->properties);
-        }
-
-        public function __get($var)
-        {
-            if (isset($this->properties[$var])) {
-                return $this->properties[$var];
+        if (isset($this->properties[$var])) {
+            if ($value === null) {
+                $value = '';
             }
-            return null;
+            $this->properties[$var] = $value;
         }
+    }
 
-        public function __set($var, $value)
-        {
-            if (is_string($value)) {
-                $value = trim($value);
-            }
-            if (isset($this->properties[$var])) {
-                if ($value === null) {
-                    $value = '';
-                }
-                $this->properties[$var] = $value;
-            }
-        }
-
-        public function toArray()
-        {
-            return $this->properties;
-        }
+    public function toArray()
+    {
+        return $this->properties;
+    }
 
 }
-
 

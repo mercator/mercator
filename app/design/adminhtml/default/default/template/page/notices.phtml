@@ -20,7 +20,7 @@
  *
  * @category    design
  * @package     default_default
- * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
@@ -40,5 +40,5 @@
     </noscript>
 <?php endif; ?>
 <?php if ($this->displayDemoNotice()): ?>
-    <p class="demo-notice" style="background: <?php echo $this->getNoticeColor(); ?>;"><b><?php echo strtoupper(Mage::getConfig()->getNode('global/environment/name')); ?></b> <?php if (is_null(Mage::getConfig()->getNode('global/environment/name'))): ?><?php echo $this->__('This is a demo store. Any orders placed through this store will not be honored or fulfilled.') ?><?php endif; ?></p>
+    <p class="demo-notice"><?php echo $this->__('This is a demo store. Any orders placed through this store will not be honored or fulfilled.') ?></p>
 <?php endif; ?>

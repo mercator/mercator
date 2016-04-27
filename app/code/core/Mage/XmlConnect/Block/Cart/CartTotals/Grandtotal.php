@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_XmlConnect
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -31,7 +31,7 @@
  * @package     Mage_XmlConnect
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_XmlConnect_Block_Cart_CartTotals_Grandtotal extends Mage_Tax_Block_Checkout_Grandtotal
+class Mage_Xmlconnect_Block_Cart_CartTotals_Grandtotal extends Mage_Tax_Block_Checkout_Grandtotal
 {
     /**
      * Total id prefix

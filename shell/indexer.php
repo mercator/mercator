@@ -20,20 +20,20 @@
  *
  * @category    Mage
  * @package     Mage_Shell
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 require_once 'abstract.php';
 
 /**
- * Magento Indexer Shell Script
+ * Magento Compiler Shell Script
  *
  * @category    Mage
  * @package     Mage_Shell
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Mage_Shell_Indexer extends Mage_Shell_Abstract
+class Mage_Shell_Compiler extends Mage_Shell_Abstract
 {
     /**
      * Get Indexer instance
@@ -212,5 +212,5 @@ USAGE;
     }
 }
 
-$shell = new Mage_Shell_Indexer();
+$shell = new Mage_Shell_Compiler();
 $shell->run();

@@ -128,8 +128,8 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
         $this->_maxLifetime =           ((int) $config->descend('max_lifetime') ?: self::DEFAULT_MAX_LIFETIME);
         $this->_minLifetime =           ((int) $config->descend('min_lifetime') ?: self::DEFAULT_MIN_LIFETIME);
         $this->_useLocking = defined('CM_REDISSESSION_LOCKING_ENABLED')
-            ? CM_REDISSESSION_LOCKING_ENABLED
-            : ! ((int) $config->descend('disable_locking') ?: self::DEFAULT_DISABLE_LOCKING);
+                    ? CM_REDISSESSION_LOCKING_ENABLED
+                    : ! ((int) $config->descend('disable_locking') ?: self::DEFAULT_DISABLE_LOCKING);
 
         // Use sleep time multiplier so break time is in seconds
         $this->_breakAfter = (int) round((1000000 / self::SLEEP_TIME) * $this->_breakAfter);
@@ -197,7 +197,7 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
         if ( ! $this->_useRedis) return parent::read($sessionId);
         Varien_Profiler::start(__METHOD__);
 
-        // If the new value is a multiple of BREAK_MODULO then we are breaking the lock.
+        // Get lock on session. Increment the "lock" field and if the new value is 1, we have the lock.
         $sessionId = self::SESSION_PREFIX.$sessionId;
         $tries = $waiting = $lock = 0;
         $lockPid = $oldLockPid = NULL; // Restart waiting for lock when current lock holder changes
@@ -215,7 +215,7 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
             $oldLock = $lock;
             $lock = $this->_redis->hIncrBy($sessionId, 'lock', 1);
 
-            // If we got the lock, update with our pid and reset lock and expiration
+            // Get the pid of the process that has the lock
             if ($lock != 1 && $tries + 1 >= $this->_breakAfter) {
                 $lockPid = $this->_redis->hGet($sessionId, 'pid');
             }
@@ -223,9 +223,9 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
             // If we got the lock, update with our pid and reset lock and expiration
             if (   $lock == 1                          // We actually do have the lock
                 || (
-                    $tries >= $this->_breakAfter   // We are done waiting and want to start trying to break it
-                    && $oldLockPid == $lockPid        // Nobody else got the lock while we were waiting
-                )
+                        $tries >= $this->_breakAfter   // We are done waiting and want to start trying to break it
+                     && $oldLockPid == $lockPid        // Nobody else got the lock while we were waiting
+                   )
             ) {
                 $this->_hasLock = TRUE;
                 break;
@@ -245,7 +245,7 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
                 if ($detectZombies) {
                     $detectZombies = FALSE;
                     if ( $lock > $oldLock                 // lock shouldn't be less than old lock (another process broke the lock)
-                        && $lock + 1 < $oldLock + $waiting // lock should be old+waiting, otherwise there must be a dead process
+                      && $lock + 1 < $oldLock + $waiting // lock should be old+waiting, otherwise there must be a dead process
                     ) {
                         // Reset session to fresh state
                         if ($this->_logLevel >= Zend_Log::INFO) {
@@ -284,12 +284,12 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
             $oldLockPid = $lockPid;
             $sleepTime = self::SLEEP_TIME;
 
-            // Detect dead waiters
+            // Detect dead lock waiters
             if ($tries % self::DETECT_ZOMBIES == 1) {
                 $detectZombies = TRUE;
                 $sleepTime += 10000; // sleep + 0.01 seconds
             }
-            // Detect dead processes every 10 seconds
+            // Detect dead lock holder every 10 seconds (only works on same node as lock holder)
             if ($tries % self::DETECT_ZOMBIES == 0) {
                 Varien_Profiler::start(__METHOD__.'-detect-zombies');
                 if ($this->_logLevel >= Zend_Log::DEBUG) {
@@ -353,7 +353,7 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
             $this->_redis->hIncrBy($sessionId, 'wait', -1);
         }
 
-        // Session can be read even if it was not locked by this pid!
+        // This process has the lock, save the pid
         if ($this->_hasLock) {
             $setData = array(
                 'pid' => $this->_getPid(),
@@ -415,7 +415,7 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
             if($this->_dbNum) $this->_redis->select($this->_dbNum);  // Prevent conflicts with other connections?
 
             if ( ! $this->_useLocking
-                || ( ! ($pid = $this->_redis->hGet('sess_'.$sessionId, 'pid')) || $pid == $this->_getPid())
+              || ( ! ($pid = $this->_redis->hGet('sess_'.$sessionId, 'pid')) || $pid == $this->_getPid())
             ) {
                 $this->_writeRawSession($sessionId, $sessionData, $this->getLifeTime());
                 if ($this->_logLevel >= Zend_Log::DEBUG) {
@@ -518,7 +518,7 @@ class Cm_RedisSession_Model_Session extends Mage_Core_Model_Mysql4_Session
                         $this->_log(sprintf("Bot detected for user agent: %s", $userAgent));
                     }
                     if ( $this->_sessionWrites <= 1
-                        && ($botFirstLifetime = ((int) $this->_config->descend('bot_first_lifetime') ?: self::DEFAULT_BOT_FIRST_LIFETIME))
+                      && ($botFirstLifetime = ((int) $this->_config->descend('bot_first_lifetime') ?: self::DEFAULT_BOT_FIRST_LIFETIME))
                     ) {
                         $lifeTime = $botFirstLifetime * (1+$this->_sessionWrites);
                     } else {

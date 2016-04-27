@@ -10,18 +10,18 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * to license@magento.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * needs please refer to http://www.magento.com for more information.
  *
  * @category    Mage
  * @package     Mage_Catalog
- * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 
@@ -529,26 +529,6 @@ class Mage_Catalog_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setup
                         'global'                     => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
                         'group'                      => 'Meta Information',
                     ),
-                    'meta_robots' => array(
-                        'type'              => 'text',
-                        'label'             => 'Meta Robots',
-                        'input'             => 'select',
-                        'backend'           => '',
-                        'frontend'          => '',
-                        'class'             => '',
-                        'source'            => 'eav/entity_attribute_source_robots',
-                        'global'            => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
-                        'visible'           => true,
-                        'required'          => false,
-                        'user_defined'      => false,
-                        'default'           => '',
-                        'searchable'        => false,
-                        'filterable'        => false,
-                        'comparable'        => false,
-                        'visible_on_front'  => false,
-                        'unique'            => false,
-                        'group'             => 'Meta Information',
-                    ),
                     'image'              => array(
                         'type'                       => 'varchar',
                         'label'                      => 'Base Image',
@@ -792,7 +772,7 @@ class Mage_Catalog_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setup
                         'input'                      => 'select',
                         'source'                     => 'catalog/entity_product_attribute_design_options_container',
                         'required'                   => false,
-                        'default'                    => 'container2',
+                        'default'                    => 'container1',
                         'sort_order'                 => 6,
                         'global'                     => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
                         'group'                      => 'Design',
