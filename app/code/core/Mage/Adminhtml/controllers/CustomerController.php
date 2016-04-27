@@ -780,7 +780,7 @@ class Mage_Adminhtml_CustomerController extends Mage_Adminhtml_Controller_Action
             return $this->norouteAction();
         }
 
-        $path = Mage::getBaseDir('media') . DS . 'customer';
+        $path = Mage::getBaseDir('storage') . DS . 'customer';
 
         $ioFile = new Varien_Io_File();
         $ioFile->open(array('path' => $path));

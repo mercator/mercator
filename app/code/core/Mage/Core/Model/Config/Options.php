@@ -39,6 +39,14 @@ class Mage_Core_Model_Config_Options extends Varien_Object
      * @var string
      */
     const VAR_DIRECTORY = 'var';
+
+    /**
+     * Public directory
+     *
+     * @var string
+     */
+    const PUBLIC_DIRECTORY = 'public';
+
     /**
      * Flag cache for existing or already created directories
      *
@@ -61,8 +69,9 @@ class Mage_Core_Model_Config_Options extends Varien_Object
         $this->_data['etc_dir']     = $appRoot.DS.'etc';
         $this->_data['lib_dir']     = $root.DS.'lib';
         $this->_data['locale_dir']  = $appRoot.DS.'locale';
-        $this->_data['media_dir']   = $root.DS.'public'.DS.'media';
-        $this->_data['skin_dir']    = $root.DS.'public'.DS.'skin';
+        $this->_data['public_dir']  = $root.DS.self::PUBLIC_DIRECTORY;
+        $this->_data['media_dir']   = $this->_data['public_dir'].DS.'media';
+        $this->_data['skin_dir']    = $this->_data['public_dir'].DS.'skin';
         $this->_data['var_dir']     = $this->getVarDir();
         $this->_data['tmp_dir']     = $this->_data['var_dir'].DS.'tmp';
         $this->_data['cache_dir']   = $this->_data['var_dir'].DS.'cache';
@@ -70,6 +79,7 @@ class Mage_Core_Model_Config_Options extends Varien_Object
         $this->_data['session_dir'] = $this->_data['var_dir'].DS.'session';
         $this->_data['upload_dir']  = $this->_data['media_dir'].DS.'upload';
         $this->_data['export_dir']  = $this->_data['var_dir'].DS.'export';
+        $this->_data['storage_dir'] = $root.DS.'storage';
     }
 
     public function getDir($type)
@@ -124,6 +134,11 @@ class Mage_Core_Model_Config_Options extends Varien_Object
         return $this->_data['locale_dir'];
     }
 
+    public function getPublicDir()
+    {
+        return $this->_data['public_dir'];
+    }
+
     public function getMediaDir()
     {
         //return $this->getDataSetDefault('media_dir', $this->getBaseDir().DS.'media');
@@ -134,6 +149,11 @@ class Mage_Core_Model_Config_Options extends Varien_Object
     {
         //return $this->getDataSetDefault('skin_dir', $this->getBaseDir().DS.'skin');
         return $this->_data['skin_dir'];
+    }
+
+    public function getStorageDir()
+    {
+        return $this->_data['storage_dir'];
     }
 
     public function getSysTmpDir()

@@ -244,6 +244,10 @@ function mageCoreErrorHandler($errno, $errstr, $errfile, $errline){
     if (Mage::getIsDeveloperMode()) {
         throw new Exception($errorMessage);
     } else {
+        // FONTIS - Include REQUEST_URI in log message if available
+        if (!empty($_SERVER["REQUEST_URI"])) {
+            $errorMessage = $_SERVER["REQUEST_URI"] . "\n" . $errorMessage;
+        }
         Mage::log($errorMessage, Zend_Log::ERR);
     }
 }

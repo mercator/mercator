@@ -116,7 +116,7 @@ class Mage_Connect_Package_Target
     {
         foreach ($this->getTargets() as $_name=>$_uri) {
             if ($name == $_name) {
-                return $_uri;
+                return BP . ltrim($_uri, '.');
             }
         }
         return '';

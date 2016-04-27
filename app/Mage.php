@@ -858,7 +858,12 @@ final class Mage
         $file = self::getStoreConfig('dev/log/exception_file');
         // FONTIS - show trace with full strings
         //self::log("\n" . $e->__toString(), Zend_Log::ERR, $file);
-        self::log("\n" . self::getFullStringsTrace($e), Zend_Log::ERR, $file);
+        $message = "\n" . self::getFullStringsTrace($e);
+        // FONTIS - Include REQUEST_URI in log message if available
+        if (!empty($_SERVER["REQUEST_URI"])) {
+            $message = $_SERVER["REQUEST_URI"] . $message;
+        }
+        self::log($message, Zend_Log::ERR, $file);
     }
 
     /**
@@ -998,8 +1003,12 @@ final class Mage
      * FONTIS - Takes an exception, returns a stack trace that includes full
      * string aguments instead of truncating them. Based on:
      * http://stackoverflow.com/questions/1949345
+     *
+     * @param Exception $exception
+     * @return string
      */
-    public static function getFullStringsTrace($exception) {
+    public static function getFullStringsTrace($exception)
+    {
         $trace = get_class($exception).": message '{$exception->getMessage()}', code '{$exception->getCode()}' in {$exception->getFile()}:{$exception->getLine()}\n";
         $depth = 0;
         foreach ($exception->getTrace() as $frame) {

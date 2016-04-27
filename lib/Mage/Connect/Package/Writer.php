@@ -115,14 +115,19 @@ class Mage_Connect_Package_Writer
     */
     public function composePackage()
     {
-        @mkdir(self::PATH_TO_TEMPORARY_DIRECTORY, 0777, true);        
-        $root = self::PATH_TO_TEMPORARY_DIRECTORY . basename($this->_namePackage);
+        @mkdir(BP . DS . self::PATH_TO_TEMPORARY_DIRECTORY, 0777, true);
+        $root = BP . DS . self::PATH_TO_TEMPORARY_DIRECTORY . basename($this->_namePackage);
         @mkdir($root, 0777, true);
+        $bpLen = strlen(BP . '/');
         foreach ($this->_files as $file) {
             
             if (is_dir($file) || is_file($file)) {
                 $fileName = basename($file);
-                $filePath = dirname($file);
+                $filePath = substr(dirname($file), $bpLen);
+                if (substr($filePath, 0, strlen('public/')) == 'public/') {
+                    $filePath = substr($filePath, strlen('public/'));
+                }
+
                 @mkdir($root . DS . $filePath, 0777, true);
                 if (is_file($file)) {
                     copy($file, $root . DS . $filePath . DS . $fileName);

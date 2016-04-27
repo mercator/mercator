@@ -187,8 +187,8 @@ class Mage_Backup_Helper_Data extends Mage_Core_Helper_Abstract
             Mage::getBaseDir('var') . DS . 'log',
             Mage::getBaseDir('var') . DS . 'report',
             Mage::getBaseDir('app') . DS . 'Mage.php',
-            Mage::getBaseDir() . DS . 'errors',
-            Mage::getBaseDir() . DS . 'index.php'
+            Mage::getBaseDir('public') . DS . 'errors',
+            Mage::getBaseDir('public') . DS . 'index.php'
         );
     }
 
