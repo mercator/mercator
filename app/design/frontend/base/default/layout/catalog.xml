@@ -156,6 +156,7 @@ Compare products page
         <reference name="head">
             <action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
             <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>varien/product_options.js</script></action>
             <action method="setRobots" ifconfig="web/noindex/compare"><meta>NOINDEX,FOLLOW</meta></action>
         </reference>
         <reference name="content">
@@ -181,6 +182,7 @@ Product view
         </reference>
         <reference name="head">
             <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>varien/product_options.js</script></action>
             <action method="addJs"><script>varien/configurable.js</script></action>
 
             <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params/><!--<if/><condition>can_load_calendar_js</condition>--></action>
@@ -321,6 +323,7 @@ Product send to friend
         </reference>
         <reference name="head">
             <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>varien/product_options.js</script></action>
             <action method="setRobots" ifconfig="web/noindex/friend"><meta>NOINDEX,FOLLOW</meta></action>
         </reference>
         <reference name="content">
